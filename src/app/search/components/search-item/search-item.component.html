@@ -1,0 +1,28 @@
+<article class="search-item" (click)="viewUnit()">
+    <div class="img-container"><img class="img-fluid" [src]="item.information.cover" [alt]="'units.accesibility.image-unit' | translate: { title: item.information.name }" /></div>
+    <div class="description-container">
+        <header>
+            <div class="row">
+                <div class="col-md-8 col-sm-12">
+                    <h3 class="card-title"><io-flag [language]="item.information.language"> </io-flag>&nbsp; {{ item.information.name }}</h3>
+                </div>
+                <div class="col-md-4 col-sm-12 text-xs-left text-sm-right">
+                    <span *ngIf="item.published.publishedDate">{{ 'common.published_at' | translate }}&nbsp; <time pubdate>{{ item.published.publishedDate | date: "dd/MM/yyyy" }} </time></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <address><strong>{{ item.author.name }} &nbsp;</strong><span class="badge badge-pill badge-light" *ngIf="isYourUnit()">{{ 'common.you_are' | translate }}</span></address>
+                </div>
+                <div class="col text-right" *ngIf="!isOriginalUnit()">
+                    <p>{{ 'units.unit_from' | translate }} &nbsp;<strong>{{ item.originalUnit?.authorName }} &nbsp;</strong></p>
+                </div>
+            </div>
+        </header>
+        <div class="description"><p>{{ item.information.shortDescription }}</p></div>
+        <div class="badges"><span class="badge" [ngClass]="itemTypeClass()" translate>{{ type() }}</span><span class="badge badge-info">{{ item.information.category | translateCategory }}</span></div>
+        <div class="rating">
+            <strong><span class="sr-only">{{'rating.average' | translate}}</span>{{item.rating.average}}</strong> (<span class="sr-only">{{'rating.count' | translate}}</span>{{item.rating.count}}) <ngx-material-rating role="slider" aria-valuemin="0" aria-valuemax="5" [attr.aria-valuenow]="item.rating.average" [attr.aria-valuetext]="'rating.current' | translate: {current: item.rating.average, max: 5}" [dense]="true" [disabled]="true" [readonly]="true" [max]="5" [(ngModel)]="item.rating.average"></ngx-material-rating><span class="ml-2 mr-2"> | </span><span class="badge bg-dark text-white">{{ item.information.ageRange[0] }} - {{ item.information.ageRange[1] }} {{ 'common.years' | translate }}</span><span class="ml-2 mr-2"> | </span><span [class]="getBadgeLicenseClass()">{{ item.creativeCommons }}</span>
+        </div>
+    </div>
+</article>

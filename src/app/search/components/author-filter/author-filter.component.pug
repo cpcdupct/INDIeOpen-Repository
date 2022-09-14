@@ -1,0 +1,24 @@
+.card.filter
+    .card-body
+        h2.card-title.filter-title {{ filter.label | translate }}
+
+        .author-form
+            input.form-control(
+                matInput,
+                [matAutocomplete]="autoAuth",
+                type="search",
+                placeholder="{{ 'search.filters.author.input-placeholder' | translate }}",
+                [(ngModel)]="name",
+                (ngModelChange)="dataChanged($event)",
+                name="author",
+                [attr.aria-label]="'search.filters.author.search-author' | translate"
+            )
+
+        mat-autocomplete(#autoAuth="matAutocomplete", (optionSelected)="authorSelected($event)")
+            mat-option(*ngFor="let item of results$ | async ", [id]="item.id", [value]="item.name") {{ item.name }}
+
+        .author-selected(*ngIf="itemSelected")
+            .badge.badge-primary
+                button.text-white.btn-sm.btn.btn-outline((click)="clearSelected()", [attr.aria-label]="itemSelected.name + ' ' + ('search.filters.author.delete' | translate)")
+                    | {{ itemSelected.name }}
+                    fa-icon([icon]="['fas', 'times']")

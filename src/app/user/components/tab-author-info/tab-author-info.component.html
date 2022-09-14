@@ -1,0 +1,11 @@
+<ng-container *ngIf="authorInfoForm"
+    ><form class="form" ngNativeValidate [formGroup]="authorInfoForm" (ngSubmit)="update()">
+        <div class="form-group"><io-input [data]="nameInput"></io-input></div>
+        <div class="form-group"><io-input [data]="surnameInput"></io-input></div>
+        <div class="form-group"><io-input [data]="countryInput"></io-input></div>
+        <div class="form-group"><io-input [data]="institutionInput"></io-input></div>
+        <div class="form-group"><io-input [data]="avatarInput"></io-input><img class="img-thumbnail" [src]="formControls.avatar.value" *ngIf="formControls.avatar.valid" [alt]="'user-panel.accesibility.user-avatar' | translate" /></div>
+        <div class="form-group"><io-textarea [data]="biographyInput" rows="4"></io-textarea></div>
+        <button class="btn btn-success" type="submit" [disabled]="!allowSubmit"><io-button-loader [show]="!allowSubmit"></io-button-loader>{{ 'user.author_info.submit' | translate }}</button>
+    </form></ng-container
+>

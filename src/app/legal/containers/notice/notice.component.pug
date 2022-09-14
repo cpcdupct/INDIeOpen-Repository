@@ -1,0 +1,12 @@
+main.tabs-container(id="main", tabindex="-1")
+    h1(id="title", tabindex="-1") {{ "legal.notice.title" | translate }}
+    ul.nav-tabs(ngbNav, #nav='ngbNav', [(activeId)]='active')
+        li(ngbNavItem='notice')
+            a(ngbNavLink) {{ "legal.notice.tab.notice" | translate }}
+            ng-template.tab-content(ngbNavContent)
+                div([innerHtml]='loadLegalNotice() | safehtml')
+        li(ngbNavItem='cookies')
+            a(ngbNavLink) {{ "legal.notice.tab.cookies" | translate }}
+            ng-template.tab-content(ngbNavContent)
+                div([innerHtml]='loadCookies() | safehtml')
+        div([ngbNavOutlet]='nav')

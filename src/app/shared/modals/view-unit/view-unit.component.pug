@@ -1,0 +1,62 @@
+.modal-header
+    button.close(type="button", aria-label="Close", (click)="activeModal.dismiss()")
+        span(aria-hidden="true") 
+            | &times;
+.modal-body.view-unit
+    div.row
+        div.col-lg-5.col-md-12.img-container.mt-2
+            img.unit-img([src]='unit.information.cover', [alt]="'units.accesibility.image-unit' | translate: { title: unit.information.name }")
+        div.col-lg-7.col-md-12.unit-description-container.mt-2
+            h4.name {{unit.information.name}}
+            p.author-name 
+                strong {{unit.author.name}} &nbsp; 
+                span.badge.badge-pill.badge-light(*ngIf='isYourUnit()') {{'common.you_are' | translate}}
+            p(*ngIf='!isOriginalUnit()') {{'units.unit_from' | translate}} &nbsp;
+                strong {{unit.originalUnit?.authorName}} &nbsp;
+            .unit-badges
+                span.badge([ngClass]='itemTypeClass()', translate) {{type()}}
+                span.badge.badge-info {{ unit.information.category | translateCategory }}
+                span.badge.bg-dark.text-white {{ unit.information.ageRange[0] }} - {{ unit.information.ageRange[1] }} {{ "common.years" | translate }}
+                span([class]='getBadgeLicenseClass()') {{ "enums.License." + unit.license | translate }} - {{ "creative-commons." + unit.creativeCommons | translate }}
+                span.badge.badge-success(*ngFor='let context of educationalContextTranslations()') 
+                    | {{ context.name }}
+            .row
+                .col-lg-6.col-xs-12.d-flex.align-items-center
+                    p
+                        <strong><span class="sr-only">{{'rating.average' | translate}}</span>{{unit.rating.average}}</strong> (<span class="sr-only">{{'rating.count' | translate}}</span>{{unit.rating.count}}) 
+                        ngx-material-rating(
+                            role="slider", aria-valuemin="0", aria-valuemax="5", [attr.aria-valuenow]="unit.rating.average", [attr.aria-valuetext]="'rating.current' | translate: {current: unit.rating.average, max: 5}",
+                            [dense]="true", [disabled]="true", [readonly]="true", [max]=5, [(ngModel)]="unit.rating.average")
+                .col-lg-6.col-xs-12.d-flex.align-items-center         
+                    p {{ 'common.published_at' | translate}} 
+                        span.date {{unit.published.publishedDate | date: "dd/MM/yyyy" }}
+    div.row.mt-3
+        div.col
+            a.btn.btn-primary.btn-block([href]="previewUnit()", role='button', target='_blank') {{ 'common.preview' | translate}}
+        div.col(*ngIf='canAddUnit()') 
+            button.btn.btn-secondary.btn-block((click)="addUnit()", [disabled]='addUnitLoader')
+                io-button-loader([show]='addUnitLoader') 
+                span(*ngIf='!addUnitLoader') {{ 'common.add' | translate}}
+                span(*ngIf='addUnitLoader') {{ 'units.messages.adding_unit' | translate}}
+    div.row.mt-3
+        div.col
+            h5 {{ 'common.description' | translate}}
+    hr
+    div.row.my-2
+        div.col
+            p(style='white-space:pre-wrap"') {{ unit.information.shortDescription }}
+            p(style='white-space:pre-wrap"', [innerHTML]='unit.information.longDescription | prettyPrint') 
+    div.row(*ngIf='canRateUnit()')
+        div.col
+            h5(id="view-unit-rate") {{ 'units.view-unit-modal.rate-unit' | translate}}
+            hr
+            p(*ngIf='alreadyRated') {{'units.view-unit-modal.already-rated' | translate}}
+            //ngb-rating(*ngIf='!alreadyRated', [(rate)]='userRate', [max]='5', (rateChange)='onRateChange($event)')
+            ngx-material-rating.rate-this-unit(
+                *ngIf='!alreadyRated',
+                #rate,
+                (keydown)="onRatingKeyDown($event)",
+                (click)="onRateChange($event)",
+                tabindex="0", role="slider", aria-valuemin="0", aria-valuemax="5", [attr.aria-valuenow]="userRate", [attr.aria-valuetext]="textUserRate",
+                aria-labelledby="view-unit-rate",
+                [dense]="true", [disabled]="false", [max]=5, [(ngModel)]="userRate")

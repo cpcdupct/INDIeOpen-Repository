@@ -1,0 +1,81 @@
+h1.section-title(*ngIf="requestParams.text; else defaultTitle", id="title", tabindex="-1") {{ 'search.results' | translate }} '{{ requestParams.text }}' &nbsp;
+ng-template(#defaultTitle)
+    h1.section-title(id="title", tabindex="-1") {{ 'search.units-title' | translate }}
+
+.search-wrapper
+    .filter-collapse.mb-2.px-3
+        button.btn.btn-block.btn-secondary.btn-toggle-filters((click)="toggleFilters()", [attr.aria-expanded]="filterOpen", aria-controls="search-filters-menu")
+            | {{ 'search.toggle-filters' | translate }} &nbsp;
+            fa-icon([icon]="['fas', 'chevron-down']", *ngIf="!filterOpen")
+            fa-icon([icon]="['fas', 'chevron-up']", *ngIf="filterOpen")
+    aside.filters-col.filter(aria-labelledby="search-filters-title", id="search-filters-menu")
+        h2.search-filters-title(id="search-filters-title") {{ 'search.filters.label' | translate }}
+        .alert.alert-info 
+            fa-icon([icon]="['fas', 'info-circle']", [attr.aria-label]="'common.information' | translate") 
+            | {{ 'search.filters.info' | translate }}
+        io-search-filter-radio#typeFiltersFilters(
+            [filter]="typeFilter",
+            [labelId]="'type-filter'",
+            name="type",
+            (filterSelected)="onFilterSelected($event)"
+        )
+        io-category-filter#cateogyrFilter((filterSelected)="onFilterSelected($event)")
+        io-search-filter-radio#usemodeFilters(
+            [filter]="useModeFilter",
+            [labelId]="'use-mode-filter'",
+            name="usemode",
+            (filterSelected)="onFilterSelected($event)"
+        )
+        io-author-filter#authorFilter((filterSelected)="onFilterSelected($event)")
+        io-search-filter-check#languageFilter(
+            [filter]="languageFilter",
+            name="language",
+            (filterSelected)="onFilterSelected($event)"
+        )
+        io-search-filter-radio#educationalContextFilter(
+            [filter]="educationalContextFilter",
+            [labelId]="'educational-context-filter'",
+            name="educationalContext",
+            (filterSelected)="onFilterSelected($event)"
+        )
+        io-age-range-filter(
+            [filter]="ageRangeFilter",
+            name="ageRange",
+            (filterSelected)="onFilterSelected($event)"
+        )
+    main#main.results-col(tabindex="-1", aria-labelled-by="search-list-title")
+        .row.no-gutters.mt-0
+            .col-md-12.col-xl-4.d-flex.justify-content-sm-center.justify-content-xl-start
+                h2.search-list-title(id="search-list-title") {{ 'search.list' | translate }}
+            .col-md-12.col-xl-8.d-flex.flex-column.flex-sm-row.justify-content-sm-center.justify-content-xl-end
+                label.m-1.col-form-label.label-sort(translate, [for]="orderFilter.key") &nbsp; search.order_by &nbsp;
+                io-select-type.m-1(
+                    [filter]="orderFilter",
+                    (typeSelected)="onOrderSelected($event)"
+                )
+                button.btn.btn-primary.m-1((click)="clearSearch()") {{ 'search.clear' | translate }}
+        .row
+            .col
+                io-loader
+                ng-container(*ngIf="units$ | async as units")
+                    io-search-item(*ngFor="let unit of units", [item]="unit")
+        .row
+            nav.col([attr.aria-label]="'pagination.navigation' | translate")
+                .current-page(id="current-page")
+                    label(for="current-pagination-value")  {{ 'pagination.current' | translate }}
+                    input.form-control-inline(
+                        id="current-pagination-value",
+                        matInput,
+                        type="number",
+                        min="1",
+                        [max]="lastPage",
+                        [(ngModel)]="page",
+                        (ngModelChange)="$event && makeUnitsSearch($event)",
+                        name="page"
+                    )
+                mat-paginator([length]="total",
+                    [pageSize]="5",
+                    [hidePageSize]="true",
+                    [pageIndex]="page - 1",
+                    [showFirstLastButtons]="true",
+                    (page)="makeUnitsSearch($event.pageIndex+1)")

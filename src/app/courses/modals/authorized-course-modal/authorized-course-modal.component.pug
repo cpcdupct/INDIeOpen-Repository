@@ -1,0 +1,26 @@
+.modal-body
+    h2.sub-title {{ 'courses.authorized.title' | translate }}
+    mat-form-field.authorized-list(appearance="fill")
+        mat-label {{'courses.authorized.list' | translate}}
+        mat-chip-list(#chipList, [attr.aria-label]="'courses.authorized.list' | translate")
+            mat-chip(*ngFor="let user of selectedUsers", (removed)="remove(user)", [disableRipple]="true", (keydown.enter)="remove(user)", (keydown.space)="remove(user)", [selectable]="false") 
+                | {{ user.name }} &nbsp;
+                button(matChipRemove, tabindex="-1") 
+                    fa-icon([icon]='["fas", "times"]', size='2x', [attr.aria-label]="'courses.authorized.delete' | translate")
+            input.form-control(
+                #userInput,
+                [formControl]="userCtrl",
+                [matAutocomplete]="users",
+                [matChipInputFor]="chipList",
+                type="search",
+                [attr.aria-label]="'courses.authorized.select.placeholder' | translate",
+                placeholder="{{ 'courses.authorized.select.placeholder' | translate }}",
+                (keydown.enter)="$event.preventDefault()"
+            )
+        mat-autocomplete(#users="matAutocomplete", (optionSelected)="selected($event)")
+            mat-option(*ngFor="let user of filteredUsers$ | async", [value]="user") {{ user.name }}
+    .sr-only(#lti, id="authorization-lti-live", aria-live="polite", aria-atomic="true")
+
+.modal-footer
+    button.btn.btn-primary(type="button", (click)="close()") {{ 'modals.confirm-action.buttons.cancel' | translate }}
+    button.btn.btn-secondary(type="button", (click)="save()") {{ 'common.accept' | translate }}

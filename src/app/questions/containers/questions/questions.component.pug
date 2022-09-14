@@ -1,0 +1,67 @@
+main(id="main", tabindex="-1")
+    .row
+        .col
+            io-alerts
+    .row
+        .col
+            .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2
+                h1.section-title(translate, id="title", tabindex="-1") questions.my_questions.title
+                .btn-toolbar.mb-2.mb-md-0
+                    .btn-group.mr-2
+                        button.btn.btn-sm.btn-primary(type="button", (click)="selectTypeAndCreate()") 
+                            | {{ 'questions.my_questions.create_button' | translate }} &nbsp;
+                            fa-icon([icon]="['fas', 'plus-circle']")
+    .row.mt-2
+        .col-md-12.col-lg-3.d-flex.justify-content-center.justify-content-lg-start
+            span {{  "search.showing_count" | translate: { page: getElements(), size:total }  }}
+        .col-md-12.col-lg-9.d-flex.justify-content-center.justify-content-lg-end
+            .form-inline.filters-bar
+                //- Filters
+                .form-group(*ngIf="questionTypeFilter")
+                    label(translate, [for]="questionTypeFilter.key") &nbsp; {{ 'questions.types.title' | translate }} &nbsp;
+                    io-select-type(
+                        [filter]="questionTypeFilter",
+                        (typeSelected)="onFilterSelected($event)"
+                    )
+                .form-group(*ngIf="groupFilter")
+                    label(translate, [for]="groupFilter.key") &nbsp; {{ 'questions.groups.title' | translate }} &nbsp;
+                    io-select-type(
+                        *ngIf="groupFilter",
+                        [filter]="groupFilter",
+                        (typeSelected)="onFilterSelected($event)"
+                    )
+                .form-group(*ngIf="orderFilter")
+                    label(translate, [for]="orderFilter.key") &nbsp; search.order_by &nbsp;
+                    io-select-type([filter]="orderFilter", (typeSelected)="onFilterSelected($event)")
+    //- Results
+    io-loader
+    .row(*ngIf="questions$ | async as questions")
+        .col
+            io-list-question(
+                *ngFor="let question of questions",
+                [item]="question",
+                (usedQuestion)="onUsedQuestion($event)",
+                (questionDeleted)="onQuestionDeleted($event)"
+            )
+            .card.my-2(*ngIf="questions.length == 0")
+                .card-body {{ 'questions.no_results' | translate }}
+    .row
+        nav.col([attr.aria-label]="'pagination.navigation' | translate")
+            .current-page(id="current-page")
+                label(for="current-pagination-value")  {{ 'pagination.current' | translate }}
+                input.form-control-inline(
+                    id="current-pagination-value",
+                    matInput,
+                    type="number",
+                    min="1",
+                    [max]="lastPage",
+                    [(ngModel)]="page",
+                    (ngModelChange)="$event && loadQuestions($event)",
+                    name="page"
+                )
+            mat-paginator([length]="total",
+                [pageSize]="5",
+                [hidePageSize]="true",
+                [pageIndex]="page - 1",
+                [showFirstLastButtons]="true",
+                (page)="loadQuestions($event.pageIndex+1)")

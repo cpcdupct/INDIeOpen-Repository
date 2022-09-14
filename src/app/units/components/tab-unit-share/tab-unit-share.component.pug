@@ -1,0 +1,34 @@
+.content-wrapper
+    h2.sub-title {{ 'units.tab-unit-share.title' | translate }}
+    .form-group
+        .input-group
+            select.custom-select(
+                name="license",
+                [(ngModel)]="licenseOptions.selected",
+                [attr.aria-label]="'units.tab-unit-share.license_help' | translate"
+            )
+                optgroup([label]="'units.licenses.private.label' | translate") 
+                    option(
+                        *ngFor="let option of getOptionsByGroup('private')",
+                        [value]="option.value"
+                    ) {{ option.label | translate }}
+                optgroup([label]="'units.licenses.readonly.label' | translate") 
+                    option(
+                        *ngFor="let option of getOptionsByGroup('readonly')",
+                        [value]="option.value"
+                    ) {{ option.label | translate }}
+                optgroup([label]="'units.licenses.reuse.label' | translate") 
+                    option(
+                        *ngFor="let option of getOptionsByGroup('reuse')",
+                        [value]="option.value"
+                    ) {{ option.label | translate }}
+
+            .input-group-append
+                button.btn.btn-primary.btn-sm(type="button", (click)="changeLicense()") {{ 'units.tab-unit-share.change_license' | translate }}
+        small {{ 'units.tab-unit-share.show_help' | translate }}
+    .row
+        .col
+            p
+                fa-icon([icon]="['fas', 'question-circle']")
+                | &nbsp; {{ 'units.tab-unit-share.help' | translate }} &nbsp;
+                a([routerLink]="", (click)="showLicensesModal()") {{ 'units.tab-unit-share.licenses' | translate }}

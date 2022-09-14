@@ -1,0 +1,52 @@
+<div class="content-wrapper">
+    <ng-container *ngIf="isPublished(); else notPublished"
+        ><h2 class="sub-title">{{ 'units.tab-unit-use.publish' | translate }}</h2>
+        <ng-container *ngIf="isUpToDate(); else outdated"
+            ><p>
+                {{ 'units.tab-unit-use.up_to_date' | translate }}&nbsp;<span class="badge badge-success" *ngIf="unit.published.publishedDate">{{ 'common.published_at' | translate }} <time pubdate>{{ unit.published.publishedDate | date: "dd/MM/yyyy" }}</time></span>
+            </p></ng-container
+        >
+        <h2 class="sub-title">{{ 'units.tab-unit-use.links' | translate }}</h2>
+        <div class="form-group">
+            <label for="ltiUrl">{{ 'units.tab-unit-use.url' | translate }} &nbsp;</label>
+            <div class="input-group mb-3">
+                <input class="form-control" id="ltiUrl" type="text" readonly="true" [value]="getResourceUrl()" />
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" (click)="copyResource()"><fa-icon [icon]="['fas', 'copy']"> </fa-icon>&nbsp; {{ 'units.tab-unit-use.copy_clipboard' | translate }}</button>
+                </div>
+            </div>
+            <p>{{ 'units.tab-unit-use.analytics-text' | translate }} &nbsp;<span class="badge" [ngClass]="getLearningBadgeClass()">{{ getLearningBadgeText() }}</span></p>
+            <button class="btn btn-sm btn-primary" (click)="toggleLearningAnalytics()" [disabled]="learningLoader"><io-button-loader [show]="learningLoader"></io-button-loader>{{ 'units.tab-unit-use.toggle-analytics' | translate }}</button>
+        </div>
+        <div class="form-group" *ngIf="isOpenPublished()">
+            <label for="publicUrl">{{ 'units.tab-unit-use.url-open' | translate }} &nbsp;</label>
+            <div class="input-group mb-3">
+                <input class="form-control" id="publicUrl" type="text" readonly="true" [value]="getOpenResourceUrl()" />
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" (click)="copyOpenResource()"><fa-icon [icon]="['fas', 'copy']"> </fa-icon>&nbsp; {{ 'units.tab-unit-use.copy_clipboard' | translate }}</button>
+                </div>
+            </div>
+        </div>
+        <fieldset *ngIf="isPublished()">
+            <legend><h2 class="sub-title">{{ 'units.tab-unit-use.authorized.title' | translate }}</h2></legend>
+            <p>{{ 'units.tab-unit-use.authorized.description' | translate }}</p>
+            <mat-form-field class="authorized-list" appearance="fill"
+                ><mat-label>{{'units.tab-unit-use.authorized.select.placeholder' | translate}}</mat-label
+                ><mat-chip-list #chipList [attr.aria-label]="'units.tab-unit-use.authorized.select.placeholder' | translate"
+                    ><mat-chip *ngFor="let user of selectedUsers" (removed)="remove(user)" [disableRipple]="true" (keydown.enter)="remove(user)" (keydown.space)="remove(user)" [selectable]="false">
+                        {{ user.name }} &nbsp;<button matChipRemove tabindex="-1"><fa-icon [icon]='["fas", "times"]' size="2x" [attr.aria-label]="'units.tab-unit-use.authorized.select.delete' | translate"></fa-icon></button></mat-chip
+                    ><input class="form-control" #userInput [formControl]="userCtrl" [matAutocomplete]="users" [matChipInputFor]="chipList" type="search" [attr.aria-label]="'units.tab-unit-use.authorized.select.addTag' | translate" placeholder="{{ 'units.tab-unit-use.authorized.select.addTag' | translate }}" (keydown.enter)="$event.preventDefault()" /></mat-chip-list
+                ><mat-autocomplete #users="matAutocomplete" (optionSelected)="selected($event)"><mat-option *ngFor="let user of filteredUsers$ | async" [value]="user">{{ user.name }}</mat-option></mat-autocomplete></mat-form-field
+            >
+            <div class="sr-only" #lti id="authorization-lti-live" aria-live="polite" aria-atomic="true"></div>
+            <button class="btn btn-sm btn-primary" [disabled]="!usersChanged()" (click)="authorizeUsers()">{{ 'units.tab-unit-use.authorized.update' | translate }}</button>
+        </fieldset></ng-container
+    >
+</div>
+<ng-template #notPublished
+    ><p>{{ 'units.tab-unit-use.not_published' | translate }}</p>
+    <button class="btn btn-primary btn-sm mb-3" type="button" (click)="updateUnit()" [disabled]="loading"><io-button-loader [show]="loading"></io-button-loader>&nbsp; {{ 'units.tab-unit-use.publish_unit' | translate }}</button></ng-template
+><ng-template #outdated
+    ><p>{{ 'units.tab-unit-use.outdated' | translate }}&nbsp;<span class="badge badge-info">{{ 'common.published_at' | translate }} {{ unit.published.publishedDate | date: "dd/MM/yyyy" }}</span></p>
+    <button class="btn btn-primary btn-sm mb-3" type="button" (click)="updateUnit()" [disabled]="loading"><io-button-loader [show]="loading"></io-button-loader>&nbsp; {{ 'units.tab-unit-use.update_unit' | translate }}</button></ng-template
+>

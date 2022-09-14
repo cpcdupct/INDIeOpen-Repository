@@ -1,0 +1,6 @@
+<section class="card h-100" [attr.aria-labelledby]="'explore-item-' + index">
+    <div class="card-body">
+        <h2 class="card-title" [id]="'explore-item-' + index">{{ getText() }}</h2>
+        <img class="mb-2 card-img-top img-fluid" [src]="item.cover" alt="" /><a class="btn btn-primary d-flex flex-column justify-content-center align-items-center" [routerLink]="item.action" [queryParams]="item.params">{{ getActionText() }}</a>
+    </div>
+</section>

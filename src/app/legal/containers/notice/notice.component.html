@@ -1,0 +1,12 @@
+<main class="tabs-container" id="main" tabindex="-1">
+    <h1 id="title" tabindex="-1">{{ "legal.notice.title" | translate }}</h1>
+    <ul class="nav-tabs" ngbNav #nav="ngbNav" [(activeId)]="active">
+        <li ngbNavItem="notice">
+            <a ngbNavLink>{{ "legal.notice.tab.notice" | translate }}</a><ng-template class="tab-content" ngbNavContent><div [innerHtml]="loadLegalNotice() | safehtml"></div></ng-template>
+        </li>
+        <li ngbNavItem="cookies">
+            <a ngbNavLink>{{ "legal.notice.tab.cookies" | translate }}</a><ng-template class="tab-content" ngbNavContent><div [innerHtml]="loadCookies() | safehtml"></div></ng-template>
+        </li>
+        <div [ngbNavOutlet]="nav"></div>
+    </ul>
+</main>

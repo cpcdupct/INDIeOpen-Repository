@@ -1,0 +1,145 @@
+.img-thumb {
+    width: 30px;
+    height: 30px;
+}
+
+.navbar {
+    z-index: 999;
+    height: 50px;
+    margin-bottom: 10px;
+
+    padding: 0;
+
+    > li > a {
+        text-transform: capitalize;
+        padding: 10px 15px;
+    }
+}
+
+.navbar-nav {
+    flex-direction: row;
+}
+
+:host ::ng-deep .navbar.navbar-light {
+    .nav-link {
+        color: var(--indie-blue);
+    }
+}
+
+.nav-link {
+    font-weight: bolder;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+:host ::ng-deep .navbar.navbar-dark {
+    .nav-link {
+        color: white;
+    }
+}
+
+nav.navbar-large {
+    transition: margin 700ms;
+}
+
+nav.navbar-small {
+    transition: margin 700ms;
+    border-bottom: 1px solid var(--indie-blue);
+}
+
+.has-separator {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.skip-link {
+
+    position: fixed;
+    left: 50%;
+    top: -25px;
+    z-index: 1000;
+    border: 2px solid black;
+    transform: translate(0px, 0px);
+    transition: transform 0.15s;
+
+    a {
+        color: white;
+        display: block;
+        font-size: 1.25rem;
+    }
+
+    &:focus-within {
+        width: 12rem;
+        margin-left: -6rem;
+        height: 2.1rem;
+        transform: translate(0px, 33px);
+        clip: auto;
+        text-align: center;
+        background-color: var(--indie-blue);
+        line-height: 1.8rem;
+        border-radius: 15px;
+    }
+}
+
+.mat-menu-item:hover:not([disabled]) {
+    color: rgba(0,0,0,.87);
+}
+
+.mat-icon {
+    position:relative;
+    top: 6px;
+}
+
+@media only screen and (min-width: 1030px) {
+    nav.navbar-small {
+        margin-left: 7rem;
+        margin-right: 7rem;
+    }
+
+    .navbar {
+        padding-right: 3.5rem;
+        padding-left: 3.5rem;
+    }
+}
+
+@media only screen and (max-width: 1030px) {
+    nav.navbar-large {
+        margin: 0 0;
+    }
+    .navbar {
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+    }
+}
+
+.search-form {
+    min-width: 300px;
+}
+
+@media only screen and (max-width: 767.98px) {
+    .search-form {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .form-label {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 575.98px) {
+    .navbar-toggler {
+        margin-top: -4px;
+    }
+    .navbar {
+        padding-right: 0;
+        padding-left: 0.5rem;
+    }
+
+    .nav-link {
+        padding: 0;
+    }
+
+}

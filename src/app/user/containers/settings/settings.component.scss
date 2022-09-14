@@ -1,0 +1,62 @@
+.settings-wrapper {
+    display: flex;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    padding: 1rem;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+    }
+
+    @media (max-width: 767px) {
+        flex-direction: column;
+    }
+
+    .nav-pills {
+        margin-top: 3%;
+    }
+
+    .nav-pills .nav-link {
+        color: var(--indie-blue);
+        margin-bottom: 9%;
+    }
+
+    .nav-pills .nav-link:hover {
+        color: var(--indie-blue);
+        background-color: rgba(63, 111, 168, 0.1);
+    }
+
+    .nav-pills .nav-link.active {
+        background-color: var(--indie-pink);
+        color: #fff;
+    }
+
+    .nav-pills .nav-link.active:hover {
+        background-color: var(--indie-pink);
+        color: #fff;
+    }
+
+    @media (min-width: 768px) {
+        .nav-pills .nav-link {
+            width: 200px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .tab-content {
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .tab-content {
+            margin-left: 1rem;
+            margin-right: 1rem;
+            width: 100%;
+        }
+    }
+}

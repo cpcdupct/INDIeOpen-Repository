@@ -1,0 +1,15 @@
+::ng-deep .bootstrap {
+    tag {
+        background-color: var(--indie-blue) !important;
+    }
+}
+
+legend {
+    font-size: 1rem;
+}
+
+.tags {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+}

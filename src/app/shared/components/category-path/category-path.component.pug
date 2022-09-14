@@ -1,0 +1,5 @@
+ng-container(*ngIf='tree.length > 0')
+    span.mb-2(*ngFor='let category of tree; last as isLast', ) 
+        span([ngClass]='isSelected(category.key)') {{ category.translation }} &nbsp;
+        span(*ngIf='!isLast') &#8627;
+    br

@@ -1,0 +1,38 @@
+main#main(tabindex="-1")
+    io-welcome
+    .separator
+    .explore-container
+        .row
+            .col-xs-12.col-sm-6.col-md-4.col-lg-3.my-1(
+                *ngFor='let item of predefinedItems | slice: 0:4; index as idx'
+            )
+                io-predefined-item([item]='item', [index]='idx')
+        section(aria-labelledby="recent-added-heading")
+            .row
+                .col
+                    h2.text-primary.text-separator(id="recent-added-heading") {{ "explore.recent-added" | translate }}
+            .row
+                .col
+                    io-carousel-recent-added
+        section(aria-labelledby="recent-added-content-heading")
+            .row
+                .col
+                    h2.text-primary.text-separator(id="recent-added-content-heading") {{ "explore.recent-added-content" | translate }}
+            .row
+                .col
+                    io-carousel-recent-added(type='CONTENT')
+        section(aria-labelledby="recent-added-evaluation-heading")
+            .row
+                .col
+                    h2.text-primary.text-separator(id="recent-added-evaluation-heading") {{ "explore.recent-added-evaluation" | translate }}
+            .row
+                .col
+                    io-carousel-recent-added(type='EVALUATION')
+        section(aria-labelledby="top-rated-heading")
+            .row
+                .col
+                    h2.text-primary.text-separator(id="top-rated-heading") {{ "explore.top-rated" | translate }}
+            .row
+                .col
+                    io-carousel-top-rated
+    io-size-detector

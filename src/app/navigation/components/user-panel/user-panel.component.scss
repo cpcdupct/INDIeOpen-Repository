@@ -1,0 +1,25 @@
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-header {
+    color: black;
+}
+
+#userDropdown {
+    cursor: pointer;
+}
+
+.nav-link {
+    color: rgb(30, 55, 86);
+}
+
+.nav-link {
+    color: white;
+}
+
+.avatar-user {
+    width: 33px;
+    height: 33px;
+    object-fit: cover;
+}

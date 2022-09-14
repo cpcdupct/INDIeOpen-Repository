@@ -1,0 +1,46 @@
+main#main(tabindex="-1")
+    .row
+        .col
+            .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2
+                h1.section-title(translate, id="title", tabindex="-1") units.unit-panel.title
+
+    .row.mt-2
+        .col
+            io-alerts
+
+    .row.mt-2
+        .col
+            .card(*ngIf="unit$ | async as unit")
+                .card-body
+                    ul.nav-tabs(ngbNav, #nav="ngbNav", [(activeId)]="active")
+                        li(ngbNavItem="information")
+                            a(ngbNavLink) {{ 'units.unit_panel.tab_titles.information' | translate }}
+                            ng-template(ngbNavContent)
+                                io-tab-unit-info(
+                                    [unit]="unit",
+                                    (actionResult)="onActionResult($event)"
+                                )
+                        li(ngbNavItem="share", *ngIf="canShareUnit(unit)")
+                            a(ngbNavLink) {{ 'units.unit_panel.tab_titles.share' | translate }}
+                            ng-template(ngbNavContent)
+                                io-tab-unit-share(
+                                    [unit]="unit",
+                                    (actionResult)="onActionResult($event)"
+                                )
+                        li(ngbNavItem="use")
+                            a(ngbNavLink) {{ 'units.unit_panel.tab_titles.use' | translate }}
+                            ng-template(ngbNavContent)
+                                io-tab-unit-use([unit]="unit")
+                        li(ngbNavItem="actions")
+                            a(ngbNavLink) {{ 'units.unit_panel.tab_titles.actions' | translate }}
+                            ng-template(ngbNavContent)
+                                io-tab-unit-actions([unit]="unit")
+                        li(*ngIf="hasOriginalUnit(unit)", ngbNavItem="originalUnit")
+                            a(ngbNavLink) {{ 'units.unit_panel.tab_titles.originalUnit' | translate }}
+                            ng-template(ngbNavContent)
+                                io-tab-original-unit([unit]="unit")
+                        li(*ngIf="canHaveRatings(unit)", ngbNavItem="rating")
+                            a(ngbNavLink) {{ 'units.unit_panel.tab_titles.ratings' | translate }}
+                            ng-template(ngbNavContent) 
+                                io-tab-unit-rating([unit]="unit")
+                    div([ngbNavOutlet]="nav")

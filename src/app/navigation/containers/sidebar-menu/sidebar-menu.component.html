@@ -1,0 +1,30 @@
+<div class="side-nav-bar" [ngClass]="{ 'side-nav-bar-collapsed': !(showMenu | async) }">
+    <div class="side-nav-bar-overlay" [ngStyle]="{ transition: 'background-color ' + duration + 's, visibility ' + duration + 's' }" [ngClass]="{ 'side-nav-bar-overlay-collapsed': !(showMenu | async) }" (click)="onSidebarClose()"></div>
+    <div class="side-nav-bar-menu-container" [ngStyle]="getMenuBarStyle(showMenu | async)" role="dialog" aria-modal="true" tabindex="-1" (keydown)="onKey($event)">
+        <div class="side-nav-bar-content-container" role="document">
+            <button class="side-nav-bar-close" type="button" data-dismiss="modal" [attr.aria-label]="'common.close' | translate" (click)="onSidebarClose()"><span aria-hidden="true">&times;</span></button>
+            <ul class="list-group list-group-root well">
+                <li class="list-group-item">
+                    <a class="link-item" [href]="'#'" (click)="collapseExplore.toggle(); $event.preventDefault()" [attr.aria-expanded]="!exploreCollapsed" aria-controls="sidebar-explore-collapse"><fa-icon [icon]="['fas', 'chevron-left']" *ngIf="!exploreCollapsed"></fa-icon><fa-icon [icon]="['fas', 'chevron-right']" *ngIf="exploreCollapsed"></fa-icon>&nbsp; {{ "nav.explore" | translate: { value: appName } }}</a>
+                    <ul class="list-group collapse" id="sidebar-explore-collapse" #collapseExplore="ngbCollapse" [(ngbCollapse)]="exploreCollapsed" [animation]="true">
+                        <li class="list-group-item"><a class="link-item" routerLink="/explore">{{ 'nav.menu.show_case' | translate }}</a></li>
+                        <li class="list-group-item"><a class="link-item" [routerLink]="'/search'" [queryParams]="{ type: 'CONTENT' }">{{ 'nav.menu.all_content_units' | translate }}</a></li>
+                        <li class="list-group-item"><a class="link-item" [routerLink]="'/search'" [queryParams]="{ type: 'EVALUATION' }">{{ 'nav.menu.all_evaluation_units' | translate }}</a></li>
+                        <li class="list-group-item"><a class="link-item" routerLink="/search">{{ "nav.menu.browse" | translate: { value: appName } }}</a></li>
+                    </ul>
+                    <ng-container *ngIf="isLoggedIn()"
+                        ><li class="list-group-item">
+                            <a class="link-item" (click)="collapseMycontent.toggle()" [attr.aria-expanded]="!myContentCollapse" aria-controls="sidebar-mycontent-collapse"><fa-icon [icon]="['fas', 'chevron-left']" *ngIf="!myContentCollapse"></fa-icon><fa-icon [icon]="['fas', 'chevron-right']" *ngIf="myContentCollapse"></fa-icon>&nbsp; {{ 'nav.my-content' | translate }}</a>
+                            <ul class="list-group collapse" id="sidebar-mycontent-collapse" #collapseMycontent="ngbCollapse" [(ngbCollapse)]="myContentCollapse" [animation]="true">
+                                <li class="list-group-item"><a class="link-item" routerLink="/units">{{ 'units.my_units.title' | translate }}</a></li>
+                                <li class="list-group-item"><a class="link-item" routerLink="/questions">{{ 'questions.my_questions.title' | translate }}</a></li>
+                                <li class="list-group-item"><a class="link-item" routerLink="/videos">{{ 'videos.my_videos.title' | translate }}</a></li>
+                                <li class="list-group-item"><a class="link-item" routerLink="/courses">{{ 'courses.my_courses.title' | translate }}</a></li>
+                            </ul>
+                        </li></ng-container
+                    >
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

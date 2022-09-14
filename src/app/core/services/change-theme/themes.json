@@ -1,0 +1,124 @@
+[
+    {
+        "alllowedOrigins": [
+            "MY_ORIGIN1",
+            "MY_ORIGIN2"
+        ],
+        "name": "MY_ID",
+        "cssFileName": "theme-indie",
+        "faviconUrl": "/favicon.ico",
+        "colors": {
+            "indie_blue": "#1e3756",
+            "indie_pink": "#d41857"
+        },
+        "resources": {
+            "mainLogo": "/assets/img/main-indie-logo.png",
+            "loginLogo": "/assets/img/indie_logo.png",
+            "mainImage": "/assets/img/ImagenPrincipal.png"
+        },
+        "social": {
+            "twitter": {
+                "url": "MY_TWITTER"
+            },
+            "web": {
+                "url": "MY_URL"
+            }
+        },
+        "unitThemes": [
+            "GeneralTheme1",
+            "GeneralTheme2",
+            "GeneralTheme3",
+            "GeneralTheme4",
+            "GeneralTheme5",
+            "GeneralTheme6",
+            "GeneralTheme7",
+            "GeneralTheme8",
+            "GeneralTheme9",
+            "GeneralTheme10",
+            "GeneralTheme11",
+            "GeneralTheme12",
+            "GeneralTheme13",
+            "GeneralTheme14",
+            "GeneralTheme15",
+            "GeneralTheme16",
+            "GeneralTheme17",
+            "GeneralTheme18"
+        ],
+        "unitThemesUrl": "MY_THEMES"
+    },
+    {
+        "alllowedOrigins": [
+            "MY_ORIGIN1",
+            "MY_ORIGIN2"
+        ],
+        "name": "MY_ID",
+        "cssFileName": "theme-upct",
+        "faviconUrl": "MY_FAVICON",
+        "colors": {
+            "indie_blue": "#1a4d8d",
+            "indie_pink": "#807041"
+        },
+        "resources": {
+            "mainImage": "/assets/img/upct-principal.png",
+            "mainLogo": "/assets/img/upct-forma-logo.png",
+            "loginLogo": "/assets/img/upct-forma-logo.png"
+        },
+        "social": {
+            "twitter": {
+                "url": "MY_TWITTER"
+            },
+            "web": {
+                "url": "MY_URL"
+            }
+        },
+        "unitThemes": [
+            "GeneralTheme1",
+            "GeneralTheme2",
+            "GeneralTheme3",
+            "GeneralTheme4",
+            "GeneralTheme5",
+            "GeneralTheme6",
+            "GeneralTheme7",
+            "GeneralTheme8",
+            "GeneralTheme9",
+            "GeneralTheme10",
+            "GeneralTheme11",
+            "GeneralTheme12",
+            "GeneralTheme13",
+            "GeneralTheme14",
+            "GeneralTheme15",
+            "GeneralTheme16",
+            "GeneralTheme17",
+            "GeneralTheme18",
+            "ETSAEtheme1",
+            "ETSAEtheme2",
+            "ETSAEtheme3",
+            "ETSAEtheme4",
+            "ETSIItheme1",
+            "ETSIItheme2",
+            "ETSIItheme3",
+            "ETSIItheme4",
+            "ETSITtheme1",
+            "ETSITtheme2",
+            "ETSITtheme3",
+            "ETSITtheme4",
+            "EICMtheme1",
+            "EICMtheme2",
+            "EICMtheme3",
+            "EICMtheme4",
+            "ETSINOtheme1",
+            "ETSINOtheme2",
+            "ETSINOtheme3",
+            "ETSINOtheme4",
+            "FCEtheme1",
+            "FCEtheme2",
+            "FCEtheme3",
+            "FCEtheme4",
+            "ETSIAtheme1",
+            "ETSIAtheme2",
+            "ETSIAtheme3",
+            "ETSIAtheme4"
+        ],
+        "unitThemesUrl": "MY_THEMES"
+    }
+]

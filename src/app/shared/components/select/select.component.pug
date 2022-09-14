@@ -1,0 +1,7 @@
+label([for]="data.name", *ngIf="data.label") {{ translateKey('label') | translate }} &nbsp;
+    span(*ngIf="data.required") * &nbsp;
+    span.limit(*ngIf="data.limit") ({{ translateKey('limit') | translate }}) &nbsp;
+select.custom-select([formControl]="data.control", [name]="data.name", [id]="data.name")
+    option(*ngFor="let option of optionWrapper.options", [value]="option.value") {{ getLabel(option) }}
+small.form-text.invalid-feedback(*ngIf="showError()") {{ translateKey('error') | translate }}
+small.form-text.valid-feedback(*ngIf="showOkFeedback()") {{ 'messages.valid_field' | translate }}

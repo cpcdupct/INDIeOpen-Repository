@@ -1,0 +1,28 @@
+.card.filter
+    .card-body
+        h2.card-title.filter-title {{ filter.label | translate }}
+        .category-form
+            input.form-control(
+                matInput,
+                [matAutocomplete]="autoCat",
+                type="search",
+                placeholder="{{ 'search.filters.category.input-placeholder' | translate }}",
+                [(ngModel)]="name",
+                (ngModelChange)="dataChanged($event)",
+                name="category",
+                [attr.aria-label]="'search.filters.category.search-category' | translate"
+            )
+        mat-autocomplete(#autoCat="matAutocomplete", (optionSelected)="categorySelected($event)", [class]="'category-autocomplete'")
+            mat-optgroup(*ngFor="let item of results")
+                span.p-1.bg-secondary.rounded.text-white
+                    | {{ item.resource.translation }}
+                mat-option(*ngFor="let path of item.paths; let index=index", [id]="'category-'+item.resource.key+'-'+index", [value]="item.resource.translation")
+                    io-category-path.category-path(
+                        [path]="path",
+                        [category]="item.resource.key"
+                    )
+        .category-selected.mt-2(*ngIf="itemSelected")
+            .badge.badge-primary
+                button.text-white.btn-sm.btn.btn-outline((click)="clearSelected()", [attr.aria-label]="itemSelected.resource.translation + ' ' + ('search.filters.category.delete' | translate)")
+                    | {{ itemSelected.resource.translation }}
+                    fa-icon([icon]="['fas', 'times']")

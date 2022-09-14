@@ -1,0 +1,22 @@
+.modal-header
+    h2.modal-title {{ 'modals.pick-category.title' | translate }}
+.modal-body
+    label(for="pickCategory") {{ 'modals.pick-category.search-text' | translate }}
+    input#pickCategory.form-control(
+        [matAutocomplete]="auto",
+        type="text",
+        [(ngModel)]="term",
+        (ngModelChange)="onChange($event)",
+        placeholder="{{ 'modals.pick-category.placeholder' | translate }}"
+    )
+    mat-autocomplete(#auto="matAutocomplete", (optionSelected)="categorySelected($event)", [class]="'category-autocomplete'")
+        mat-optgroup(*ngFor="let item of categories")
+            span.p-1.bg-secondary.rounded.text-white
+                | {{ item.resource.translation }}
+            mat-option(*ngFor="let path of item.paths; let index=index", [id]="'category-'+item.resource.key+'-'+index", [value]="item.resource.translation")
+                io-category-path.category-path(
+                    [path]="path",
+                    [category]="item.resource.key"
+                )
+.modal-footer
+    button.btn.btn-primary(type='button', (click)="activeModal.dismiss()") {{'common.close' | translate}}

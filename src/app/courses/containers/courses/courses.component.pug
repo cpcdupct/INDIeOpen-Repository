@@ -1,0 +1,44 @@
+main(id="main", aria-labelledby="title", tabindex="-1")    
+    .row
+        .col
+            .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2
+                h1.section-title(translate, id="title") courses.my_courses.title
+                .btn-toolbar.mb-2.mb-md-0
+                    .btn-group.mr-2
+                        a.btn.btn-sm.btn-primary(type="button", routerLink="/courses/create") 
+                            | {{ 'courses.my_courses.create_button' | translate }} &nbsp;
+                            fa-icon([icon]="['fas', 'plus-circle']")
+    .row
+        .col 
+            io-alerts
+
+    io-loader
+    .row(*ngIf="courses$ | async as courses")
+        .col
+            io-list-course(
+                *ngFor="let course of courses",
+                [course]="course",
+                (deletedCourse)="onDeletedCourse($event)"
+            )
+            .card.my-2(*ngIf="courses.length == 0")
+                .card-body {{ 'courses.no_results' | translate }}
+    .row
+        nav.col([attr.aria-label]="'pagination.navigation' | translate")
+            .current-page(id="current-page")
+                label(for="current-pagination-value")  {{ 'pagination.current' | translate }}
+                input.form-control-inline(
+                    id="current-pagination-value",
+                    matInput,
+                    type="number",
+                    min="1",
+                    [max]="lastPage",
+                    [(ngModel)]="page",
+                    (ngModelChange)="$event && loadCourses($event)",
+                    name="page"
+                )
+            mat-paginator([length]="total",
+                [pageSize]="5",
+                [hidePageSize]="true",
+                [pageIndex]="page - 1",
+                [showFirstLastButtons]="true",
+                (page)="loadCourses($event.pageIndex+1)")

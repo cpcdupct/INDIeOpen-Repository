@@ -1,0 +1,41 @@
+.content-wrapper
+    form([formGroup]="updateUnitInfoForm", (ngSubmit)="update()")
+        h2.sub-title {{ 'units.create_unit.basic_information' | translate }}
+        .form-group
+            io-input([data]="unitNameInput")
+        .form-row
+            .form-group.col-md-12.col-lg-6
+                io-select([data]="selectTypeInput", [optionWrapper]="typeOptionWrapper")
+            .form-group.col-md-12.col-lg-6
+                io-select([data]="selectLanguageInput", [optionWrapper]="languageOptionWrapper")
+        .form-group
+            io-select(
+                [data]="selectThemeInput",
+                [optionWrapper]="themeOptionWrapper",
+                [translateOption]="false"
+            )
+            button.mt-2.btn.btn-secondary.btn-sm(type="button", (click)="showThemeInfo()") {{ 'units.themes.show-themes-modal-info' | translate }}
+        .form-group
+            io-input-category([data]="selectCategoryInput")
+        .form-group
+            io-input-range([data]="ageRangeInput")
+        .form-group
+            io-educational-context-input([data]="educationalContextInput")
+        .form-group
+            io-textarea([data]="shortDescriptionInput", rows="3")
+        .form-group
+            io-input([data]="coverInput")
+            img.img-unit.img-thumbnail(
+                [src]="formControls.cover.value",
+                *ngIf="formControls.cover.valid || !isEditableUnit()",
+                [alt]="'units.accesibility.image-unit' | translate: { title: unitNameInput.control.value }"
+            )
+        h4 {{ 'units.create_unit.optional_information' | translate }}
+        .form-group
+            io-textarea([data]="longDescriptionInput", rows="5")
+        .form-group
+            io-input-tags([data]="tagsInput")
+        .form-group(style="text-align: right", *ngIf="isEditableUnit()")
+            button.btn.btn-success(type="submit", [disabled]="!allowSubmit")
+                io-button-loader([show]="!allowSubmit")
+                | {{ 'units.tab_unit_info.submit' | translate }}

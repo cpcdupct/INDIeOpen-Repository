@@ -1,0 +1,22 @@
+ng-container(*ngIf="authorInfoForm")
+    form.form(ngNativeValidate, [formGroup]="authorInfoForm", (ngSubmit)="update()")
+        .form-group
+            io-input([data]="nameInput")
+        .form-group
+            io-input([data]="surnameInput")
+        .form-group
+            io-input([data]="countryInput")
+        .form-group
+            io-input([data]="institutionInput")
+        .form-group
+            io-input([data]="avatarInput")
+            img.img-thumbnail(
+                [src]="formControls.avatar.value",
+                *ngIf="formControls.avatar.valid",
+                [alt]="'user-panel.accesibility.user-avatar' | translate"
+            )
+        .form-group
+            io-textarea([data]="biographyInput", rows="4")
+        button.btn.btn-success(type="submit", [disabled]="!allowSubmit")
+            io-button-loader([show]="!allowSubmit")
+            | {{ 'user.author_info.submit' | translate }}

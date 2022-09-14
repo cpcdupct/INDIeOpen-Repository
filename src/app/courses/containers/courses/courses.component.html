@@ -1,0 +1,30 @@
+<main id="main" aria-labelledby="title" tabindex="-1">
+    <div class="row">
+        <div class="col">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2">
+                <h1 class="section-title" translate id="title">courses.my_courses.title</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                        <a class="btn btn-sm btn-primary" type="button" routerLink="/courses/create"> {{ 'courses.my_courses.create_button' | translate }} &nbsp;<fa-icon [icon]="['fas', 'plus-circle']"></fa-icon></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col"><io-alerts></io-alerts></div>
+    </div>
+    <io-loader></io-loader>
+    <div class="row" *ngIf="courses$ | async as courses">
+        <div class="col">
+            <io-list-course *ngFor="let course of courses" [course]="course" (deletedCourse)="onDeletedCourse($event)"></io-list-course>
+            <div class="card my-2" *ngIf="courses.length == 0"><div class="card-body">{{ 'courses.no_results' | translate }}</div></div>
+        </div>
+    </div>
+    <div class="row">
+        <nav class="col" [attr.aria-label]="'pagination.navigation' | translate">
+            <div class="current-page" id="current-page"><label for="current-pagination-value"> {{ 'pagination.current' | translate }}</label><input class="form-control-inline" id="current-pagination-value" matInput type="number" min="1" [max]="lastPage" [(ngModel)]="page" (ngModelChange)="$event &amp;&amp; loadCourses($event)" name="page" /></div>
+            <mat-paginator [length]="total" [pageSize]="5" [hidePageSize]="true" [pageIndex]="page - 1" [showFirstLastButtons]="true" (page)="loadCourses($event.pageIndex+1)"></mat-paginator>
+        </nav>
+    </div>
+</main>

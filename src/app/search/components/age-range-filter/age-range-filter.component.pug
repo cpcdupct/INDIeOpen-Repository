@@ -1,0 +1,9 @@
+.card.filter
+    .card-body
+        h2.card-title.filter-title {{ filter.label | translate }}
+        ngx-slider(
+            [options]="options",
+            [(value)]="minValue",
+            [(highValue)]="maxValue",
+            (userChangeEnd)="change($event)"
+        )

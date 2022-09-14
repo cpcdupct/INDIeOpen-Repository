@@ -1,0 +1,7 @@
+<div class="content-wrapper">
+    <h2 class="sub-title">{{ 'units.tab-unit-rating.rating' | translate }}</h2>
+    <strong><span class="sr-only">{{'rating.average' | translate}}</span>{{unit.rating.average}}</strong> (<span class="sr-only">{{'rating.count' | translate}}</span>{{unit.rating.count}}) <ngx-material-rating role="slider" aria-valuemin="0" aria-valuemax="5" [attr.aria-valuenow]="unit.rating.average" [attr.aria-valuetext]="'rating.current' | translate: {current: unit.rating.average, max: 5}" [dense]="true" [disabled]="true" [readonly]="true" [max]="5" [(ngModel)]="unit.rating.average"></ngx-material-rating>
+    <h2 class="sub-title">{{ 'units.tab-unit-rating.ratings' | translate }}</h2>
+    <p *ngFor="let rating of ratings"><ngx-material-rating role="slider" aria-valuemin="0" aria-valuemax="5" [attr.aria-valuenow]="unit.rating.average" [attr.aria-valuetext]="'rating.current' | translate: {current: unit.rating.average, max: 5}" [dense]="true" [disabled]="true" [readonly]="true" [max]="5" [(ngModel)]="unit.rating.average"></ngx-material-rating>&nbsp;<span>{{ rating.author.name }}</span></p>
+    <img [src]="loaderSrc()" *ngIf="ratingRequest.loading" [alt]="'common.loading' | translate" /><button class="btn-sm btn btn-secondary" *ngIf="!ratingRequest.loading" (click)="loadMoreRatings()" [disabled]="ratingRequest.loading_more"><fa-icon [icon]="['fas', 'sync']" [spin]="ratingRequest.loading_more"> </fa-icon>&nbsp; {{ 'search.load-more' | translate }}</button>
+</div>

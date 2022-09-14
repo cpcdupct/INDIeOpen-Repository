@@ -1,0 +1,26 @@
+fieldset
+    legend {{ translateKey('label') | translate }} &nbsp;
+        span(*ngIf="data.required") * &nbsp;
+        span.limit(*ngIf="data.limit") ({{ translateKey('limit') | translate }}) &nbsp;
+    input.form-control(
+        matInput,
+        [matAutocomplete]="autoContext",
+        type="search",
+        placeholder="{{ translateKey('placeholder') | translate }}",
+        [id]="data.name",
+        [name]="data.name",
+        [(ngModel)]="context",
+        [disabled]="data.control.disabled",
+        (ngModelChange)="filterContext($event)",
+        (keydown.enter)="$event.preventDefault()"
+    )
+
+    mat-autocomplete(#autoContext="matAutocomplete", (optionSelected)="addContext($event)")
+        mat-option(*ngFor="let item of filteredItems", [id]="item.value", [value]="item.display") {{ item.display }}
+
+    ul.tags([attr.aria-label]="'units.form.educationalContext.added' | translate")
+        li.tag.m-1(*ngFor="let item of data.control.value")
+            button.btn.btn-primary((click)="removeContext(item)", [disabled]="data.control.disabled") {{ item.display }} &nbsp;
+                fa-icon([icon]="['fas', 'times']", [attr.aria-label]="'common.delete' | translate ") 
+
+    .sr-only([id]="data.name + '-live'", aria-live="polite", aria-atomic="true")

@@ -1,0 +1,8 @@
+.card.filter
+    fieldset.card-body
+        legend
+            h3.card-title.filter-title {{ filter.label | translate }}
+        mat-checkbox(*ngIf="allItem", [checked]="allComplete", [indeterminate]="someComplete()", (change)="setAll($event.checked)") {{ allItem.label | translate }}
+        ul.list-group
+            li.list-group-item(*ngFor="let item of otherItems")
+                mat-checkbox([(ngModel)]="item.isSelected", (ngModelChange)="setOne(item)") {{ item.label | translate }}

@@ -1,0 +1,56 @@
+footer.footer.bg-primary
+    .row
+        ul.col-lg-2.col-md-6.col-xs-12.d-flex.align-items-center.justify-content-center.links-list
+            li
+                a(
+                    [href]="twitterLink",
+                    target="_blank",
+                    [attr.aria-label]="'footer.accesibility.social-link' | translate: { platform: 'Twitter' }"
+                )
+                    fa-icon.text-secondary.mr-3(
+                        [icon]="['fab', 'twitter']",
+                        size="2x",
+                        style="color: white !important"
+                    )
+            li
+                a(
+                    [href]="webLink",
+                    target="_blank",
+                    [attr.aria-label]="'footer.accesibility.web-link' | translate"
+                )
+                    fa-icon.text-secondary.mr-3(
+                        [icon]="['fas', 'globe']",
+                        size="2x",
+                        style="color: white !important"
+                    )
+        .col-lg-3.col-md-6.col-xs-12.flex-column.d-flex.aling-items-center.text-center
+            span <strong>Copyright &copy; UNIVERSIDAD POLITÉCNICA DE CARTAGENA</strong> 
+            address PZA DEL CRONISTA ISIDORO VALVERDE, EDIF. LA MILAGROSA <br/> C.P: 30202 CARTAGENA. TLF: 968 32 54 00
+        .col-lg-3.col-md-6.col-xs-12
+            a(href="https://indieopen.upct.es") INDIe and INDIe4All Erasmus + KA201 projects:
+            br
+            span 2018-1-ES01-KA201-050924 | 2020-1-ES01-KA201-083177
+        .col-lg-4.col-md-6.col-xs-12.text-center
+            img.footer-img(
+                src="https://MY_CDN/img/EU_EN.png",
+                [alt]="'footer.accesibility.eu-logo' | translate"
+            )
+            img.footer-img(
+                src="https://MY_CDN/img/sepie.gif",
+                [alt]="'footer.accesibility.sepie-logo' | translate"
+            ) 
+    .row.text-center
+        .col
+            ul.links-list(style="line-heigth: 1rem")
+                li
+                    a([routerLink]="'/legal/contact'")
+                        != "&nbsp;{{'footer.contact' | translate}}&nbsp;|"
+                li
+                    a([routerLink]="'/legal/notice'")
+                        != "&nbsp;{{'footer.legal' | translate}}&nbsp;|"
+                li
+                    a([routerLink]="'/legal/data'")
+                        != "&nbsp;{{'footer.data' | translate}}"
+            p(style="line-height: 1rem") 
+                fa-icon([icon]="['fas', 'info-circle']")
+                | {{ 'footer.europe-message' | translate }}

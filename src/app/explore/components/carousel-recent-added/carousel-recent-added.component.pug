@@ -1,0 +1,25 @@
+ng-container(#carousel, *ngIf="slides; else unitLoader")
+    .carousel-container
+        .carousel-content.flex-gro-1
+            ng-container(*ngFor="let slide of slides; index as indexSlide")
+                ul.current-slides.row(*ngIf="activeSlide == indexSlide")
+                    li.col.col-sm-6.col-md-4.col-lg-3(*ngFor="let unit of slide")
+                        io-recent-added([unit]="unit")
+    ul.carousel-controls
+        li
+            button.control-button.carousel-control-prev(
+                #prevButton,
+                (click)="prev()",
+                [attr.aria-label]="'explore.accesibility.carousel-prev' | translate"
+            )
+                span.carousel-control-prev-icon(aria-hidden="true")
+        li
+            button.control-button.carousel-control-next(
+                #nextButton,
+                (click)="next()",
+                [attr.aria-label]="'explore.accesibility.carousel-next' | translate"
+            )
+                span.carousel-control-next-icon(aria-hidden="true")
+    .carousel-liveregion.sr-only(#liveRegion, aria-live="off", aria-atomic="true")
+ng-template(#unitLoader)
+    io-loader-gif(show="!slides")

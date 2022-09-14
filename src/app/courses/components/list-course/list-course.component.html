@@ -1,0 +1,30 @@
+<article class="course-item">
+    <div class="course-description">
+        <div class="row">
+            <div class="col-md-12 col-lg-9"><h2 class="course-title">{{ course.name }}</h2></div>
+            <div class="col-md-12 col-lg-3 date-container">
+                <span>{{ 'common.created_at' | translate }} <time>{{ course.createdAt | date: "dd/MM/yyyy" }}</time></span>
+            </div>
+        </div>
+        <div class="course-badges">
+            <span class="badge badge-primary" *ngIf="isCoursePublished()">{{ 'common.published_at' | translate }} <time pubdate>{{ course.publishedAt | date: "dd/MM/yyyy" }}</time></span>
+        </div>
+        <ul class="course-buttons" [attr.aria-label]="'courses.list-course.actions' | translate">
+            <li class="course-button">
+                <button class="btn btn-sm btn-primary" (click)="publishCourse()"><fa-icon [icon]="['fas', 'eye']" *ngIf="!publishing"> </fa-icon><io-button-loader *ngIf="publishing"></io-button-loader><span *ngIf="!publishing">{{ 'courses.publish' | translate }}</span><span *ngIf="publishing">{{ 'courses.publishing' | translate }}</span></button>
+            </li>
+            <li class="course-button">
+                <button class="btn btn-sm btn-info" *ngIf="isCoursePublished()" (click)="showAuthorizedModal()" aria-haspopup="dialog"><fa-icon [icon]="['fas', 'users']"></fa-icon>&nbsp; {{ 'courses.authorized.title' | translate }}</button>
+            </li>
+            <li class="course-button">
+                <button class="btn btn-sm btn-secondary" *ngIf="isCoursePublished()" (click)="copyShareURL()"><fa-icon [icon]="['fas', 'share']"></fa-icon>&nbsp; {{ 'courses.list-course.share' | translate }}</button>
+            </li>
+            <li class="course-button">
+                <button class="btn btn-sm btn-primary" (click)="goToEditor()"><fa-icon [icon]="['fas', 'edit']"></fa-icon>&nbsp; {{ 'courses.list-course.edit-course' | translate }}</button>
+            </li>
+            <li class="course-button">
+                <button class="btn btn-sm btn-danger" (click)="deleteCourse()" aria-haspopup="dialog"><fa-icon [icon]="['fas', 'times']"></fa-icon>&nbsp; {{ 'courses.list-course.delete-course' | translate }}</button>
+            </li>
+        </ul>
+    </div>
+</article>

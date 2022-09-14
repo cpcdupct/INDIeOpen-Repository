@@ -1,0 +1,15 @@
+<div class="card filter">
+    <div class="card-body">
+        <h2 class="card-title filter-title">{{ filter.label | translate }}</h2>
+        <div class="category-form"><input class="form-control" matInput [matAutocomplete]="autoCat" type="search" placeholder="{{ 'search.filters.category.input-placeholder' | translate }}" [(ngModel)]="name" (ngModelChange)="dataChanged($event)" name="category" [attr.aria-label]="'search.filters.category.search-category' | translate" /></div>
+        <mat-autocomplete #autoCat="matAutocomplete" (optionSelected)="categorySelected($event)" [class]="'category-autocomplete'"
+            ><mat-optgroup *ngFor="let item of results"
+                ><span class="p-1 bg-secondary rounded text-white">{{ item.resource.translation }}</span><mat-option *ngFor="let path of item.paths; let index=index" [id]="'category-'+item.resource.key+'-'+index" [value]="item.resource.translation"><io-category-path class="category-path" [path]="path" [category]="item.resource.key"></io-category-path></mat-option></mat-optgroup
+        ></mat-autocomplete>
+        <div class="category-selected mt-2" *ngIf="itemSelected">
+            <div class="badge badge-primary">
+                <button class="text-white btn-sm btn btn-outline" (click)="clearSelected()" [attr.aria-label]="itemSelected.resource.translation + ' ' + ('search.filters.category.delete' | translate)">{{ itemSelected.resource.translation }}<fa-icon [icon]="['fas', 'times']"></fa-icon></button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<io-sidebar-menu [direction]='"left"' [navWidth]="280" [duration]="0.5"></io-sidebar-menu>
+<div class="d-flex flex-column min-vh-100" id="wrapper">
+    <io-top-nav></io-top-nav>
+    <div class="main-container"><router-outlet></router-outlet></div>
+    <io-footer class="mt-auto"></io-footer>
+    <div toastContainer aria-live="polite"></div>
+</div>

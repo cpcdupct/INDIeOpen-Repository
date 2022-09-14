@@ -1,0 +1,42 @@
+<main id="main" tabindex="-1">
+    <io-welcome></io-welcome>
+    <div class="separator"></div>
+    <div class="explore-container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 my-1" *ngFor="let item of predefinedItems | slice: 0:4; index as idx"><io-predefined-item [item]="item" [index]="idx"></io-predefined-item></div>
+        </div>
+        <section aria-labelledby="recent-added-heading">
+            <div class="row">
+                <div class="col"><h2 class="text-primary text-separator" id="recent-added-heading">{{ "explore.recent-added" | translate }}</h2></div>
+            </div>
+            <div class="row">
+                <div class="col"><io-carousel-recent-added></io-carousel-recent-added></div>
+            </div>
+        </section>
+        <section aria-labelledby="recent-added-content-heading">
+            <div class="row">
+                <div class="col"><h2 class="text-primary text-separator" id="recent-added-content-heading">{{ "explore.recent-added-content" | translate }}</h2></div>
+            </div>
+            <div class="row">
+                <div class="col"><io-carousel-recent-added type="CONTENT"></io-carousel-recent-added></div>
+            </div>
+        </section>
+        <section aria-labelledby="recent-added-evaluation-heading">
+            <div class="row">
+                <div class="col"><h2 class="text-primary text-separator" id="recent-added-evaluation-heading">{{ "explore.recent-added-evaluation" | translate }}</h2></div>
+            </div>
+            <div class="row">
+                <div class="col"><io-carousel-recent-added type="EVALUATION"></io-carousel-recent-added></div>
+            </div>
+        </section>
+        <section aria-labelledby="top-rated-heading">
+            <div class="row">
+                <div class="col"><h2 class="text-primary text-separator" id="top-rated-heading">{{ "explore.top-rated" | translate }}</h2></div>
+            </div>
+            <div class="row">
+                <div class="col"><io-carousel-top-rated></io-carousel-top-rated></div>
+            </div>
+        </section>
+    </div>
+    <io-size-detector></io-size-detector>
+</main>

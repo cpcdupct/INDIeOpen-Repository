@@ -1,0 +1,17 @@
+@import 'variables';
+
+.modal-body,
+.modal-header {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.btn-link {
+    color: var(--indie-blue) !important;
+}
+
+.btn-link:hover {
+    text-decoration: none !important;
+}

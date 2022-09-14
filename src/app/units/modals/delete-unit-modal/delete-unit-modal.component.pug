@@ -1,0 +1,15 @@
+.modal-header
+    h4.modal-title 
+        fa-icon([icon]='["fas", "info-circle"]')
+        |
+        | &nbsp; {{ "units.tab-unit-actions.delete-unit-modal.title" | translate }}
+
+.modal-body
+    p {{ "units.tab-unit-actions.delete-unit-modal.message" | translate: { value: appName } }}
+    p {{ "units.tab-unit-actions.delete-unit-modal.message_2" | translate }}
+.modal-footer
+    button.btn.btn-primary.btn-light(type='button', (click)='cancel()') {{ "modals.confirm-action.buttons.cancel" | translate }}
+    button.btn.btn-primary.btn-danger(type='button', (click)='delete()', [disabled]='deleting')
+        io-button-loader([show]='deleting')
+        span(*ngIf='!deleting') {{ "units.tab-unit-actions.delete-unit-modal.delete" | translate }}
+        span(*ngIf='deleting') {{ "units.tab-unit-actions.delete-unit-modal.unit_deleting" | translate }}

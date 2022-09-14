@@ -1,0 +1,16 @@
+[
+    {
+        "origin": "forma.upct.es",
+        "id": "MY_ID",
+        "loginEndpoint": "MY_LOGIN_URL",
+        "tokenEndpoint": "MY_USER_URL",
+        "logoutEndpoint": "MY_LOGOUT_URL",
+        "allowedEmailDomain": "MY_DOMAIN"
+    },
+    {
+        "origin": "indieopen.upct.es",
+        "id": "MY_ID",
+        "loginEndpoint": "MY_LOGIN_URL",
+        "tokenEndpoint": "MY_USER_URL"
+    }
+]

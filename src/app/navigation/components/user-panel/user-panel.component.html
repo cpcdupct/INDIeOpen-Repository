@@ -1,0 +1,19 @@
+<div class="nav-item" ngbDropdown placement="bottom-right" display="dynamic" role="button" *ngIf="user">
+    <a class="nav-link" id="userDropdown" ngbDropdownToggle [href]="'#'" (click)="$event.preventDefault()"><fa-icon [icon]="['fas', 'user-circle']" size="2x" *ngIf="!user.avatar"></fa-icon><img class="rounded-circle avatar-user" [src]="user.avatar" *ngIf="user.avatar" [alt]="'user-panel.accesibility.user-avatar' | translate" /></a>
+    <ul class="dropdown-menu dropdown-menu-right" ngbDropdownMenu aria-labelled-by="navbar-profile-heading">
+        <li>
+            <h2 class="dropdown-header" id="navbar-profile-heading">
+                <div class="dropdown-user-details">
+                    <div class="dropdown-user-details-name">{{ user.completeName }}</div>
+                    <div class="dropdown-user-details-email">{{ user.username }}</div>
+                </div>
+            </h2>
+            <div class="dropdown-divider" *ngIf="showUserSettings()"></div>
+        </li>
+        <li>
+            <a class="dropdown-item" *ngIf="showUserSettings()" routerLink="/user">{{ 'user-panel.settings' | translate }}</a>
+            <div class="dropdown-divider"></div>
+        </li>
+        <li><a class="dropdown-item" [href]="'#'" (click)="logout()">{{ 'user-panel.logout' | translate }}</a></li>
+    </ul>
+</div>

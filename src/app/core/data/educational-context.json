@@ -1,0 +1,177 @@
+[
+    {
+        "language": "es",
+        "key": "EC0",
+        "name": "Educación Infantil Segundo ciclo (3+ años)"
+    },
+    {
+        "language": "es",
+        "key": "EC1",
+        "name": "Educación Primaria"
+    },
+    {
+        "language": "es",
+        "key": "EC2",
+        "name": "Educación Secundaria Obligatoria"
+    },
+    {
+        "language": "es",
+        "key": "EC3",
+        "name": "Bachillerato"
+    },
+    {
+        "language": "es",
+        "key": "EC4",
+        "name": "Formation profesional (Básica, grado medio, grado superior)"
+    },
+    {
+        "language": "es",
+        "key": "EC5",
+        "name": "Educación superior (Universidad)"
+    },
+    {
+        "language": "es",
+        "key": "EC6",
+        "name": "Aprendizaje de adultos"
+    },
+    {
+        "language": "fr",
+        "key": "EC0",
+        "name": "Enseignement préélémentaire (Maternelle)"
+    },
+    {
+        "language": "fr",
+        "key": "EC1",
+        "name": "Enseignement primaire"
+    },
+    {
+        "language": "fr",
+        "key": "EC2",
+        "name": "Enseignement du premier cycle du second degré – Collège"
+    },
+    {
+        "language": "fr",
+        "key": "EC3",
+        "name": "Enseignement de second cycle professionnel (CAP, BEP, BP, Baccalauréat professionel)"
+    },
+    {
+        "language": "fr",
+        "key": "EC4",
+        "name": "Enseignement de second cycle général du second degré conduisant au baccalauréat"
+    },
+    {
+        "language": "fr",
+        "key": "EC5",
+        "name": "Études universitaires (LMD, IUT)"
+    },
+    {
+        "language": "fr",
+        "key": "EC6",
+        "name": "Éducation des adultes"
+    },
+    {
+        "language": "en",
+        "key": "EC0",
+        "name": "Pre-primary Education"
+    },
+    {
+        "language": "en",
+        "key": "EC1",
+        "name": "Primary education"
+    },
+    {
+        "language": "en",
+        "key": "EC2",
+        "name": "Compulsory secondary education"
+    },
+    {
+        "language": "en",
+        "key": "EC3",
+        "name": "General upper secondary education"
+    },
+    {
+        "language": "en",
+        "key": "EC4",
+        "name": "Vocational training  (intermediate and advanced levels)"
+    },
+    {
+        "language": "en",
+        "key": "EC5",
+        "name": "University studies (Bachelor, Master)"
+    },
+    {
+        "language": "en",
+        "key": "EC6",
+        "name": "Adult education"
+    },
+    {
+        "language": "lt",
+        "key": "EC0",
+        "name": "Ikimokyklinis ugdymas"
+    },
+    {
+        "language": "lt",
+        "key": "EC1",
+        "name": "Pradinis ugdymas"
+    },
+    {
+        "language": "lt",
+        "key": "EC2",
+        "name": "Pagrindinis ugdymas"
+    },
+    {
+        "language": "lt",
+        "key": "EC3",
+        "name": "Vidurinis ugdymas"
+    },
+    {
+        "language": "lt",
+        "key": "EC4",
+        "name": "Profesinis ugdymas"
+    },
+    {
+        "language": "lt",
+        "key": "EC5",
+        "name": "Universitetinės studijos"
+    },
+    {
+        "language": "lt",
+        "key": "EC6",
+        "name": "Suaugusiųjų švietimas"
+    },
+    {
+        "language": "el",
+        "key": "EC0",
+        "name": "Νηπιαγωγείο"
+    },
+    {
+        "language": "el",
+        "key": "EC1",
+        "name": "Δημοτικό Σχολείο"
+    },
+    {
+        "language": "el",
+        "key": "EC2",
+        "name": "Γυμνάσιο"
+    },
+    {
+        "language": "el",
+        "key": "EC3",
+        "name": "Γενικό Λύκειο"
+    },
+    {
+        "language": "el",
+        "key": "EC4",
+        "name": "Επαγγελματικό Λύκειο"
+    },
+    {
+        "language": "el",
+        "key": "EC5",
+        "name": "Πανεπιστήμιο (Προπτυχιακό, Μεταπτυχιακό)"
+    },
+    {
+        "language": "el",
+        "key": "EC6",
+        "name": "Εκπαιδευση Ενηλίκων"
+    }
+]

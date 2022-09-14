@@ -1,0 +1,20 @@
+.nav-item(ngbDropdown, placement="bottom-right", display="dynamic", role="button", *ngIf="user")
+    a#userDropdown.nav-link(ngbDropdownToggle, [href]="'#'", (click)='$event.preventDefault()')
+        fa-icon([icon]="['fas', 'user-circle']", size="2x", *ngIf="!user.avatar")
+        img.rounded-circle.avatar-user(
+            [src]="user.avatar",
+            *ngIf="user.avatar",
+            [alt]="'user-panel.accesibility.user-avatar' | translate"
+        )
+    ul.dropdown-menu.dropdown-menu-right(ngbDropdownMenu, aria-labelled-by="navbar-profile-heading")
+        li
+            h2.dropdown-header(id="navbar-profile-heading")
+                .dropdown-user-details
+                    .dropdown-user-details-name {{ user.completeName }}
+                    .dropdown-user-details-email {{ user.username }}
+            .dropdown-divider(*ngIf="showUserSettings()")
+        li
+            a.dropdown-item(*ngIf="showUserSettings()", routerLink="/user") {{ 'user-panel.settings' | translate }}
+            .dropdown-divider
+        li
+            a.dropdown-item((click)="logout()") {{ 'user-panel.logout' | translate }}

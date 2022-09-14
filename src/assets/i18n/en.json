@@ -1,0 +1,1014 @@
+{
+    "common": {
+        "accept": "Accept",
+        "add": "Add",
+        "asterisk_required": "All fields marked with * are required",
+        "cancel": "Cancel",
+        "close": "Close",
+        "confirm": "Confirm",
+        "created_at": "Created: ",
+        "delete": "Delete",
+        "description": "Description",
+        "discover": "Discover",
+        "error": "Error",
+        "information": "Information",
+        "loading": "Loading",
+        "preview": "Preview",
+        "published": "Published",
+        "published_at": "Published ",
+        "see": "See",
+        "select": "Select",
+        "success": "Success",
+        "warning": "Attention",
+        "years": "years",
+        "you_are": "This is you"
+    },
+    "cookies": {
+        "accept": "Accept cookies",
+        "link_text": "More information about cookies.",
+        "message": "MY ORGANIZATION uses cookies to improve the user experience. By using our services you accept our cookie policy.",
+        "usage": "Cookies usage"
+    },
+    "courses": {
+        "authorized": {
+            "select": {
+                "addTag": "Add authorized",
+                "clear": "Empty authorized list",
+                "placeholder": "Authorized users",
+                "delete": "Delete authorization"
+            },
+            "title": "Authorized",
+            "list": "Authorized users",
+            "delete": "Delete authorization",
+            "added": "Authorization added",
+            "deleted": "Authorization deleted",
+            "update": "Update list of authorized users"
+        },
+        "create": {
+            "form": {
+                "name": {
+                    "error": "A name must be set",
+                    "label": "Course name",
+                    "placeholder": "Write a name..."
+                },
+                "submit": "Create"
+            },
+
+            "messages": {
+
+                "created_course": {
+                    "ok": {
+                        "message": "Course created successfully"
+                    }
+                }
+            },
+            "title": "Create course"
+        },
+        "edit": {
+            "title": "Edit course"
+        },
+        "list-course": {
+            "actions": "Actions on the course",
+            "edit-course": "Edit course",
+            "share": "Share course",
+            "delete-course": "Delete course"
+        },
+        "messages": {
+            "copied_to_clipboard": {
+                "message": "Enlace al curso copiado al portatapeles",
+                "title": "Éxito"
+            },
+            "course_published": "Course published succesfully",
+            "delete": {
+                "message": "Are you sure you want to delete the course?",
+                "title": "Delete course",
+                "button": "Delete"
+            },
+            "course-deleted": "Course deleted successfully"
+        },
+        "my_courses": {
+            "create_button": "Create course",
+            "title": "My courses"
+        },
+        "no_results": "No courses were found",
+        "publish": "Publish course",
+        "publishing": "Publishing course...",
+        "update": {
+            "submit": "Update",
+            "title": "Update course"
+        }
+    },
+    "creative-commons": {
+        "BY": "Attribution 4.0 International (CC BY 4.0)",
+        "BYNC": "Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)",
+        "BYNCND": "Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)",
+        "BYNCSA": "Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+        "BYND": "Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)",
+        "BYSA": "Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+        "PRIVATE": "All rights reserved"
+    },
+    "enums": {
+        "License": {
+            "ALLOW_READ_ONLY": "Allow read only",
+            "ALLOW_REUSE": "Allow reuse",
+            "PRIVATE": "Private"
+        },
+        "UnitMode": {
+            "COPIED": "Read-only unit",
+            "ORIGINAL": "Original unit",
+            "REUSED": "Reused unit"
+        }
+    },
+    "explore": {
+        "accesibility": {
+            "carousel-next": "Show next slides",
+            "carousel-prev": "Show previous slides",
+            "carousel-current": "Showing from {{start}} to {{end}} out of {{total}}",
+            "image-unit": "Cover image of the unit {{tittle}}",
+            "logo-description": "Main logo of the platform",
+            "screens-description": "Screenshots of different devices"
+        },
+        "recent-added": "Recently added units",
+        "recent-added-content": "Recently added content units",
+        "recent-added-evaluation": "Recently added evaluation units",
+        "recent-added-units": {
+            "messages": {
+                "unit_not_found": "The unit has not been found"
+            }
+        },
+        "title": "Start",
+        "top-authors": "Top rated authors",
+        "top-rated": "Top rated units",
+        "welcome": {
+            "authors": "More than 3.500 Authors!",
+            "class": "in the classroom.",
+            "create": "Create, teach and learn with",
+            "join": "Join us",
+            "platform": "a digital inclusive and interactive content platform to",
+            "share": "share, reuse and innovate",
+            "units": "More than 300.000 Units created!",
+            "users": "2 million users in 3 countries.",
+            "main-header": "{{platform}} homepage"
+        }
+    },
+    "footer": {
+        "accesibility": {
+            "eu-logo": "Logo of the Erasmus Plus program of the European Union",
+            "sepie-logo": "SEPIE agency logo",
+            "social-link": "{{platform}}",
+            "web-link": "Official website"
+        },
+        "contact": "CONTACT",
+        "data": "DATA PROTECTION",
+        "europe-message": "The European Commission support for the production of this publication does not constitute an endorsement of the contents which reflects the views only of the authors, and the Commission cannot be held responsible for any use which may be made of the information contained therein.",
+        "legal": "LEGAL NOTICE"
+    },
+    "io-login-view": {
+        "continue": "Continue",
+        "email": "Introduce your user email",
+        "forgot-login": "I remember my password",
+        "forgot-password": "I have forgotten my password",
+        "form": {
+            "mail": {
+                "error": "You must provide a valid email",
+                "name": "E-mail",
+                "placeholder": "Your email..."
+            },
+            "password": {
+                "error": "You must provide a password with at least 6 characters",
+                "name": "Password",
+                "placeholder": "Password..."
+            },
+            "username": {
+                "error": "You must provide a valid user email like 'user@example.com'",
+                "name": "Username",
+                "placeholder": "User email..."
+            }
+        },
+        "invalid_credentials": "The credentials provided are invalid.",
+        "messages": {
+            "domain_not_allowed": "You cannot login here with the provided email",
+            "email_error": "The email provided is not associated with any user",
+            "email_sent": "An email with the instructions to recover your password has been sent to the provided email.",
+            "goodbye": "Goodbye",
+            "login_now": "You are now logged in",
+            "login_welcome": "Welcome",
+            "logout": "Logout successful"
+        },
+        "new-user": "New user?",
+        "please-sign-in": "Please, sign in",
+        "reset-password": "Reset your password",
+        "send-reset": "Send reset password",
+        "sign-in": "Sign in"
+    },
+    "languages": {
+        "all": "All languages",
+        "el": "Greek",
+        "en": "English",
+        "es": "Spanish",
+        "fr": "French",
+        "lt": "Lithuanian"
+    },
+    "legal": {
+        "contact": {
+            "title": "Contact"
+        },
+        "data": {
+            "title": "Personal data protection",
+            "short-title": "Data protection"
+        },
+        "notice": {
+            "title": "Legal notice",
+            "tab": {
+                "cookies": "Cookies usage",
+                "notice": "Conditions of use"
+            }
+        }
+    },
+    "messages": {
+        "bad_request": {
+            "message": "The information sent from the site to the server contains errors.",
+            "title": "Request error"
+        },
+        "entity_not_accessible": {
+            "message": "You do not have permission over this content",
+            "title": "Permission denied"
+        },
+        "form_error": {
+            "message": "You have some errors in the form, please check the fields.",
+            "title": "Attention!"
+        },
+        "internal_server_error": {
+            "message": "An internal error in the server has occured. Please try again in a few seconds. If the error persists, contact with indie@upct.es.",
+            "title": "Internal error"
+        },
+        "login": "You must log in to see this page",
+        "no_content_found": {
+            "message": "The content does not exist",
+            "title": "No content found"
+        },
+        "unauthorized_request": {
+            "message": "You must log in to access the requested resources",
+            "title": "Unauthorized"
+        },
+        "unit_already_published": {
+            "message": "This unit has already been published",
+            "title": "Attention"
+        },
+        "unit_not_shareable": {
+            "message": "This unit is not shareable",
+            "title": "Attention"
+        },
+        "valid_field": "Valid field",
+        "wrong_params": {
+            "message": "Check the fields in the form",
+            "title": "Incorrect information"
+        }
+    },
+    "modals": {
+        "confirm-action": {
+            "buttons": {
+                "cancel": "Cancel",
+                "ok": "Confirm changes"
+            },
+            "message": "Are you sure you want to confirm the changes?",
+            "title": "Confirm"
+        },
+        "pick-category": {
+            "placeholder": "Term...",
+            "search-text": "Introduce a search term with at least 3 characters to search the category",
+            "select-category": "Select category",
+            "show-path": "Show category path",
+            "title": "Choose a category"
+        }
+    },
+    "nav": {
+        "accesibility": {
+            "search-input": "Search term input"
+        },
+        "explore": "Explore {{value}}",
+        "menu": {
+            "toggle": "Toggle navigation",
+            "all_content_units": "Browse all content units",
+            "all_evaluation_units": "Browse all evaluation units",
+            "browse": "Browse {{value}}",
+            "show_case": "Showcase",
+            "title": "Explore"
+        },
+        "my-content": "My content",
+        "search": "Search in {{value}}...",
+        "skip-link": "Skip to content",
+        "login": "Login"
+    },
+    "new_account": {
+        "form": {
+            "country": {
+                "error": "Invalid country",
+                "label": "Country",
+                "placeholder": "Country..."
+            },
+            "email": {
+                "error": "Error",
+                "label": "Email"
+            },
+            "institution": {
+                "error": "Invalid institution",
+                "label": "Institution",
+                "placeholder": "Institution..."
+            },
+            "name": {
+                "error": "Invalid name",
+                "label": "Full name",
+                "placeholder": "Full name..."
+            },
+            "password": {
+                "error": "Both new and repeat password must match. Password must be from 8 to 24 characters long and contain at least one digit and one capital letter.",
+                "label": "Password",
+                "placeholder": "Password..."
+            },
+            "repeatPassword": {
+                "error": "Both new and repeat password must match. Password must be from 8 to 24 characters long and contain at least one digit and one capital letter.",
+                "label": "Repeat password",
+                "placeholder": "Repeat password..."
+            },
+            "submit": "Create account"
+        },
+        "messages": {
+            "account_created": "Account created succesffully. Please login.",
+            "existing_user": "A user with the given email already exists",
+            "unsafe_password": "The password provided is not safe enough"
+        },
+        "title": "New Account"
+    },
+    "pages": {
+        "search": "Search"
+    },
+    "pagination": {
+        "current": "Current page",
+        "first": "First page",
+        "last": "Last page",
+        "navigation": "Page navigation",
+        "next": "Next page",
+        "previous": "Previous page",
+        "range": "{{start}} - {{end}} of {{total}}",
+        "size": "Number of items per page"
+    },
+    "questions": {
+        "accesibility": {
+            "correct-anwser-check": "Correct answer",
+            "remove-question-button": "Remove answer {{number}}",
+            "added-answer": " Added answer",
+            "deleted-answer": "Deleted answer"
+        },
+        "answers": "Answer {{number}} content",
+        "common": {
+            "correct": "Correct",
+            "false": "False",
+            "true": "True"
+        },
+        "create_question": {
+            "submit": "Create question",
+            "title": "Create question",
+            "types": {
+                "multiple": {
+                    "title": "Create a multiple answer question"
+                },
+                "single": {
+                    "title": "Create a single answer question"
+                },
+                "true_false": {
+                    "title": "Create a true/false answer question"
+                }
+            }
+        },
+        "form": {
+            "group": {
+                "error": "You must set a question group",
+                "label": "Question group",
+                "name": "Question group"
+            },
+            "groupName": {
+                "error": "Group name must be set. Max 250 characters.",
+                "label": "Group name",
+                "name": "Group name",
+                "placeholder": "Write a group name..."
+            },
+            "single_answers": {
+                "add": "Add answer",
+                "error": "There must be at least 2 answers and one of them must be correct. Max 200 characteres.",
+                "label": "Answers (between 2 and 4 answers)"
+            },
+            "tags": {
+                "added": "Added tag {{name}}",
+                "deleted": "Deleted tag {{name}}",
+                "error": "Tags are not valid",
+                "label": "Question tags",
+                "name": "Tags",
+                "placeholder": "Create new tag..."
+            },
+            "text": {
+                "error": "Question text must be set. Max 300 characteres.",
+                "label": "Question text",
+                "name": "Question text",
+                "placeholder": "Write the question text here..."
+            },
+            "truefalseAnswer": {
+                "error": "You must set a correct answer",
+                "label": "Correct answer",
+                "name": "Correct answer"
+            }
+        },
+        "groups": {
+            "all": "All groups",
+            "create": "Create group",
+            "title": "Groups"
+        },
+        "list-question": {
+            "delete": "Delete",
+            "view": "Edit",
+            "type": "Question type",
+            "actions": "Question actions"
+        },
+        "messages": {
+            "confirm_delete_question": "Are you sure you want to delete this question?",
+            "created_question": {
+                "message": "Question created successfully"
+            },
+            "delete_correct": {
+                "message": "You cannot delete the correct answer"
+            },
+            "deleted_question": {
+                "message": "Question deleted successfully"
+            },
+            "group_name_already_taken": "This group name is already taken. Try with another one.",
+            "less_than_2_answers": {
+                "message": "A question must have a minimum of 2 answers "
+            },
+            "more_than_4_answers": {
+                "message": "A question must have a maxium of 4 answers "
+            },
+            "not_valid_answers": {
+                "message": "Please check your answers. You have empty answers."
+            },
+            "not_valid_answers_multiple": {
+                "message": "Please check your answers. You must have at least one correct answer and can not have empty answers."
+            },
+            "question_used": {
+                "message": "The question is already used in one of your evaluation units. You need to remove the question from the unit first in order to delete the question."
+            },
+            "questions_used": {
+                "message": "The question is already used in one of your evaluation units. You need to remove the question from the unit first in order to delete the question."
+            },
+            "select_type": "You must select a type of question",
+            "updated_question": {
+                "message": "Question updated successfully"
+            }
+        },
+        "my_questions": {
+            "create_button": "Create new question",
+            "title": "My questions"
+        },
+        "no_results": "No questions were found. Try and create one.",
+        "order-by": "Sort questions by",
+        "show-group": "Show questions by group",
+        "show-type": "Show questions by type",
+        "types": {
+            "MultipleAnswer": "Multiple answer",
+            "SingleAnswer": "Single answer",
+            "TrueFalse": "True/false answer",
+            "all": "All types",
+            "multipleAnswer": "Multiple answer",
+            "select": "Select a type",
+            "singleAnswer": "Single answer",
+            "title": "Types",
+            "trueFalseAnswer": "True/false answer"
+        },
+        "update_question": {
+            "submit": "Update question",
+            "title": "Edit question",
+            "types": {
+                "multipleAnswer": {
+                    "title": "Edit a multiple answer question"
+                },
+                "singleAnswer": {
+                    "title": "Edit a single answer question"
+                },
+                "trueFalse": {
+                    "title": "Edit a true/false answer question"
+                }
+            }
+        }
+    },
+    "rating": {
+        "average": "Average rating: ",
+        "count": "Number of ratings: ",
+        "current": "{{current}} of {{max}}"
+    },
+    "reset-password": {
+        "form": {
+            "email": {
+                "label": "This is your email"
+            },
+            "newPassword": {
+                "error": "Both new and repeat password must match. Password must be from 8 to 24 characters long and contain at least one digit and one capital letter.",
+                "label": "New password",
+                "placeholder": "Introduce the new password..."
+            },
+            "repeatPassword": {
+                "error": "Both new and repeat password must match. Password must be from 8 to 24 characters long and contain at least one digit and one capital letter.",
+                "label": "Repeat password",
+                "placeholder": "Repeat the new password..."
+            }
+        },
+        "messages": {
+            "token_not_valid": "The token you used is not valid or already used"
+        },
+        "submit": "Reset password",
+        "title": "Reset password"
+    },
+    "search": {
+        "categories-fond": "Categories found",
+        "category-selected": "Category selected",
+        "category-title": "Categories",
+        "clear": "Clear search",
+        "filters": {
+            "label": "Search filters",
+            "info": "Changing search filters will change the listed units",
+            "author": {
+                "input-placeholder": "Search for an author ...",
+                "search-author": "Search an author",
+                "delete": "delete author filter"
+            },
+            "category": {
+                "input-placeholder": "Search a category...",
+                "search-category": "Search a category",
+                "delete": "delete category filter"
+            },
+            "context": {
+                "all-context": "All contexts"
+            },
+            "order": "Sort units",
+            "title": {
+                "ageRange": "Age range",
+                "author": "Authors",
+                "categories": "Categories",
+                "educationalContext": "Educational context",
+                "language": "Language of results",
+                "types": "Types",
+                "useMode": "Use mode"
+            },
+            "type": {
+                "all-types": "All types",
+                "content": "Content",
+                "evaluation": "Evaluation"
+            },
+            "useMode": {
+                "all-modes": "All modes",
+                "allow-reuse": "Allow use and modify",
+                "allow-use": "Allow use only"
+            }
+        },
+        "load-more": "Load more",
+        "order_by": "Order by",
+        "orders": {
+            "a_z": "From A to Z",
+            "latest": "Latest units",
+            "least_rated": "Least rated units",
+            "recent": "Most recent units",
+            "top_rated": "Top rated units",
+            "z_a": "From Z to A"
+        },
+        "results": "Results for ",
+        "list": "List of results",
+        "showing_count": "Showing {{page}} of {{size}} results",
+        "title": "Search",
+        "toggle-filters": "Show/hide filters",
+        "units-title": "Units",
+        "warning": "You must write at least 3 characters to make a search"
+    },
+    "shared": {
+        "change-category": "Change category"
+    },
+    "tags": {
+        "added": "Added tag {{name}}",
+        "delete": "Delete tag",
+        "deleted": "Deleted tag {{name}}",
+        "error": "Tags are not valid",
+        "label": "Tags",
+        "name": "Tags",
+        "placeholder": "Create new tag..."
+    },
+    "top-authors": {
+        "created-units": "Created units",
+        "shared-units": "Shared units"
+    },
+    "types": {
+        "content": "Content unit",
+        "evaluation": "Evaluation unit"
+    },
+    "units": {
+        "accesibility": {
+            "image-unit": "Cover image of the unit {{title}}"
+        },
+        "create_unit": {
+            "basic_information": "Basic information",
+            "messages": {
+                "created_unit": {
+                    "error": {},
+                    "ok": {
+                        "message": "Your new unit has been created and added to your units.",
+                        "title": "Unit created successfully"
+                    }
+                }
+            },
+            "optional_information": "Optional information",
+            "submit": "Create unit",
+            "title": "Create unit"
+        },
+        "form": {
+            "ageRange": {
+                "error": "The age range must be between the minimum and the maximum allowed",
+                "label": "Unit age range",
+                "name": "Age range"
+            },
+            "category": {
+                "error": "A unit must have a category",
+                "label": "Category of the new unit",
+                "name": "Unit category",
+                "placeholder": "Select a category..."
+            },
+            "cover": {
+                "error": "The cover image must be a valid image URL ",
+                "label": "Cover image of the new unit",
+                "name": "Cover image",
+                "placeholder": "Write the cover image URL..."
+            },
+            "educationalContext": {
+                "error": "Must have at least one educational context",
+                "label": "Educational context of the unit",
+                "name": "Educational context",
+                "placeholder": "Select a context",
+                "added": "Added Contexts"
+            },
+            "language": {
+                "error": "A unit must have a language",
+                "label": "Unit language",
+                "placeholder": "Select a language..."
+            },
+            "longDescription": {
+                "error": "A long and complete description of the unit",
+                "label": "Long description of the new unit",
+                "placeholder": "Write about the unit..."
+            },
+            "name": {
+                "error": "Name of new the unit. Max 100 characters.",
+                "label": "Unit name",
+                "placeholder": "Write the name here..."
+            },
+            "shortDescription": {
+                "error": "A unit must have an explaining short description. Max 200 characters.",
+                "label": "Short description of the new unit",
+                "placeholder": "Write about the unit..."
+            },
+            "tags": {
+                "error": "Tags are not valid",
+                "label": "Tags label",
+                "placeholder": "Create new tag..."
+            },
+            "theme": {
+                "error": "You must establish a theme",
+                "label": "Unit theme"
+            },
+            "type": {
+                "error": "A unit must be a content unit or an evaluation unit",
+                "label": "Unit type",
+                "placeholder": "Select a type..."
+            }
+        },
+        "licenses": {
+            "private": {
+                "label": "Private"
+            },
+            "readonly": {
+                "label": "Allow read only"
+            },
+            "reuse": {
+                "label": "Allow reuse"
+            }
+        },
+        "licenses_info_modal": {
+            "private_text": "Only you can see the unit. It will not be available to other users.",
+            "read_only_text": "The unit will be public, but other users will not be able to edit it, only read it and add it to their list of units.",
+            "reuse_text": "The unit will be public, and any user who adds it in their units will be able to edit and share it."
+        },
+        "list-unit": {
+            "actions": "Actions on the unit",
+            "edit-unit": "Edit unit",
+            "generating-preview": "Generating preview",
+            "preview-message": "Your preview is ready. If your browser does not redirect you to the preview browse to the following URL:",
+            "preview-title": "Preview generated",
+            "preview-unit": "Preview unit",
+            "unit-panel": "Unit panel"
+        },
+        "messages": {
+            "adding_unit": "Adding unit...",
+            "unit_added": "The unit has been added successfully into your units",
+            "unit_already_added": "You already have this unit in your units."
+        },
+        "my_units": {
+            "create_button": "Create new unit",
+            "title": "My units"
+        },
+        "no_results": "No units were found. Try and create one.",
+        "order-by": "Sort units by",
+        "tab-original-unit": {
+            "already_evaluated": "You have already evaluated this unit",
+            "author": "Original author",
+            "information": "Original unit information",
+            "name": "Original unit name",
+            "non-original": {
+                "already-updated": "You already have the last published version",
+                "get-last-version": "Get the last version",
+                "non-existing": "The original author has stopped sharing the unit. You cannot update your version.",
+                "update-confirm": {
+                    "message": "You are about to update your unit to the latest version of the original unit. This will remove all the modifications you may have made, depending on the type of license.",
+                    "title": "Update the unit"
+                },
+                "updated": "Version updated successfully"
+            },
+            "rate": "Rate",
+            "rate_unit": "Rate this unit",
+            "rated_successfully": "Your rating has been submitted succesfully",
+            "shared_at": "Shared at",
+            "thanks": "Thanks!"
+        },
+        "tab-unit-actions": {
+            "delete-unit-modal": {
+                "delete": "Delete unit",
+                "message": "You are about to delete this unit from your units. However, if your unit has been shared and used or reused by another teacher, the unit will remain in their units. If you have not shared the unit, it will be deleted entirely from {{value}}.",
+                "message_2": "Are you sure you want to delete the unit?",
+                "title": "Delete unit",
+                "unit_deleting": "Deleting unit..."
+            },
+            "delete_unit": "Delete unit",
+            "messages": {
+                "unit_deleted": "Your unit has been deleted successfully."
+            }
+        },
+        "tab-unit-rating": {
+            "messages": {
+                "no-more-ratings": "No more ratings were found"
+            },
+            "rating": "Unit rating",
+            "ratings": "Ratings"
+        },
+        "tab-unit-share": {
+            "change_license": "Change license",
+            "help": "I need help understanding",
+            "license_help": "License selector",
+            "licenses": "licenses",
+            "licenses_info": "Licenses Info",
+            "messages": {
+                "changing_license": "Changing license...",
+                "confirm_license_change": "Are you sure you want to change the unit license?",
+                "license_changed": "License changed successfully",
+                "same_license": {
+                    "message": "Attention. You have selected the same license, therefore it will not be changed.",
+                    "title": "Same license"
+                }
+            },
+            "show_help": "Show some help",
+            "title": "License"
+        },
+        "tab-unit-use": {
+            "activated": "Activated",
+            "deactivated": "Deactivated",
+            "analytics-text": "Learning analytics are",
+            "toggle-analytics": "Toggle learning analytics",
+            "authorized": {
+                "description": "Configure who can use this unit in a LTI environment",
+                "select": {
+                    "addTag": "Add new authorized",
+                    "clear": "Empty authorized list",
+                    "placeholder": "Authorized users",
+                    "delete": "Delete authorization"
+                },
+                "title": "Authorize",
+                "update": "Update list of authorized users",
+                "updated": "Updated authorized users",
+                "added": "Authorization added",
+                "deleted": "Authorization deleted"
+            },
+            "copy_clipboard": "Copy this URL to clipboard",
+            "links": "Links",
+            "messages": {
+                "copied_to_clipboard": {
+                    "message": "The URL is now in your clipboard",
+                    "title": "Copied succesfully"
+                },
+                "unit_published": {
+                    "message": "Your unit has been published successfully",
+                    "title": "Unit published successfully"
+                }
+            },
+            "not_published": "This unit is not published yet",
+            "outdated": "Your unit is outdated",
+            "publish": "Publish",
+            "publish_unit": "Publish unit",
+            "up_to_date": "Your unit is up to date",
+            "update_unit": "Update unit",
+            "url": "This is the URL for using the unit in a LTI environment.",
+            "url-open": "This is the open URL for using the unit everywhere respecting the creative commons terms of the license set."
+        },
+        "tab_unit_info": {
+            "messages": {
+                "update_unit": {
+                    "ok": {
+                        "message": "Unit information updated succesfully.",
+                        "title": "Success"
+                    }
+                }
+            },
+            "submit": "Update unit information"
+        },
+        "themes": {
+            "show-themes-modal-info": "Show information about themes"
+        },
+        "types": {
+            "all_types": "Show all units",
+            "content": "Show only content units",
+            "evaluation": "Show only evaluation units"
+        },
+        "unit-panel": {
+            "title": "Unit panel"
+        },
+        "unit_from": "Original unit from",
+        "unit_panel": {
+            "tab_titles": {
+                "actions": "Actions",
+                "information": "Information",
+                "originalUnit": "Original unit",
+                "ratings": "Ratings",
+                "share": "Share",
+                "use": "Use"
+            },
+            "title": "Unit panel"
+        },
+        "unit_type": "Unit type",
+        "view-unit-modal": {
+            "already-rated": "You have already rated this unit",
+            "rate-unit": "Rate this unit"
+        }
+    },
+    "user": {
+        "author_info": {
+            "form": {
+                "avatar": {
+                    "error": "The avatar URL must be from INDIeMedia",
+                    "label": "Author's avatar",
+                    "placeholder": "Introduce your avatar's URL..."
+                },
+                "biography": {
+                    "error": "Biography must have from 0 to 300 characters",
+                    "label": "Biography",
+                    "placeholder": "Tell us something about you..."
+                },
+                "country": {
+                    "error": "You must set a country",
+                    "label": "Country",
+                    "placeholder": "Country..."
+                },
+                "institution": {
+                    "error": "You must establish an institutio",
+                    "label": "Institution",
+                    "placeholder": "Title of your institution..."
+                },
+                "name": {
+                    "error": "Your first name must be set",
+                    "label": "Name",
+                    "placeholder": "Your name"
+                },
+                "surname": {
+                    "error": "Your surname must be set",
+                    "label": "Surname",
+                    "placeholder": "Your surname"
+                }
+            },
+            "messages": {
+                "info_updated": "User information updated succesfully"
+            },
+            "submit": "Update user info"
+        },
+        "settings": {
+            "author": "Author profile",
+            "title": "User settings",
+            "user": "User account"
+        },
+        "user_account": {
+            "form": {
+                "email": {
+                    "error": "You must set an e-mail",
+                    "label": "Email",
+                    "name": "E-mail",
+                    "placeholder": "E-ma"
+                },
+                "newPassword": {
+                    "error": "Both new and repeat password must match. Password must be from 8 to 24 characters long and contain at least one digit and one capital letter.",
+                    "label": "New password",
+                    "name": "New password",
+                    "placeholder": "Introduce the new password..."
+                },
+                "oldPassword": {
+                    "error": "This field is required",
+                    "label": "Old password",
+                    "name": "Current password",
+                    "placeholder": "Introduce your current password"
+                },
+                "repeatPassword": {
+                    "error": "Both new and repeat password must match. Password must be from 8 to 24 characters long and contain at least one digit and one capital letter.",
+                    "label": "Repeat password",
+                    "name": "Repeat the password",
+                    "placeholder": "Repeat the new password..."
+                }
+            },
+            "messages": {
+                "password_changed": "Your password has been changed successfully",
+                "unsafe_password": "Your password is not safe enough",
+                "wrong_password": "Your current password is not correct"
+            },
+            "submit": "Update password"
+        }
+    },
+    "user-panel": {
+        "accesibility": {
+            "user-avatar": "User avatar"
+        },
+        "logout": "Logout",
+        "settings": "User Settings"
+    },
+    "videos": {
+        "create": {
+            "form": {
+                "name": {
+                    "error": "Title must be set and be a maximum of 255 characters long",
+                    "label": "Video title",
+                    "placeholder": "Write a title here..."
+                },
+                "submit": "Create video",
+                "url": {
+                    "error": "The video URL must be a VALID MEDIA resource URL like <i>https://MYMEDIADOMAIN?v=48DC8S</i>",
+                    "label": "Video URL",
+                    "placeholder": "Write the URL here..."
+                }
+            },
+            "messages": {
+                "created_video": {
+                    "error": {
+                        "message": "The video could not be created",
+                        "title": "Error creating video"
+                    },
+                    "ok": {
+                        "message": "Your new video has been created and added to your videos.",
+                        "title": "Video created successfully"
+                    }
+                }
+            },
+            "title": "Create video"
+        },
+        "edit": {
+            "title": "Edit video"
+        },
+        "list-video": {
+            "actions": "Actions on the video",
+            "delete": "Delete",
+            "edit_information": "Edit information",
+            "edit_video": "Edit video",
+            "share": "Share video"
+        },
+        "messages": {
+            "confirm_delete_video": "Are you sure you want to delete the video?",
+            "copied_to_clipboard": {
+                "message": "The URL is now in your clipboard",
+                "title": "Copied succesfully"
+            },
+            "video_deleted": "Your video was deleted successfully",
+            "video_published": "Your video has been published succesfully"
+        },
+        "my_videos": {
+            "create_button": "Create new video",
+            "title": "My videos"
+        },
+        "no_results": "No videos were found. Try and create one.",
+        "order-by": "Sort videos by",
+        "orders": {
+            "latest": "Latest videos",
+            "recent": "Most recent videos"
+        },
+        "publish": "Publish video",
+        "publishing": "Publishing video...",
+        "update": {
+            "submit": "Update video",
+            "title": "Edit video"
+        }
+    }
+}

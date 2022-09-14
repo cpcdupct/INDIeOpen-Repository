@@ -1,0 +1,30 @@
+<h1 class="section-title" *ngIf="requestParams.text; else defaultTitle" id="title" tabindex="-1">{{ 'search.results' | translate }} '{{ requestParams.text }}' &nbsp;</h1>
+<ng-template #defaultTitle><h1 class="section-title" id="title" tabindex="-1">{{ 'search.units-title' | translate }}</h1></ng-template>
+<div class="search-wrapper">
+    <div class="filter-collapse mb-2 px-3">
+        <button class="btn btn-block btn-secondary btn-toggle-filters" (click)="toggleFilters()" [attr.aria-expanded]="filterOpen" aria-controls="search-filters-menu">{{ 'search.toggle-filters' | translate }} &nbsp;<fa-icon [icon]="['fas', 'chevron-down']" *ngIf="!filterOpen"></fa-icon><fa-icon [icon]="['fas', 'chevron-up']" *ngIf="filterOpen"></fa-icon></button>
+    </div>
+    <aside class="filters-col filter" aria-labelledby="search-filters-title" id="search-filters-menu">
+        <h2 class="search-filters-title" id="search-filters-title">{{ 'search.filters.label' | translate }}</h2>
+        <div class="alert alert-info"><fa-icon [icon]="['fas', 'info-circle']" [attr.aria-label]="'common.information' | translate"> </fa-icon>{{ 'search.filters.info' | translate }}</div>
+        <io-search-filter-radio id="typeFiltersFilters" [filter]="typeFilter" [labelId]="'type-filter'" name="type" (filterSelected)="onFilterSelected($event)"></io-search-filter-radio><io-category-filter id="cateogyrFilter" (filterSelected)="onFilterSelected($event)"></io-category-filter><io-search-filter-radio id="usemodeFilters" [filter]="useModeFilter" [labelId]="'use-mode-filter'" name="usemode" (filterSelected)="onFilterSelected($event)"></io-search-filter-radio><io-author-filter id="authorFilter" (filterSelected)="onFilterSelected($event)"></io-author-filter><io-search-filter-check id="languageFilter" [filter]="languageFilter" name="language" (filterSelected)="onFilterSelected($event)"></io-search-filter-check><io-search-filter-radio id="educationalContextFilter" [filter]="educationalContextFilter" [labelId]="'educational-context-filter'" name="educationalContext" (filterSelected)="onFilterSelected($event)"></io-search-filter-radio
+        ><io-age-range-filter [filter]="ageRangeFilter" name="ageRange" (filterSelected)="onFilterSelected($event)"></io-age-range-filter>
+    </aside>
+    <main class="results-col" id="main" tabindex="-1" aria-labelled-by="search-list-title">
+        <div class="row no-gutters mt-0">
+            <div class="col-md-12 col-xl-4 d-flex justify-content-sm-center justify-content-xl-start"><h2 class="search-list-title" id="search-list-title">{{ 'search.list' | translate }}</h2></div>
+            <div class="col-md-12 col-xl-8 d-flex flex-column flex-sm-row justify-content-sm-center justify-content-xl-end"><label class="m-1 col-form-label label-sort" translate [for]="orderFilter.key">&nbsp; search.order_by &nbsp;</label><io-select-type class="m-1" [filter]="orderFilter" (typeSelected)="onOrderSelected($event)"></io-select-type><button class="btn btn-primary m-1" (click)="clearSearch()">{{ 'search.clear' | translate }}</button></div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <io-loader></io-loader><ng-container *ngIf="units$ | async as units"><io-search-item *ngFor="let unit of units" [item]="unit"></io-search-item></ng-container>
+            </div>
+        </div>
+        <div class="row">
+            <nav class="col" [attr.aria-label]="'pagination.navigation' | translate">
+                <div class="current-page" id="current-page"><label for="current-pagination-value"> {{ 'pagination.current' | translate }}</label><input class="form-control-inline" id="current-pagination-value" matInput type="number" min="1" [max]="lastPage" [(ngModel)]="page" (ngModelChange)="$event &amp;&amp; makeUnitsSearch($event)" name="page" /></div>
+                <mat-paginator [length]="total" [pageSize]="5" [hidePageSize]="true" [pageIndex]="page - 1" [showFirstLastButtons]="true" (page)="makeUnitsSearch($event.pageIndex+1)"></mat-paginator>
+            </nav>
+        </div>
+    </main>
+</div>

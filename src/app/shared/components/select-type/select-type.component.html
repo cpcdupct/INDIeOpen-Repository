@@ -1,0 +1,1 @@
+<ng-select [labelForId]="filter.key" [name]="filter.key" [clearable]="false" [clearOnBackspace]="false" [searchable]="false" [(ngModel)]="filter.selected" (change)="onChange($event)"><ng-option *ngFor="let order of filter.items" [value]="order.key">{{ order.label | translate }}</ng-option></ng-select>

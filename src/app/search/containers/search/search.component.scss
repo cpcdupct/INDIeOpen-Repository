@@ -1,0 +1,93 @@
+.search-wrapper {
+    margin-top: 1rem;
+    display: flex;
+    width: 100%;
+
+    .search-filters-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        padding-top: 5px;
+        padding-bottom: 30px;
+    }
+
+    .search-list-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        padding-top: 5px;
+    }
+
+    @media (max-width: 767px) {
+        .filter-collapse {
+            display: block;
+        }
+
+        .filter-hide {
+            display: none;
+            animation: fade-out 1s;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .filter-collapse {
+            display: none;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .filters-col {
+            width: 350px;
+            margin-right: 2rem;
+        }
+
+        .results-col {
+            width: calc(100% - 350px);
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .filters-col {
+            width: 280px;
+            margin-right: 2rem;
+        }
+
+        .results-col {
+            width: calc(100% - 280px);
+        }
+    }
+
+    @media (max-width: 767px) {
+        flex-direction: column;
+    }
+}
+
+.row {
+    margin-bottom: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.order-wrapper {
+    * {
+        float: right;
+    }
+
+    label {
+        margin-right: 1rem;
+    }
+}
+
+:host ::ng-deep 
+{
+    ng-select {
+        min-width: 190px;
+    }
+
+    .filter-title {
+        font-size: 1rem;
+    }
+
+    legend {
+        position: relative;
+        top: 25px;
+        margin-bottom: 0;
+    }
+}

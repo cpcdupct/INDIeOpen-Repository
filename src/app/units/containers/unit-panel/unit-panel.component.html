@@ -1,0 +1,39 @@
+<main id="main" tabindex="-1">
+    <div class="row">
+        <div class="col">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2"><h1 class="section-title" translate id="title" tabindex="-1">units.unit-panel.title</h1></div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col"><io-alerts></io-alerts></div>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <div class="card" *ngIf="unit$ | async as unit">
+                <div class="card-body">
+                    <ul class="nav-tabs" ngbNav #nav="ngbNav" [(activeId)]="active">
+                        <li ngbNavItem="information">
+                            <a ngbNavLink>{{ 'units.unit_panel.tab_titles.information' | translate }}</a><ng-template ngbNavContent><io-tab-unit-info [unit]="unit" (actionResult)="onActionResult($event)"></io-tab-unit-info></ng-template>
+                        </li>
+                        <li ngbNavItem="share" *ngIf="canShareUnit(unit)">
+                            <a ngbNavLink>{{ 'units.unit_panel.tab_titles.share' | translate }}</a><ng-template ngbNavContent><io-tab-unit-share [unit]="unit" (actionResult)="onActionResult($event)"></io-tab-unit-share></ng-template>
+                        </li>
+                        <li ngbNavItem="use">
+                            <a ngbNavLink>{{ 'units.unit_panel.tab_titles.use' | translate }}</a><ng-template ngbNavContent><io-tab-unit-use [unit]="unit"></io-tab-unit-use></ng-template>
+                        </li>
+                        <li ngbNavItem="actions">
+                            <a ngbNavLink>{{ 'units.unit_panel.tab_titles.actions' | translate }}</a><ng-template ngbNavContent><io-tab-unit-actions [unit]="unit"></io-tab-unit-actions></ng-template>
+                        </li>
+                        <li *ngIf="hasOriginalUnit(unit)" ngbNavItem="originalUnit">
+                            <a ngbNavLink>{{ 'units.unit_panel.tab_titles.originalUnit' | translate }}</a><ng-template ngbNavContent><io-tab-original-unit [unit]="unit"></io-tab-original-unit></ng-template>
+                        </li>
+                        <li *ngIf="canHaveRatings(unit)" ngbNavItem="rating">
+                            <a ngbNavLink>{{ 'units.unit_panel.tab_titles.ratings' | translate }}</a><ng-template ngbNavContent> <io-tab-unit-rating [unit]="unit"></io-tab-unit-rating></ng-template>
+                        </li>
+                    </ul>
+                    <div [ngbNavOutlet]="nav"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

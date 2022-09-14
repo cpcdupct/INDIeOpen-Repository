@@ -1,0 +1,91 @@
+[{
+        "action": "/search",
+        "actionTexts": [{
+            "lang": "en",
+            "value": "See featured evaluation units"
+        }, {
+            "lang": "es",
+            "value": "Ver unidades de evaluación destacadas"
+        }],
+        "params": {
+            "type": "EVALUATION"
+        },
+        "cover": "/assets/img/course_1.jpg",
+        "texts": [{
+                "lang": "en",
+                "value": "Featured evaluation units"
+            },
+            {
+                "lang": "es",
+                "value": "Unidades de evaluación destacadas"
+            }
+        ]
+    },
+    {
+        "action": "/search",
+        "actionTexts": [{
+            "lang": "en",
+            "value": "See most popular units"
+        }, {
+            "lang": "es",
+            "value": "Ver unidades más populares"
+        }],
+        "cover": "/assets/img/course_2.jpg",
+        "params": {
+            "order": "TOP_RATED"
+        },
+        "texts": [{
+                "lang": "en",
+                "value": "This month’s most popular units"
+            },
+            {
+                "lang": "es",
+                "value": "Las unidades más populares del mes"
+            }
+        ]
+    },
+    {
+        "action": "/search",
+        "actionTexts": [{
+            "lang": "en",
+            "value": "See top content units"
+        }, {
+            "lang": "es",
+            "value": "Ver las mejores unidades de contenido"
+        }],
+        "cover": "/assets/img/course_3.jpg",
+        "params": {
+            "type": "CONTENT"
+        },
+        "texts": [{
+                "lang": "en",
+                "value": "Top 10 content units"
+            },
+            {
+                "lang": "es",
+                "value": "Top 10 unidades de contenido"
+            }
+        ]
+    },
+    {
+        "action": "/search",
+        "actionTexts": [{
+            "lang": "en",
+            "value": "See recent units"
+        }, {
+            "lang": "es",
+            "value": "Ver unidades recientes"
+        }],
+        "cover": "/assets/img/course_4.jpg",
+        "params": {},
+        "texts": [{
+                "lang": "en",
+                "value": "What´s new?"
+            },
+            {
+                "lang": "es",
+                "value": "¿Qué hay de nuevo?"
+            }
+        ]
+    }
+]

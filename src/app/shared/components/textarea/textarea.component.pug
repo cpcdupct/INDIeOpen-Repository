@@ -1,0 +1,17 @@
+label([for]="data.name", *ngIf="data.label") {{ translateKey('label') | translate }} &nbsp;
+    span(*ngIf="data.required") * &nbsp;
+    span.limit(*ngIf="data.limit") ({{ translateKey('limit') | translate }}) &nbsp;
+textarea.form-control(
+    [id]="data.name",
+    [name]="data.name",
+    [placeholder]="translateKey('placeholder') | translate",
+    [formControl]="data.control",
+    [attr.required]="data.required ? 'required' : null",
+    [attr.aria-required]="data.required ? 'required' : null",
+    [attr.minlength]="data.minLength ? data.minLength : null",
+    [attr.maxlength]="data.maxLength ? data.maxLength : null",
+    [rows]="rows",
+    [attr.aria-label]="data.label ? null : (translateKey('name') | translate)"
+)
+small.form-text.invalid-feedback(*ngIf="showError()") {{ translateKey('error') | translate }}
+small.form-text.valid-feedback(*ngIf="showOkFeedback()") {{ 'messages.valid_field' | translate }}

@@ -1,0 +1,6 @@
+<div class="card filter">
+    <div class="card-body">
+        <h2 class="card-title filter-title">{{ filter.label | translate }}</h2>
+        <ngx-slider [options]="options" [(value)]="minValue" [(highValue)]="maxValue" (userChangeEnd)="change($event)"></ngx-slider>
+    </div>
+</div>

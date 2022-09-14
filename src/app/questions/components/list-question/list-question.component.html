@@ -1,0 +1,17 @@
+<article class="question-item">
+    <div class="row">
+        <div class="col-md-9 col-xs-12">
+            <header><h2 class="card-title">{{ item.text }}</h2></header>
+            <p>{{ item.group?.name }}</p>
+            <span class="badge badge-primary mb-2"><span class="sr-only">{{ 'questions.list-question.type' | translate }}</span> {{ ('questions.types.' + item.type) | translate }}</span>
+        </div>
+        <ul class="question-buttons col-md-3 col-xs-12 toolbar" [attr.aria-label]="'questions.list-question.actions' | translate">
+            <li class="question-button">
+                <a class="btn btn-sm btn-primary" [routerLink]="['/questions', item.id, 'edit']"><fa-icon [icon]="['fas', 'eye']"></fa-icon>&nbsp;<span>{{ 'questions.list-question.view' | translate }}</span></a>
+            </li>
+            <li class="question-button">
+                <button class="btn btn-sm btn-danger" (click)="deleteQuestion()"><fa-icon [icon]="['fas', 'times']"></fa-icon>&nbsp;<span>{{ 'questions.list-question.delete' | translate }}</span></button>
+            </li>
+        </ul>
+    </div>
+</article>

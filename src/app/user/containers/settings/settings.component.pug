@@ -1,0 +1,13 @@
+main(id="main", tabindex="-1")
+    h1.section-title(id="title", tabindex="-1") {{ 'user.settings.title' | translate }}
+    .settings-wrapper
+        ul.nav-pills(ngbNav, #nav="ngbNav", [(activeId)]="active", orientation="vertical")
+            li(ngbNavItem="top")
+                a(ngbNavLink) {{ 'user.settings.author' | translate }}
+                ng-template(ngbNavContent)
+                    io-tab-author-info
+            li(ngbNavItem="bottom")
+                a(ngbNavLink) {{ 'user.settings.user' | translate }}
+                ng-template(ngbNavContent)
+                    io-tab-user-info 
+        div([ngbNavOutlet]="nav")

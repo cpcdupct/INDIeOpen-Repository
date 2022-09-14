@@ -1,0 +1,19 @@
+.filter {
+    .filter-title {
+        color: var(--indie-pink);
+        text-transform: uppercase;
+    }
+
+    .angle {
+        cursor: pointer;
+    }
+
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+label {
+    * {
+        margin-right: 0.5rem;
+    }
+}

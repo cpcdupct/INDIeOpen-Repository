@@ -1,0 +1,9 @@
+<div class="card filter">
+    <fieldset class="card-body">
+        <legend><h3 class="card-title filter-title">{{ filter.label | translate }}</h3></legend>
+        <mat-checkbox *ngIf="allItem" [checked]="allComplete" [indeterminate]="someComplete()" (change)="setAll($event.checked)">{{ allItem.label | translate }}</mat-checkbox>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let item of otherItems"><mat-checkbox [(ngModel)]="item.isSelected" (ngModelChange)="setOne(item)">{{ item.label | translate }}</mat-checkbox></li>
+        </ul>
+    </fieldset>
+</div>

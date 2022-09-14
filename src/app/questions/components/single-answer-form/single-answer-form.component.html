@@ -1,0 +1,29 @@
+<div class="card">
+    <form [formGroup]="questionForm" (ngSubmit)="submit()" ngNativeValidate>
+        <div class="card-body">
+            <h2 class="sub-title" *ngIf="formMode === 'CREATE'">{{ 'questions.create_question.types.single.title' | translate }}</h2>
+            <h2 class="sub-title" *ngIf="formMode === 'UPDATE'">{{ 'questions.update_question.types.singleAnswer.title' | translate }}</h2>
+            <p>{{ "common.asterisk_required" | translate}}</p>
+            <div class="form-group"><io-textarea [data]="questionTextInput" rows="3"> </io-textarea></div>
+            <fieldset class="form-group">
+                <legend>{{ 'questions.form.single_answers.label' | translate }} &nbsp; *</legend>
+                <div class="input-group mb-3" *ngFor="let answer of question.answers; let idx=index">
+                    <input class="form-control" type="text" required maxlength="300" [(ngModel)]="answer.text" [ngModelOptions]="{ standalone: true }" [attr.aria-label]="'questions.answers' | translate: {number: idx+1}" />
+                    <div class="input-group-append">
+                        <label class="input-group-text">{{ 'questions.common.correct' | translate }} &nbsp;<input type="radio" name="correctAnswer" [checked]="answer.correct" (click)="setAsCorrect(answer)" [attr.aria-label]="'questions.accesibility.correct-anwser-check' | translate" /></label>
+                        <div class="input-group-text">
+                            <button class="btn btn-danger btn-sm" type="button" [attr.aria-label]="'questions.accesibility.remove-question-button' | translate: {number: (idx + 1)}" (click)="removeAnswer(answer)"><fa-icon [icon]="['fas', 'times']"></fa-icon></button>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-sm" (click)="addAnswer()" type="button"><fa-icon [icon]="['fas', 'plus']"> </fa-icon>&nbsp; {{ 'questions.form.single_answers.add' | translate }}</button>
+                <div class="sr-only" id="single-answer-answers-live" aria-live="polite" aria-atomic="all"></div>
+            </fieldset>
+            <div class="form-group" *ngIf="groups"><io-input-question-group [data]="groupInput" [groups]="groups"></io-input-question-group></div>
+            <div class="form-group"><io-input-tags [data]="tagsInput"></io-input-tags></div>
+        </div>
+        <div class="card-footer" style="text-align: right">
+            <button class="btn btn-success" type="submit" [disabled]="!allowSubmit"><io-button-loader [show]="!allowSubmit">&nbsp;</io-button-loader><span *ngIf="formMode === 'CREATE'">{{ 'questions.create_question.submit' | translate }}</span><span *ngIf="formMode === 'UPDATE'">{{ 'questions.update_question.submit' | translate }}</span></button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,56 @@
+@import 'functions';
+
+.unit-recent-added {
+    .card-body {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        padding-bottom: 0.2rem;
+    }
+
+    .unit-title {
+        margin-bottom: 1rem;
+        @include wrap-text(3);
+        font-size: 1.2rem;
+    }
+
+    .unit-category {
+        font-weight: 700;
+        color: white;
+        font-size: 0.9rem;
+    }
+
+    a.unit-category:hover {
+        color: white;
+    }
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.card-footer {
+    padding: 0.75rem 0.75rem;
+}
+
+.btn {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.unit-category {
+    text-decoration: underline;
+}
+
+// Override default disabled style
+:host ::ng-deep .mat-icon-button.mat-button-disabled {
+    color: rgba(255,255,255,1);
+}
+
+:host ::ng-deep ngx-material-rating {
+    position: relative;
+    top: -3px;
+}
+

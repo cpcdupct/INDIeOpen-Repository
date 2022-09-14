@@ -1,0 +1,81 @@
+.content-wrapper
+    ng-container(*ngIf="isPublished(); else notPublished")
+        h2.sub-title {{ 'units.tab-unit-use.publish' | translate }}
+        ng-container(*ngIf="isUpToDate(); else outdated")
+            p {{ 'units.tab-unit-use.up_to_date' | translate }}
+                | &nbsp;
+                span.badge.badge-success(*ngIf="unit.published.publishedDate") {{ 'common.published_at' | translate }} 
+                    time(pubdate) {{  unit.published.publishedDate | date: "dd/MM/yyyy"  }}
+
+        h2.sub-title {{ 'units.tab-unit-use.links' | translate }}
+        .form-group
+            label(for="ltiUrl") {{ 'units.tab-unit-use.url' | translate }} &nbsp;
+            .input-group.mb-3
+                input#ltiUrl.form-control(type="text", readonly="true", [value]="getResourceUrl()")
+                .input-group-append
+                    button.btn.btn-primary(type="button", (click)="copyResource()") 
+                        fa-icon([icon]="['fas', 'copy']") 
+                        | &nbsp; {{ 'units.tab-unit-use.copy_clipboard' | translate }}
+            p {{ 'units.tab-unit-use.analytics-text' | translate }} &nbsp;
+                span.badge([ngClass]="getLearningBadgeClass()") {{ getLearningBadgeText() }}
+            button.btn.btn-sm.btn-primary(
+                (click)="toggleLearningAnalytics()",
+                [disabled]="learningLoader"
+            )
+                io-button-loader([show]="learningLoader")
+                | {{ 'units.tab-unit-use.toggle-analytics' | translate }}
+
+        .form-group(*ngIf="isOpenPublished()")
+            label(for="publicUrl") {{ 'units.tab-unit-use.url-open' | translate }} &nbsp;
+            .input-group.mb-3
+                input#publicUrl.form-control(
+                    type="text",
+                    readonly="true",
+                    [value]="getOpenResourceUrl()"
+                )
+                .input-group-append
+                    button.btn.btn-primary(type="button", (click)="copyOpenResource()") 
+                        fa-icon([icon]="['fas', 'copy']") 
+                        | &nbsp; {{ 'units.tab-unit-use.copy_clipboard' | translate }}
+        fieldset(*ngIf="isPublished()")
+            legend
+                h2.sub-title {{ 'units.tab-unit-use.authorized.title' | translate }}
+            p {{ 'units.tab-unit-use.authorized.description' | translate }}
+            mat-form-field.authorized-list(appearance="fill")
+                mat-label {{'units.tab-unit-use.authorized.select.placeholder' | translate}}
+                mat-chip-list(#chipList, [attr.aria-label]="'units.tab-unit-use.authorized.select.placeholder' | translate")
+                    mat-chip(*ngFor="let user of selectedUsers", (removed)="remove(user)", [disableRipple]="true", (keydown.enter)="remove(user)", (keydown.space)="remove(user)", [selectable]="false") 
+                        | {{ user.name }} &nbsp;
+                        button(matChipRemove, tabindex="-1") 
+                            fa-icon([icon]='["fas", "times"]', size='2x', [attr.aria-label]="'units.tab-unit-use.authorized.select.delete' | translate")
+                    input.form-control(
+                        #userInput,
+                        [formControl]="userCtrl",
+                        [matAutocomplete]="users",
+                        [matChipInputFor]="chipList",
+                        type="search",
+                        [attr.aria-label]="'units.tab-unit-use.authorized.select.addTag' | translate",
+                        placeholder="{{ 'units.tab-unit-use.authorized.select.addTag' | translate }}",
+                        (keydown.enter)="$event.preventDefault()"
+                    )
+                mat-autocomplete(#users="matAutocomplete", (optionSelected)="selected($event)")
+                    mat-option(*ngFor="let user of filteredUsers$ | async", [value]="user") {{ user.name }}
+            .sr-only(#lti, id="authorization-lti-live", aria-live="polite", aria-atomic="true")
+            button.btn.btn-sm.btn-primary(
+                [disabled]="!usersChanged()",
+                (click)="authorizeUsers()"
+            )
+                | {{ 'units.tab-unit-use.authorized.update' | translate }}
+
+ng-template(#notPublished)
+    p {{ 'units.tab-unit-use.not_published' | translate }}
+    button.btn.btn-primary.btn-sm.mb-3(type="button", (click)="updateUnit()", [disabled]="loading") 
+        io-button-loader([show]="loading")
+        | &nbsp; {{ 'units.tab-unit-use.publish_unit' | translate }}
+ng-template(#outdated)
+    p {{ 'units.tab-unit-use.outdated' | translate }}
+        | &nbsp;
+        span.badge.badge-info {{ 'common.published_at' | translate }} {{  unit.published.publishedDate | date: "dd/MM/yyyy"  }}
+    button.btn.btn-primary.btn-sm.mb-3(type="button", (click)="updateUnit()", [disabled]="loading") 
+        io-button-loader([show]="loading")
+        | &nbsp; {{ 'units.tab-unit-use.update_unit' | translate }}

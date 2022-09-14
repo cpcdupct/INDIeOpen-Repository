@@ -1,0 +1,30 @@
+<div class="modal-body login-view">
+    <img class="form-logo img-fluid" [src]="getLoginLogoSrc()" alt="" />
+    <h2 class="login-title" id="login-title" *ngIf="view === 'EMAIL'">{{ 'io-login-view.email' | translate }}</h2>
+    <h2 class="login-title" id="login-title" *ngIf="view === 'LOGIN'">{{ 'io-login-view.please-sign-in' | translate }}</h2>
+    <h2 class="login-title" id="login-title" *ngIf="view === 'RESET'">{{ 'io-login-view.reset-password' | translate }}</h2>
+    <button class="btn btn-close" type="button" [attr.aria-label]="'common.close' | translate" (click)="closeModal()"><fa-icon [icon]="['fas', 'times']"></fa-icon></button><io-alerts></io-alerts>
+    <form [formGroup]="emailForm" (ngSubmit)="requestLogin()" style="text-align: left" ngNativeValidate *ngIf="view === 'EMAIL'">
+        <div class="form-group"><io-input [data]="emailInput"></io-input></div>
+        <div class="form-group">
+            <button class="btn btn-secondary btn-block" type="submit" ngbAutofocus [disabled]="!allowSubmit"><io-button-loader [show]="!allowSubmit"></io-button-loader>{{ 'io-login-view.continue' | translate }}</button>
+        </div>
+    </form>
+    <form [formGroup]="loginForm" (ngSubmit)="signIn()" style="text-align: left" ngNativeValidate *ngIf="view === 'LOGIN'">
+        <div class="form-group"><io-input [data]="usernameInput"></io-input></div>
+        <div class="form-group"><io-input [data]="passwordInput"></io-input></div>
+        <div class="form-group">
+            <button class="btn btn-secondary btn-block" type="submit" ngbAutofocus [disabled]="!allowSubmit"><io-button-loader [show]="!allowSubmit"></io-button-loader>{{ 'io-login-view.sign-in' | translate }}</button>
+        </div>
+    </form>
+    <form [formGroup]="resetPasswordForm" (ngSubmit)="resetPassword()" ngNativeValidate *ngIf="view === 'RESET'">
+        <div class="form-group"><io-input [data]="mailInput"></io-input></div>
+        <div class="form-group">
+            <button class="btn btn-secondary btn-block" type="submit" [disabled]="!allowSubmit"><io-button-loader [show]="!allowSubmit"></io-button-loader>{{ 'io-login-view.send-reset' | translate }}</button>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col"><a [routerLink]="" (click)="showReset()" *ngIf="showForgotPassword()">{{ 'io-login-view.forgot-password' | translate }}</a><a [routerLink]="" (click)="showEmail()" *ngIf="view === 'RESET'">{{ 'io-login-view.forgot-login' | translate }}</a></div>
+    </div>
+    <p class="mt-5 mb-3 text-muted">Universidad Politécnica de Cartagena - CPCD - 2020</p>
+</div>

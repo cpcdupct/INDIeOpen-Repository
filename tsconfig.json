@@ -1,0 +1,33 @@
+{
+    "angularCompilerOptions": {
+        "fullTemplateTypeCheck": true,
+        "preserveWhitespaces": false,
+        "strictInjectionParameters": true
+    },
+    "compileOnSave": true,
+    "compilerOptions": {
+        "baseUrl": "src",
+        "declaration": false,
+        "downlevelIteration": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "lib": ["es2018", "dom"],
+        "module": "esnext",
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "outDir": "./dist/out-tsc",
+        "paths": {
+            "@angular/*": ["./node_modules/@angular/*"],
+            "@core/*": ["app/core/*"],
+            "@shared/*": ["app/shared/*"],
+            "@testing/*": ["testing/*"]
+        },
+        "resolveJsonModule": true,
+        "sourceMap": true,
+        "strict": true,
+        "target": "es2015",
+        "typeRoots": ["node_modules/@types", "src/typings"],
+        "watch": true
+    }
+}

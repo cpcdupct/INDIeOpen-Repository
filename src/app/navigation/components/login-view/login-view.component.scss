@@ -1,0 +1,26 @@
+
+.login-view {
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5 rem;
+    text-align: center;
+    background-color: #e6e6e64a;
+    
+    .form-logo {
+        margin-bottom: 2rem;
+    }
+
+    .login-title {
+        color: var(--indie-blue);
+    }
+
+    .btn-close
+    {
+        position: absolute;
+        top: 0px;
+        right: 5px;
+        font-size: 2rem;
+        padding: 10px 20px;
+    }
+}

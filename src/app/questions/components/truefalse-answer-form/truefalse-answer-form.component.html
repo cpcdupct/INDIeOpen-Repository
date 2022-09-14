@@ -1,0 +1,20 @@
+<div class="card">
+    <form [formGroup]="questionForm" (ngSubmit)="submit()" ngNativeValidate>
+        <div class="card-body">
+            <h2 class="h4" *ngIf="formMode==='CREATE'">{{'questions.create_question.types.true_false.title' | translate}}</h2>
+            <h2 class="h4" *ngIf="formMode==='UPDATE'">{{'questions.update_question.types.trueFalse.title' | translate}}</h2>
+            <p>{{ "common.asterisk_required" | translate}}</p>
+            <div class="form-group"><io-textarea [data]="questionTextInput" rows="3"></io-textarea></div>
+            <fieldset class="form-group">
+                <legend>{{ 'questions.form.truefalseAnswer.label' | translate}} *</legend>
+                <div class="form-check"><input class="form-check-input" type="radio" name="correct" formControlName="correct" id="trueOption" [value]="true" /><label class="form-check-label" for="trueOption">{{'questions.common.true' | translate}}</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="correct" formControlName="correct" id="falseOption" [value]="false" /><label class="form-check-label" for="falseOption">{{'questions.common.false' | translate}}</label><small class="form-text valid-feedback" *ngIf="controls.correct.valid">{{'messages.valid_field' | translate}}</small></div>
+            </fieldset>
+            <div class="form-group" *ngIf="groups"><io-input-question-group [data]="groupInput" [groups]="groups"></io-input-question-group></div>
+            <div class="form-group"><io-input-tags [data]="tagsInput"></io-input-tags></div>
+        </div>
+        <div class="card-footer" style="text-align: right">
+            <button class="btn btn-success" type="submit" [disabled]="!allowSubmit"><io-button-loader [show]="!allowSubmit">&nbsp;</io-button-loader><span *ngIf="formMode==='CREATE'">{{'questions.create_question.submit' | translate}}</span><span *ngIf="formMode==='UPDATE'">{{'questions.update_question.submit' | translate}}</span></button>
+        </div>
+    </form>
+</div>

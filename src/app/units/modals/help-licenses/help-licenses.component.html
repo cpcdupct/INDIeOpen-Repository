@@ -1,0 +1,13 @@
+<div class="licenses">
+    <div class="modal-header">
+        <h4 class="modal-title">{{'units.tab-unit-share.licenses_info' | translate}}</h4>
+        <button class="close" type="button" aria-label="Close" (click)="closeModal()"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="modal-body">
+        <ngb-accordion #acc="ngbAccordion"
+            ><ngb-panel title="{{'units.licenses.private.label' | translate}}"><ng-template ngbPanelContent>{{'units.licenses_info_modal.private_text' | translate}}</ng-template></ngb-panel
+            ><ngb-panel title="{{'units.licenses.readonly.label' | translate}}"><ng-template ngbPanelContent>{{'units.licenses_info_modal.read_only_text' | translate}}</ng-template></ngb-panel
+            ><ngb-panel title="{{'units.licenses.reuse.label' | translate}}"><ng-template ngbPanelContent>{{'units.licenses_info_modal.reuse_text' | translate}}</ng-template></ngb-panel></ngb-accordion
+        >
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<div class="card filter" [attr.aria-labelledby]="labelId">
+    <fieldset class="card-body">
+        <legend><h3 class="card-title filter-title" [id]="labelId">{{ filter.label | translate }}</h3></legend>
+        <mat-radio-group class="filters-radio-group" [(ngModel)]="filter.selected"><mat-radio-button *ngFor="let item of filter.items" [value]="item.key" (change)="change($event)">{{ item.label | translate }}</mat-radio-button></mat-radio-group>
+    </fieldset>
+</div>

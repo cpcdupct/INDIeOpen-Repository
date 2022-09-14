@@ -1,0 +1,26 @@
+label([for]="data.name", *ngIf="data.label") {{ translateKey('label') | translate }} &nbsp;
+    span(*ngIf="data.required") * &nbsp;
+    span.limit(*ngIf="data.limit") ({{ translateKey('limit') | translate }}) &nbsp;
+tag-input(
+    #input,
+    [inputId]="data.name",
+    theme="bootstrap",
+    inputClass="form-control",
+    [formControl]="data.control",
+    [placeholder]="translateKey('placeholder') | translate",
+    [secondaryPlaceholder]="translateKey('placeholder') | translate",
+    [disable]="data.control.disabled",
+    (onAdd)="onItemAdded($event)",
+    (onRemove)="onItemRemoved($event)",
+    (onSelect)="onItemSelected($event)",
+    [ripple]="false",
+    role="listbox"
+)
+    ng-template(let-item="item", let-index="index")
+        .tag-wrapper((click)="data.control.disabled || input.removeItem(item, index)", (keydown)="data.control.disabled || onTagKeydown($event, item, index)", role="option", [tabindex]="data.control.disabled ? '-1' : '0'")
+            | {{ item.display }}
+            delete-icon([attr.aria-label]="'tags.delete' | translate")
+
+small.form-text.invalid-feedback(*ngIf="showError()") {{ translateKey('error') | translate }}
+small.form-text.valid-feedback(*ngIf="showOkFeedback()") {{ 'messages.valid_field' | translate }}
+.sr-only([id]="data.name + '-live'", aria-live="polite", aria-atomic="true")

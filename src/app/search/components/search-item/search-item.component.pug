@@ -1,0 +1,40 @@
+article.search-item((click)="viewUnit()")
+    .img-container 
+        img.img-fluid(
+            [src]="item.information.cover",
+            [alt]="'units.accesibility.image-unit' | translate: { title: item.information.name }"
+        )
+    .description-container
+        header
+            .row
+                .col-md-8.col-sm-12
+                    h3.card-title 
+                        io-flag([language]="item.information.language") 
+                        | &nbsp; {{ item.information.name }}
+                .col-md-4.col-sm-12.text-xs-left.text-sm-right
+                    span(*ngIf="item.published.publishedDate") {{ 'common.published_at' | translate }}
+                        | &nbsp; <time pubdate>{{  item.published.publishedDate | date: "dd/MM/yyyy"  }} </time>
+            .row
+                .col
+                    address 
+                        strong {{ item.author.name }} &nbsp;
+                        span.badge.badge-pill.badge-light(*ngIf="isYourUnit()") {{ 'common.you_are' | translate }}
+                .col.text-right(*ngIf="!isOriginalUnit()") 
+                    p {{ 'units.unit_from' | translate }} &nbsp;
+                        strong {{ item.originalUnit?.authorName }} &nbsp;
+        .description
+            p {{ item.information.shortDescription }}
+        .badges
+            span.badge([ngClass]="itemTypeClass()", translate) {{ type() }}
+            span.badge.badge-info {{ item.information.category | translateCategory }}
+        .rating
+            <strong><span class="sr-only">{{'rating.average' | translate}}</span>{{item.rating.average}}</strong> (<span class="sr-only">{{'rating.count' | translate}}</span>{{item.rating.count}}) 
+            ngx-material-rating(
+                role="slider", aria-valuemin="0", aria-valuemax="5", [attr.aria-valuenow]="item.rating.average", [attr.aria-valuetext]="'rating.current' | translate: {current: item.rating.average, max: 5}",
+                [dense]="true", [disabled]="true", [readonly]="true", [max]=5, [(ngModel)]="item.rating.average")
+            span.ml-2.mr-2 
+                != ' | '
+            span.badge.bg-dark.text-white {{ item.information.ageRange[0] }} - {{ item.information.ageRange[1] }} {{ 'common.years' | translate }}
+            span.ml-2.mr-2 
+                != ' | '
+            span([class]="getBadgeLicenseClass()") {{ item.creativeCommons }}

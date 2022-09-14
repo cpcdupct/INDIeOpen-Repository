@@ -1,0 +1,15 @@
+.modal-body
+    fieldset
+        legend {{ 'questions.types.select' | translate }}
+        .form-check(*ngFor="let type of types")
+            input.form-check-input(
+                type="radio",
+                [(ngModel)]="selectedType",
+                name="type",
+                [id]="type.value",
+                [value]="type.value"
+            )
+            label.form-check-label([for]="type.value") {{ type.label | translate }}
+.modal-footer
+    button.btn.btn-primary.btn-light(type="button", (click)="cancel()") {{ 'common.cancel' | translate }}
+    button.btn.btn-primary.btn-primary(type="button", (click)="confirm()") {{ 'common.select' | translate }}

@@ -1,0 +1,35 @@
+.welcome {
+    padding: 1rem;
+    display: flex;
+
+    button {
+        width: 40%;
+        border-radius: 20px;
+    }
+
+    .main-logo {
+        display: block;
+    }
+
+    .welcome-text-description {
+        font-weight: bold;
+        font-size: 2rem;
+        display: block;
+        max-width: 50rem;
+    }
+
+    .text-secondary {
+        font-size: 2.5rem;
+        font-weight: bold;
+        display: block;
+    }
+}
+
+.welcome {
+    @media only screen and (orientation: landscape) {
+        height: 93vh;
+    }
+    @media only screen and (orientation: portrait) {
+        height: 80vh;
+    }
+}

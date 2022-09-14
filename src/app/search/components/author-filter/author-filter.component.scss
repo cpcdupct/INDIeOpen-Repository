@@ -1,0 +1,19 @@
+.filter {
+    .filter-title {
+        color: var(--indie-pink);
+        text-transform: uppercase;
+    }
+
+    margin-bottom: 1rem;
+}
+
+.author-selected {
+
+    .badge {
+        margin-top: 10px;
+    }
+
+    fa-icon {
+        padding-left: 5px;
+    }
+}

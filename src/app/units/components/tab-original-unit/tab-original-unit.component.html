@@ -1,0 +1,22 @@
+<div class="content-wrapper">
+    <h2 class="sub-title mb-3">Obtener última versión de la unidad</h2>
+    <ng-container *ngIf="originalUnitStatus$ | async as originalUnitStatus"
+        ><p *ngIf="!originalUnitStatus.existing">{{ 'units.tab-original-unit.non-original.non-existing' | translate }}</p>
+        <ng-container *ngIf="originalUnitStatus.existing"
+            ><button class="mr-3 btn btn-primary btn-sm" (click)="openCofirmUpdate()" *ngIf="isVersionOutdated(originalUnitStatus.lastPublished)"><io-button-loader *ngIf="updating"></io-button-loader>{{ 'units.tab-original-unit.non-original.get-last-version' | translate }}</button>
+            <p *ngIf="!isVersionOutdated(originalUnitStatus.lastPublished)">{{ 'units.tab-original-unit.non-original.already-updated' | translate }}</p>
+            <a class="mr-3 btn btn-secondary btn-sm" [href]="previewUnit(originalUnitStatus.resource)" role="button" target="_blank">{{ 'common.preview' | translate }}</a></ng-container
+        ></ng-container
+    >
+    <h2 class="sub-title mt-3 mb-3">{{ 'units.tab-original-unit.information' | translate }}</h2>
+    <p class="ml-3"><strong>{{ 'units.tab-original-unit.name' | translate }}</strong>: {{ unit.originalUnit?.unitName }}</p>
+    <p class="ml-3"><strong>{{ 'units.tab-original-unit.author' | translate }}</strong>: {{ unit.originalUnit?.authorName }}</p>
+    <p class="ml-3"><strong>{{ 'units.tab-original-unit.shared_at' | translate }}</strong>: {{ unit.originalUnit?.timeStamp | date: "dd/MM/yyyy" }}</p>
+    <ng-container *ngIf="originalRating"
+        ><h2 class="sub-title">{{ 'units.tab-unit-rating.rating' | translate }}</h2>
+        <strong><span class="sr-only">{{'rating.average' | translate}}</span>{{originalRating.average}}</strong> (<span class="sr-only">{{'rating.count' | translate}}</span>{{originalRating.count}}) <ngx-material-rating role="slider" aria-valuemin="0" aria-valuemax="5" [attr.aria-valuenow]="originalRating.average" [attr.aria-valuetext]="'rating.current' | translate: {current: originalRating.average, max: 5}" [dense]="true" [disabled]="true" [readonly]="true" [max]="5" [(ngModel)]="originalRating.average"></ngx-material-rating
+    ></ng-container>
+    <h2 class="sub-title">{{ 'units.tab-original-unit.rate_unit' | translate }}</h2>
+    <p *ngIf="existRating()">{{ 'units.tab-original-unit.already_evaluated' | translate }}</p>
+    <ngx-material-rating class="rate-this-unit" #rate (keydown)="onRatingKeyDown($event)" (click)="onRateChange($event)" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="5" [attr.aria-valuenow]="userRate" [attr.aria-valuetext]="textUserRate" aria-labelledby="view-unit-rate" [dense]="true" [disabled]="existRating()" [max]="5" [(ngModel)]="userRate"></ngx-material-rating>
+</div>

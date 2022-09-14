@@ -1,0 +1,78 @@
+@import 'functions';
+
+hr {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 2px solid var(--indie-blue);
+}
+
+.unit-name {
+    @include wrap-text(2);
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-header {
+    padding: 0.5rem;
+    border: none;
+
+    .close {
+        outline: none;
+    }
+}
+
+.view-unit {
+    .unit-badges {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+
+        .badge {
+            margin-right: 1rem;
+            white-space: normal !important;
+        }
+    }
+
+    .img-container {
+        display: flex;
+
+        .unit-img {
+            margin: auto;
+            width: 200px;
+            height: auto;
+            max-height: 300px;
+        }
+    }
+
+    .name {
+        font-weight: bold;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        @include wrap-text(3);
+    }
+
+    .author-name {
+        margin-bottom: 0.5rem !important;
+        @include wrap-text(1);
+    }
+
+    .date {
+        font-weight: bolder;
+    }
+
+    p {
+        margin-bottom: 0.1rem;
+    }
+}
+
+// Override default disabled style
+:host ::ng-deep .mat-icon-button.mat-button-disabled {
+    color: var(--indie-blue);
+}
+
+:host ::ng-deep ngx-material-rating {
+    position: relative;
+    top: -3px;
+}

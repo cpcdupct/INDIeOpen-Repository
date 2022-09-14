@@ -1,0 +1,6 @@
+<div class="modal-header" *ngIf="data.title"><h4 class="modal-title">{{data.title | translate}}</h4></div>
+<div class="modal-body">
+    <p *ngIf="data.message">{{data.message | translate}}</p>
+    <a [href]="data.link">{{data.link}}</a>
+</div>
+<div class="modal-footer"><button class="btn btn-primary" type="button" (click)="activeModal.dismiss()">{{'common.close' | translate}}</button></div>

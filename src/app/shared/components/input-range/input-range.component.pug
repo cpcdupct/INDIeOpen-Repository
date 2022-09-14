@@ -1,0 +1,9 @@
+label([id]="data.name", [for]="data.name", *ngIf="data.label") {{ translateKey('label') | translate }} &nbsp;
+    span(*ngIf="data.required") * &nbsp;
+    span.limit(*ngIf="data.limit") ({{ translateKey('limit') | translate }}) &nbsp;
+ngx-slider([formControl]="data.control", [options]="options")
+small.form-text.invalid-feedback(
+    *ngIf="showError()",
+    [innerHtml]="translateKey('error') | translate"
+) 
+small.form-text.valid-feedback(*ngIf="showOkFeedback()") {{ 'messages.valid_field' | translate }}

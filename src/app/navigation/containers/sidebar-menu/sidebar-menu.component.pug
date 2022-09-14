@@ -1,0 +1,59 @@
+.side-nav-bar([ngClass]="{ 'side-nav-bar-collapsed': !(showMenu | async) }")
+    .side-nav-bar-overlay(
+        [ngStyle]="{ transition: 'background-color ' + duration + 's, visibility ' + duration + 's' }",
+        [ngClass]="{ 'side-nav-bar-overlay-collapsed': !(showMenu | async) }",
+        (click)="onSidebarClose()"
+    )
+    .side-nav-bar-menu-container([ngStyle]="getMenuBarStyle(showMenu | async)", role="dialog", aria-modal="true", tabindex="-1", (keydown)="onKey($event)")
+        .side-nav-bar-content-container(role="document")
+            button(type="button", class="side-nav-bar-close", data-dismiss="modal", [attr.aria-label]="'common.close' | translate", (click)="onSidebarClose()")
+                span(aria-hidden="true") &times;
+
+            ul.list-group.list-group-root.well
+                li.list-group-item
+                    a.link-item([href]="'#'", (click)="collapseExplore.toggle(); $event.preventDefault()", [attr.aria-expanded]="!exploreCollapsed", aria-controls="sidebar-explore-collapse")
+                        fa-icon([icon]="['fas', 'chevron-left']", *ngIf="!exploreCollapsed")
+                        fa-icon([icon]="['fas', 'chevron-right']", *ngIf="exploreCollapsed")
+                        | &nbsp;
+                        | {{  "nav.explore" | translate: { value: appName }  }}
+                    ul.list-group.collapse(
+                        id="sidebar-explore-collapse",
+                        #collapseExplore="ngbCollapse",
+                        [(ngbCollapse)]="exploreCollapsed",
+                        [animation]="true"
+                    )
+                        li.list-group-item
+                            a.link-item(routerLink="/explore") {{ 'nav.menu.show_case' | translate }}
+                        li.list-group-item
+                            a.link-item(
+                                [routerLink]="'/search'",
+                                [queryParams]="{ type: 'CONTENT' }"
+                            ) {{ 'nav.menu.all_content_units' | translate }}
+                        li.list-group-item
+                            a.link-item(
+                                [routerLink]="'/search'",
+                                [queryParams]="{ type: 'EVALUATION' }"
+                            ) {{ 'nav.menu.all_evaluation_units' | translate }}
+                        li.list-group-item
+                            a.link-item(routerLink="/search") {{  "nav.menu.browse" | translate: { value: appName }  }}
+                    ng-container(*ngIf="isLoggedIn()")
+                        li.list-group-item
+                            a.link-item((click)="collapseMycontent.toggle()", [attr.aria-expanded]="!myContentCollapse", aria-controls="sidebar-mycontent-collapse")
+                                fa-icon([icon]="['fas', 'chevron-left']", *ngIf="!myContentCollapse")
+                                fa-icon([icon]="['fas', 'chevron-right']", *ngIf="myContentCollapse")
+                                | &nbsp;
+                                | {{ 'nav.my-content' | translate }}
+                            ul.list-group.collapse(
+                                id="sidebar-mycontent-collapse",
+                                #collapseMycontent="ngbCollapse",
+                                [(ngbCollapse)]="myContentCollapse",
+                                [animation]="true"
+                            ) 
+                                li.list-group-item
+                                    a.link-item(routerLink="/units") {{ 'units.my_units.title' | translate }}
+                                li.list-group-item
+                                    a.link-item(routerLink="/questions") {{ 'questions.my_questions.title' | translate }}
+                                li.list-group-item
+                                    a.link-item(routerLink="/videos") {{ 'videos.my_videos.title' | translate }}
+                                li.list-group-item
+                                    a.link-item(routerLink="/courses") {{ 'courses.my_courses.title' | translate }}

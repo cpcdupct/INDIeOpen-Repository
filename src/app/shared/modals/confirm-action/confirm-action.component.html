@@ -1,0 +1,10 @@
+<div class="modal-header">
+    <h4 class="modal-title"><fa-icon [icon]="['fas', 'info-circle']"></fa-icon>&nbsp;<span *ngIf="!data?.title">{{ 'modals.confirm-action.title' | translate }}</span><span *ngIf="data?.title">{{ data?.title | translate }}</span></h4>
+</div>
+<div class="modal-body">
+    <p *ngIf="!data?.message">{{ 'modals.confirm-action.message' | translate }}</p>
+    <p *ngIf="data?.message">{{ data?.message | translate }}</p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary btn-light" type="button" (click)="cancel()">{{ 'modals.confirm-action.buttons.cancel' | translate }}</button><button class="btn btn-primary" type="button" (click)="confirm()" [ngClass]="confirmButtonStyle()"><span *ngIf="!data?.actionButton">{{ 'modals.confirm-action.buttons.ok' | translate }}</span><span *ngIf="data?.actionButton">{{ data?.actionButton | translate }}</span></button>
+</div>

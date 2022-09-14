@@ -1,0 +1,22 @@
+<div class="row mt-2">
+    <div class="col"><io-alerts> </io-alerts></div>
+</div>
+<main class="row mt-2" id="main" tabindex="-1" aria-labelledby="title">
+    <div class="col">
+        <div class="card">
+            <form ngNativeValidate [formGroup]="courseForm" (ngSubmit)="submit()">
+                <div class="card-body">
+                    <h1 class="h2" *ngIf="!isUpdate()" translate id="title" tabindex="-1">courses.create.title</h1>
+                    <h1 class="h2" *ngIf="isUpdate()" translate id="title" tabindex="-1">courses.update.title</h1>
+                    <div class="form-group">
+                        <p>{{ "common.asterisk_required" | translate}}</p>
+                        <io-input [data]="nameInput"></io-input>
+                    </div>
+                </div>
+                <div class="card-footer" style="text-align: right">
+                    <button class="btn btn-success" type="submit" [disabled]="!allowSubmit"><io-button-loader [show]="!allowSubmit"></io-button-loader><span *ngIf="!isUpdate()">{{ "courses.create.form.submit" | translate }}</span><span *ngIf="isUpdate()">{{ "courses.update.submit" | translate }}</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

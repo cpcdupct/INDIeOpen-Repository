@@ -1,0 +1,25 @@
+<nav class="sr-only skip-link"><a [href]="currentUrl" (click)="skipNav($event)">{{ "nav.skip-link" | translate }}</a></nav>
+<header>
+    <nav class="navbar navbar-expand-md fixed-top btco-hover-menu row no-gutters" [ngClass]="navStyles()">
+        <div class="col-2 col-sm-auto"><button class="bg-primary text-white navbar-toggler mr-auto" type="button" (click)="toggleMenu()" [attr.aria-label]="'nav.menu.toggle' | translate " aria-haspopup="dialog">&#9776;</button></div>
+        <div class="collapse navbar-collapse nav-content row">
+            <ul class="navbar-nav mr-auto" role="menubar">
+                <li class="nav-item" role="none">
+                    <button class="nav-link" mat-button [matMenuTriggerFor]="explore" role="menuitem">{{ "nav.explore" | translate: { value: appName } }}<mat-icon>expand_more</mat-icon></button><mat-menu #explore="matMenu"><a mat-menu-item routerLink="/explore" routerLinkActive (click)="navigate($event)">{{ "nav.menu.show_case" | translate }}</a><a mat-menu-item [routerLink]='"/search"' [queryParams]='{ type: "CONTENT" }' routerLinkActive (click)="navigate($event)">{{ "nav.menu.all_content_units" | translate }}</a><a mat-menu-item [routerLink]='"/search"' [queryParams]='{ type: "EVALUATION" }' routerLinkActive (click)="navigate($event)">{{ "nav.menu.all_evaluation_units" | translate }}</a><a mat-menu-item routerLink="/search" [queryParams]='{type: "ALL_TYPES" }' routerLinkActive (click)="navigate($event)">{{ "nav.menu.browse" | translate: { value: appName } }}</a></mat-menu>
+                </li>
+                <li class="nav-item" role="none">
+                    <button class="nav-link" mat-button *ngIf="isLoggedIn()" [matMenuTriggerFor]="content" role="menuitem">{{ "nav.my-content" | translate }}<mat-icon>expand_more</mat-icon></button><mat-menu #content="matMenu"><a mat-menu-item routerLink="/units" routerLinkActive (click)="navigate($event)">{{ "units.my_units.title" | translate }}</a><a mat-menu-item routerLink="/questions" routerLinkActive (click)="navigate($event)">{{ "questions.my_questions.title" | translate }}</a><a mat-menu-item routerLink="/videos" routerLinkActive (click)="navigate($event)">{{ "videos.my_videos.title" | translate }}</a><a mat-menu-item routerLink="/courses" routerLinkActive (click)="navigate($event)">{{ "courses.my_courses.title" | translate }}</a></mat-menu>
+                </li>
+            </ul>
+        </div>
+        <form class="form-inline my-2 my-md-0 col-8 col-sm-9 col-md-auto" role="search">
+            <label class="form-label"
+                ><span class="sr-only">{{"nav.accesibility.search-input" | translate }}</span><input class="form-control search-form" searchInput [matAutocomplete]="autoSearch" (keypress)="keyPress($event)" type="search" [attr.aria-label]='"nav.accesibility.search-input" | translate' placeholder='{{ "nav.search" | translate: { value: appName } }}' [(ngModel)]="searchText" [ngModelOptions]="{ standalone: true }" (ngModelChange)="dataChanged($event)" /><mat-autocomplete #autoSearch="matAutocomplete" optionSelected="naviga"><mat-option *ngFor="let item of units" [value]="item.information.name">{{item.information.name}}</mat-option></mat-autocomplete></label
+            >
+        </form>
+        <io-user-panel class="col-2 text-center col-sm-auto" *ngIf="isLoggedIn()" (userStatusChanged)="onUserStatusChanged($event)"></io-user-panel>
+        <div class="nav-item col-2 text-center col-sm-auto" *ngIf="!isLoggedIn()">
+            <button class="nav-link" (click)="showLogin()" aria-haspopup="dialog" [attr.aria-label]="'nav.login' | translate"><fa-icon [icon]='["fas", "user-circle"]' size="2x"></fa-icon></button>
+        </div>
+    </nav>
+</header>

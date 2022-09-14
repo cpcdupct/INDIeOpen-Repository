@@ -1,0 +1,21 @@
+<div class="row mt-2">
+    <div class="col"><io-alerts> </io-alerts></div>
+</div>
+<main class="row mt-2" id="main" tabindex="-1">
+    <div class="col">
+        <h1 class="h2" *ngIf="!isUpdate()" translate id="title" tabindex="-1">videos.create.title</h1>
+        <h1 class="h2" *ngIf="isUpdate()" translate id="title" tabindex="-1">videos.update.title</h1>
+        <div class="card">
+            <form [formGroup]="videoForm" (ngSubmit)="submit()" ngNativeValidate>
+                <div class="card-body">
+                    <p>{{ "common.asterisk_required" | translate}}</p>
+                    <div class="form-group"><io-input [data]="nameInput"></io-input></div>
+                    <div class="form-group"><io-input [data]="urlInput"></io-input></div>
+                </div>
+                <div class="card-footer" style="text-align: right">
+                    <button class="btn btn-success" type="submit" [disabled]="!allowSubmit"><io-button-loader [show]="!allowSubmit"></io-button-loader><span *ngIf="!isUpdate()">{{ "videos.create.form.submit" | translate }}</span><span *ngIf="isUpdate()">{{ "videos.update.submit" | translate }}</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

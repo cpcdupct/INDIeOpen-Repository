@@ -1,0 +1,165 @@
+// Global styling for this template
+html,
+body {
+    font-family: 'Lato', sans-serif;
+    background-image: url('/assets/img/fondo/FondoPrincipal.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: auto;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.mt-10 {
+    margin-top: 8rem !important;
+}
+
+.darkBlue_bg {
+    background-color: var(--indie-blue);
+}
+
+// Set spacing on containers for page symmetry
+
+.container,
+.container-fluid {
+    padding-left: $grid-gutter-width;
+    padding-right: $grid-gutter-width;
+}
+
+a:hover {
+    color: rgb(200, 206, 213);
+}
+
+a.card-link {
+    color: var(--indie-blue);
+    cursor: pointer;
+}
+
+a.card-link:hover {
+    color: rgb(120, 135, 154);
+}
+
+.section-title {
+    color: var(--indie-blue);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.main-container {
+    width: 100%;
+    margin-top: 60px;
+    padding-bottom: 2rem;
+}
+
+@media (min-width: 1300px) {
+    .main-container {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+}
+
+@media (min-width: 1010px) and (max-width: 1300px) {
+    .main-container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1010px) {
+    .main-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
+
+.align-right {
+    text-align: right;
+}
+
+.align-center {
+    text-align: center;
+}
+
+ngb-rating {
+    font-size: 1.4rem;
+}
+
+.ngx-slider {
+    .ngx-slider-selection {
+        background: var(--indie-blue) !important;
+    }
+
+    .ngx-slider-pointer,
+    .ngx-slider-pointer:after {
+        background: var(--indie-blue) !important;
+    }
+}
+
+.ng2-dropdown-menu {
+    width: 360px !important;
+}
+
+.badge-read-only {
+    background-color: #256ccf;
+    color: white;
+}
+
+.badge-reuse {
+    background-color: #920061;
+    color: white;
+}
+
+.ng-option-marked {
+    background-color: var(--indie-blue) !important;
+    color: white !important;
+
+    .ng-option-label {
+        font-weight: normal !important;
+    }
+}
+
+.category-autocomplete
+{
+    .category-path {
+        font-size: smaller;
+    }
+
+    .mat-option-text {
+        overflow: visible;
+        white-space: break-spaces;
+        line-height: normal;
+    }
+
+    .mat-optgroup-label {
+        padding: 0 10px;
+        min-height: 36px;
+        height: auto;
+        line-height: 36px;
+    }
+
+    .mat-optgroup {
+        .mat-option {
+            &:not(.mat-option-multiple) {
+                margin: 0 10px;
+                padding: 5px 0;
+                height: auto;
+                border-bottom: 1px solid #bfbfbf;
+            }
+        }
+    }
+}
+
+// To prevent the autocomplete from appearing behind modals
+.cdk-overlay-container {
+    z-index: 1100;
+}

@@ -1,0 +1,56 @@
+.list-group-item {
+    list-style: none;
+    border: none;
+    padding: 0.4rem;
+
+    .form-check {
+        .form-check-input:hover,
+        .form-check-label:hover {
+            cursor: pointer;
+        }
+    }
+
+    input[type='checkbox'] {
+        vertical-align: middle;
+    }
+
+    div.child-list {
+        margin-top: 10px;
+    }
+}
+
+.filter {
+    .filter-title {
+        color: var(--indie-pink);
+        text-transform: uppercase;
+    }
+
+    .angle {
+        cursor: pointer;
+    }
+
+    margin-bottom: 1rem;
+}
+
+label {
+    * {
+        margin-right: 0.5rem;
+    }
+}
+
+.results {
+    color: var(--indie-pink);
+    font-size: smaller;
+}
+
+.filters-radio-group
+{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    align-items: flex-start;
+}
+
+:host ::ng-deep .mat-radio-label {
+    white-space: break-spaces;
+}

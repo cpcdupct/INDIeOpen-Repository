@@ -1,0 +1,6 @@
+<label [for]="data.name" *ngIf="data.label">{{ translateKey('label') | translate }} &nbsp;<span *ngIf="data.required">* &nbsp;</span><span class="limit" *ngIf="data.limit">({{ translateKey('limit') | translate }}) &nbsp;</span></label>
+<div class="row">
+    <div class="col d-flex align-items-center"><input class="form-control badge badge-info align-middle" [id]="data.name" [name]="data.name" type="text" readonly [placeholder]="translateKey('placeholder') | translate" [attr.value]="categoryText" /></div>
+    <div class="col"><button class="btn btn-primary btn-sm" type="button" (click)="showPickCategoryModal()" [disabled]="data.control.disabled">{{ 'shared.change-category' | translate }}</button></div>
+</div>
+<small class="form-text invalid-feedback" *ngIf="showError()">{{ translateKey('error') | translate }}</small><small class="form-text valid-feedback" *ngIf="showOkFeedback()">{{ 'messages.valid_field' | translate }}</small>

@@ -1,0 +1,3 @@
+<div aria-live="polite" aria-atomic="true">
+    <div class="{{cssClass(alert)}}" *ngFor="let alert of alerts"><a class="close" (click)="removeAlert(alert)">&times;</a><span [innerHTML]="alert.message"></span></div>
+</div>

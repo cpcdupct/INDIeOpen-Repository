@@ -1,0 +1,38 @@
+<main id="main" tabindex="-1">
+    <div class="row">
+        <div class="col">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2">
+                <h1 class="section-title" translate id="title" tabindex="-1">videos.my_videos.title</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                        <a class="btn btn-sm btn-primary" type="button" routerLink="/videos/create"> {{ 'videos.my_videos.create_button' | translate }} &nbsp;<fa-icon [icon]="['fas', 'plus-circle']"></fa-icon></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col"><io-alerts></io-alerts></div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-lg-5 col-xl-5 d-flex justify-content-center justify-content-lg-start"><span>{{ "search.showing_count" | translate: { page: getElements(), size:total } }}</span></div>
+        <div class="col-md-12 col-lg-7 col-xl-7 d-flex justify-content-center justify-content-lg-end">
+            <div class="form-inline filters-bar">
+                <div class="form-group"><label translate [for]="orderFilter.key">&nbsp; search.order_by &nbsp;</label><io-select-type [filter]="orderFilter" (typeSelected)="onTypeSelected($event)"></io-select-type></div>
+            </div>
+        </div>
+    </div>
+    <io-loader></io-loader>
+    <div class="row" *ngIf="videos$ | async as videos">
+        <div class="col">
+            <io-list-video *ngFor="let video of videos" [video]="video" (deletedVideo)="onDeletedVideo($event)"></io-list-video>
+            <div class="card my-2" *ngIf="videos.length == 0"><div class="card-body">{{ 'videos.no_results' | translate }}</div></div>
+        </div>
+    </div>
+    <div class="row">
+        <nav class="col" [attr.aria-label]="'pagination.navigation' | translate">
+            <div class="current-page" id="current-page"><label for="current-pagination-value"> {{ 'pagination.current' | translate }}</label><input class="form-control-inline" id="current-pagination-value" matInput type="number" min="1" [max]="lastPage" [(ngModel)]="page" (ngModelChange)="$event &amp;&amp; loadVideos($event)" name="page" /></div>
+            <mat-paginator [length]="total" [pageSize]="5" [hidePageSize]="true" [pageIndex]="page - 1" [showFirstLastButtons]="true" (page)="loadVideos($event.pageIndex+1)"></mat-paginator>
+        </nav>
+    </div>
+</main>

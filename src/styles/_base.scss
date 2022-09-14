@@ -1,0 +1,20 @@
+// Import Custom Variables
+@import 'variables';
+
+// Import Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+// Import Custom SCSS
+@import './custom/buttons';
+@import './custom/modals';
+@import './custom/carousel';
+@import './custom/forms';
+@import './custom/pagination';
+
+// Import third party
+@import '~ngx-toastr/toastr-bs4-alert';
+@import '~@ng-select/ng-select/themes/default.theme.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+// Global SCSS
+@import 'global';

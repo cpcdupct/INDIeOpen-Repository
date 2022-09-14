@@ -1,0 +1,5 @@
+section.card.h-100([attr.aria-labelledby]="'explore-item-' + index")
+    .card-body
+        h2.card-title([id]="'explore-item-' + index") {{ getText() }}
+        img.mb-2.card-img-top.img-fluid([src]="item.cover", alt="")
+        a.btn.btn-primary.d-flex.flex-column.justify-content-center.align-items-center([routerLink]="item.action", [queryParams]="item.params") {{ getActionText() }}

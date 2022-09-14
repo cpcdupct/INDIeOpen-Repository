@@ -1,0 +1,26 @@
+<article class="card h-100 text-white unit-recent-added">
+    <div class="card-body" [ngStyle]="backGround()">
+        <h3 class="card-title unit-title"><strong>{{ unit.name }}</strong></h3>
+        <a class="card-text unit-category" [href]="categoryLink()"> <fa-icon [icon]='["fas","link"]'></fa-icon><span>{{ unit.category | translateCategory }}</span></a>
+        <div class="row">
+            <div class="col">
+                <p>
+                    <strong><span class="sr-only">{{'rating.average' | translate}}</span>{{unit.rating.average}}</strong> (<span class="sr-only">{{'rating.count' | translate}}</span>{{unit.rating.count}}) <ngx-material-rating role="slider" aria-valuemin="0" aria-valuemax="5" [attr.aria-valuenow]="unit.rating.average" [attr.aria-valuetext]="'rating.current' | translate: {current: unit.rating.average, max: 5}" [dense]="true" [disabled]="true" [readonly]="true" [max]="5" [(ngModel)]="unit.rating.average"></ngx-material-rating>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer bg-white">
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary btn-block" (click)="viewUnit()" aria-haspopup="dialog">{{ 'common.see' | translate }} <span class="sr-only">{{ unit.name }}</span></button>
+            </div>
+            <div class="col" *ngIf="canAddUnit()">
+                <button class="btn btn-secondary btn-block" (click)="addUnit()" [disabled]="addUnitLoader">
+                    <io-button-loader [show]="addUnitLoader"> </io-button-loader><span *ngIf="!addUnitLoader">{{ 'common.add' | translate }} <span class="sr-only">{{ unit.name }}</span></span
+                    ><span *ngIf="addUnitLoader">{{ 'units.messages.adding_unit' | translate }}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</article>

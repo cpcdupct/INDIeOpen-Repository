@@ -1,0 +1,16 @@
+.welcome
+    .row.align-items-center
+        .col-sm-12.col-md-6
+            h1.sr-only(id="title", tabindex="-1") {{  "explore.welcome.main-header" | translate: {platform: platform} }}
+            img.main-logo.img-fluid(
+                [alt]='"explore.accesibility.logo-description" | translate',
+                [src]='mainLogoSrc()'
+            )
+            p
+                span.text-secondary {{ "explore.welcome.create" | translate }}
+                span.text-primary.welcome-text-description {{ "explore.welcome.platform" | translate }} {{ "explore.welcome.share" | translate }} {{ "explore.welcome.class" | translate }}
+        .col-sm-12.col-md-6
+            img.img-fluid(
+                [alt]='"explore.accesibility.screens-description" | translate',
+                [src]='mainImageSrc()'
+            )

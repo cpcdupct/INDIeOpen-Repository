@@ -1,0 +1,14 @@
+.modal-header
+    h4.modal-title 
+        fa-icon([icon]="['fas', 'info-circle']")
+        | &nbsp;
+        span(*ngIf="!data?.title") {{ 'modals.confirm-action.title' | translate }}
+        span(*ngIf="data?.title") {{ data?.title | translate }}
+.modal-body
+    p(*ngIf="!data?.message") {{ 'modals.confirm-action.message' | translate }}
+    p(*ngIf="data?.message") {{ data?.message | translate }}
+.modal-footer
+    button.btn.btn-primary.btn-light(type="button", (click)="cancel()") {{ 'modals.confirm-action.buttons.cancel' | translate }}
+    button.btn.btn-primary(type="button", (click)="confirm()", [ngClass]="confirmButtonStyle()") 
+        span(*ngIf="!data?.actionButton") {{ 'modals.confirm-action.buttons.ok' | translate }}
+        span(*ngIf="data?.actionButton") {{ data?.actionButton | translate }}

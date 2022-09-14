@@ -1,0 +1,7 @@
+div.modal-header(*ngIf='data.title')
+    h4.modal-title {{data.title | translate}}
+div.modal-body
+    p(*ngIf='data.message') {{data.message | translate}}
+    a([href]='data.link') {{data.link}}
+div.modal-footer
+    button.btn.btn-primary(type='button', (click)="activeModal.dismiss()") {{'common.close' | translate}}

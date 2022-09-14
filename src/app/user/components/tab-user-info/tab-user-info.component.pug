@@ -1,0 +1,11 @@
+ng-container(*ngIf='userInfoForm')
+    form.form([formGroup]='userInfoForm', (ngSubmit)='submit()', ngNativeValidate)
+        .form-group
+            io-input([data]='emailInput')
+        .form-group
+            io-input([data]='newPasswordInput')
+        .form-group
+            io-input([data]='repeatPasswordInput')
+        button.btn.btn-success(type='submit', [disabled]='!allowSubmit')
+            io-button-loader([show]='!allowSubmit')
+            | {{ "user.user_account.submit" | translate }}

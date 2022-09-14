@@ -1,0 +1,10 @@
+<div class="modal-header">
+    <h4 class="modal-title"><fa-icon [icon]='["fas", "info-circle"]'></fa-icon> &nbsp; {{ "units.tab-unit-actions.delete-unit-modal.title" | translate }}</h4>
+</div>
+<div class="modal-body">
+    <p>{{ "units.tab-unit-actions.delete-unit-modal.message" | translate: { value: appName } }}</p>
+    <p>{{ "units.tab-unit-actions.delete-unit-modal.message_2" | translate }}</p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary btn-light" type="button" (click)="cancel()">{{ "modals.confirm-action.buttons.cancel" | translate }}</button><button class="btn btn-primary btn-danger" type="button" (click)="delete()" [disabled]="deleting"><io-button-loader [show]="deleting"></io-button-loader><span *ngIf="!deleting">{{ "units.tab-unit-actions.delete-unit-modal.delete" | translate }}</span><span *ngIf="deleting">{{ "units.tab-unit-actions.delete-unit-modal.unit_deleting" | translate }}</span></button>
+</div>

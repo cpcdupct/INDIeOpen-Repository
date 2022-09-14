@@ -1,0 +1,25 @@
+article.card.h-100.text-white.unit-recent-added
+    .card-body([ngStyle]="backGround()")
+        h3.card-title.unit-title
+            strong {{ unit.name }}
+        a.card-text.unit-category([href]="categoryLink()") 
+            fa-icon([icon]=['fas', 'link'])
+            span {{ unit.category | translateCategory }}
+        .row
+            .col
+                p 
+                    <strong><span class="sr-only">{{'rating.average' | translate}}</span>{{unit.rating.average}}</strong> (<span class="sr-only">{{'rating.count' | translate}}</span>{{unit.rating.count}}) 
+                    ngx-material-rating(
+                        role="slider", aria-valuemin="0", aria-valuemax="5", [attr.aria-valuenow]="unit.rating.average", [attr.aria-valuetext]="'rating.current' | translate: {current: unit.rating.average, max: 5}",
+                        [dense]="true", [disabled]="true", [readonly]="true", [max]=5, [(ngModel)]="unit.rating.average")
+    .card-footer.bg-white
+        .row
+            .col
+                button.btn.btn-primary.btn-block((click)="viewUnit()", aria-haspopup="dialog") {{ 'common.see' | translate }} 
+                    span.sr-only {{ unit.name }}
+            .col(*ngIf="canAddUnit()") 
+                button.btn.btn-secondary.btn-block((click)="addUnit()", [disabled]="addUnitLoader")
+                    io-button-loader([show]="addUnitLoader") 
+                    span(*ngIf="!addUnitLoader") {{ 'common.add' | translate }} 
+                        span.sr-only {{ unit.name }}
+                    span(*ngIf="addUnitLoader") {{ 'units.messages.adding_unit' | translate }}

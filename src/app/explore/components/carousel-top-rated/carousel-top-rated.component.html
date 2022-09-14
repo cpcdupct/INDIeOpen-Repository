@@ -1,0 +1,19 @@
+<ng-container *ngIf="slides; else unitLoader"
+    ><div class="carousel-container">
+        <div class="carousel-content flex-gro-1">
+            <ng-container *ngFor="let slide of slides; index as indexSlide"
+                ><ul class="current-slides row" *ngIf="activeSlide == indexSlide">
+                    <li class="col col-lg-6" *ngFor="let unit of slide"><io-top-rated [unit]="unit"></io-top-rated></li></ul
+            ></ng-container>
+        </div>
+    </div>
+    <ul class="carousel-controls">
+        <li>
+            <button class="control-button carousel-control-prev" #prevButton (click)="prev()" [attr.aria-label]="'explore.accesibility.carousel-prev' | translate"><span class="carousel-control-prev-icon" aria-hidden="true"></span></button>
+        </li>
+        <li>
+            <button class="control-button carousel-control-next" #nextButton (click)="next()" [attr.aria-label]="'explore.accesibility.carousel-next' | translate"><span class="carousel-control-next-icon" aria-hidden="true"></span></button>
+        </li>
+    </ul>
+    <div class="carousel-liveregion sr-only" #liveRegion aria-live="off" aria-atomic="true"></div></ng-container
+><ng-template #unitLoader><io-loader-gif show="!slides"></io-loader-gif></ng-template>

@@ -1,0 +1,4 @@
+<div class="modal-body">
+    <form [formGroup]="formName"><io-input [data]="groupNameInput"></io-input></form>
+</div>
+<div class="modal-footer"><button class="btn btn-primary btn-light" type="button" (click)="cancel()">{{ 'common.cancel' | translate }}</button><button class="btn btn-primary btn-primary" type="button" (click)="confirm()">{{ 'common.confirm' | translate }}</button></div>

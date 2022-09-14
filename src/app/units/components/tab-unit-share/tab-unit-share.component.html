@@ -1,0 +1,19 @@
+<div class="content-wrapper">
+    <h2 class="sub-title">{{ 'units.tab-unit-share.title' | translate }}</h2>
+    <div class="form-group">
+        <div class="input-group">
+            <select class="custom-select" name="license" [(ngModel)]="licenseOptions.selected" [attr.aria-label]="'units.tab-unit-share.license_help' | translate">
+                <optgroup [label]="'units.licenses.private.label' | translate"><option *ngFor="let option of getOptionsByGroup('private')" [value]="option.value">{{ option.label | translate }}</option></optgroup>
+                <optgroup [label]="'units.licenses.readonly.label' | translate"><option *ngFor="let option of getOptionsByGroup('readonly')" [value]="option.value">{{ option.label | translate }}</option></optgroup>
+                <optgroup [label]="'units.licenses.reuse.label' | translate"><option *ngFor="let option of getOptionsByGroup('reuse')" [value]="option.value">{{ option.label | translate }}</option></optgroup>
+            </select>
+            <div class="input-group-append"><button class="btn btn-primary btn-sm" type="button" (click)="changeLicense()">{{ 'units.tab-unit-share.change_license' | translate }}</button></div>
+        </div>
+        <small>{{ 'units.tab-unit-share.show_help' | translate }}</small>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p><fa-icon [icon]="['fas', 'question-circle']"></fa-icon>&nbsp; {{ 'units.tab-unit-share.help' | translate }} &nbsp;<a [routerLink]="" (click)="showLicensesModal()">{{ 'units.tab-unit-share.licenses' | translate }}</a></p>
+        </div>
+    </div>
+</div>

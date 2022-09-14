@@ -1,0 +1,39 @@
+.content-wrapper
+    h2.sub-title.mb-3 Obtener última versión de la unidad
+    ng-container(*ngIf="originalUnitStatus$ | async as originalUnitStatus")
+        p(*ngIf="!originalUnitStatus.existing") {{ 'units.tab-original-unit.non-original.non-existing' | translate }}
+        ng-container(*ngIf="originalUnitStatus.existing")
+            button.mr-3.btn.btn-primary.btn-sm(
+                (click)="openCofirmUpdate()",
+                *ngIf="isVersionOutdated(originalUnitStatus.lastPublished)"
+            ) 
+                io-button-loader(*ngIf="updating")
+                | {{ 'units.tab-original-unit.non-original.get-last-version' | translate }}
+            p(*ngIf="!isVersionOutdated(originalUnitStatus.lastPublished)") {{ 'units.tab-original-unit.non-original.already-updated' | translate }}
+            a.mr-3.btn.btn-secondary.btn-sm(
+                [href]="previewUnit(originalUnitStatus.resource)",
+                role="button",
+                target="_blank"
+            ) {{ 'common.preview' | translate }}
+
+    h2.sub-title.mt-3.mb-3 {{ 'units.tab-original-unit.information' | translate }}
+    p.ml-3 <strong>{{ 'units.tab-original-unit.name' | translate }}</strong>: {{ unit.originalUnit?.unitName }}
+    p.ml-3 <strong>{{ 'units.tab-original-unit.author' | translate }}</strong>: {{ unit.originalUnit?.authorName }}
+    p.ml-3 <strong>{{ 'units.tab-original-unit.shared_at' | translate }}</strong>: {{  unit.originalUnit?.timeStamp | date: "dd/MM/yyyy"  }}
+    ng-container(*ngIf="originalRating")
+        h2.sub-title {{ 'units.tab-unit-rating.rating' | translate }}
+        <strong><span class="sr-only">{{'rating.average' | translate}}</span>{{originalRating.average}}</strong> (<span class="sr-only">{{'rating.count' | translate}}</span>{{originalRating.count}}) 
+        ngx-material-rating(
+            role="slider", aria-valuemin="0", aria-valuemax="5", [attr.aria-valuenow]="originalRating.average", [attr.aria-valuetext]="'rating.current' | translate: {current: originalRating.average, max: 5}",
+            [dense]="true", [disabled]="true", [readonly]="true", [max]=5, [(ngModel)]="originalRating.average")
+    h2.sub-title {{ 'units.tab-original-unit.rate_unit' | translate }}
+    p(*ngIf="existRating()") {{ 'units.tab-original-unit.already_evaluated' | translate }}
+    ngx-material-rating.rate-this-unit(
+        #rate,
+        (keydown)="onRatingKeyDown($event)",
+        (click)="onRateChange($event)",
+        tabindex="0", role="slider", aria-valuemin="0", aria-valuemax="5", 
+        [attr.aria-valuenow]="userRate", 
+        [attr.aria-valuetext]="textUserRate",
+        aria-labelledby="view-unit-rate",
+        [dense]="true", [disabled]="existRating()", [max]=5, [(ngModel)]="userRate")

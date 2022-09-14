@@ -1,0 +1,20 @@
+.row.mt-2
+    .col
+        io-alerts 
+main.row.mt-2#main(tabindex="-1")
+    .col
+        h1.h2(*ngIf='!isUpdate()', translate, id="title", tabindex="-1") videos.create.title
+        h1.h2(*ngIf='isUpdate()', translate, id="title", tabindex="-1") videos.update.title
+        .card
+            form([formGroup]='videoForm', (ngSubmit)='submit()', ngNativeValidate)
+                .card-body
+                    p {{ "common.asterisk_required" | translate}}
+                    .form-group
+                        io-input([data]='nameInput')
+                    .form-group
+                        io-input([data]='urlInput')
+                .card-footer(style='text-align: right;')
+                    button.btn.btn-success(type='submit', [disabled]='!allowSubmit')
+                        io-button-loader([show]='!allowSubmit')
+                        span(*ngIf='!isUpdate()') {{ "videos.create.form.submit" | translate }}
+                        span(*ngIf='isUpdate()') {{ "videos.update.submit" | translate }}

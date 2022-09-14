@@ -1,0 +1,8 @@
+<label [for]="data.name" *ngIf="data.label">{{translateKey('label') | translate}} &nbsp;<span *ngIf="data.required">* &nbsp;</span><span class="limit" *ngIf="data.limit">({{translateKey('limit') | translate}}) &nbsp;</span></label>
+<div class="input-group">
+    <select class="custom-select" [formControl]="data.control" [id]="data.name">
+        <option *ngFor="let group of groups" [value]="group.key">{{group.name}}</option>
+    </select>
+    <div class="input-group-append"><button class="btn btn-primary" type="button" (click)="createGroup()">{{'questions.groups.create' | translate}}</button></div>
+    <small class="form-text valid-feedback" *ngIf="showOkFeedback()">{{'messages.valid_field' | translate}}</small>
+</div>

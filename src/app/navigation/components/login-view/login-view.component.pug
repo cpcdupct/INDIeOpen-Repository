@@ -1,0 +1,64 @@
+.modal-body.login-view
+    img.form-logo.img-fluid(
+        [src]="getLoginLogoSrc()",
+        alt=""
+    )
+    h2.login-title(id="login-title", *ngIf="view === 'EMAIL'") {{ 'io-login-view.email' | translate }}
+    h2.login-title(id="login-title", *ngIf="view === 'LOGIN'") {{ 'io-login-view.please-sign-in' | translate }}
+    h2.login-title(id="login-title", *ngIf="view === 'RESET'") {{ 'io-login-view.reset-password' | translate }}
+    button(type="button", class="btn btn-close", [attr.aria-label]="'common.close' | translate", (click)="closeModal()")
+        fa-icon([icon]="['fas', 'times']")
+    io-alerts
+
+    form(
+        [formGroup]="emailForm",
+        (ngSubmit)="requestLogin()",
+        style="text-align: left",
+        ngNativeValidate,
+        *ngIf="view === 'EMAIL'"
+    )
+        .form-group
+            io-input([data]="emailInput")
+        .form-group
+            button.btn.btn-secondary.btn-block(
+                type="submit",
+                ngbAutofocus,
+                [disabled]="!allowSubmit"
+            ) 
+                io-button-loader([show]="!allowSubmit")
+                | {{ 'io-login-view.continue' | translate }}
+
+    form(
+        [formGroup]="loginForm",
+        (ngSubmit)="signIn()",
+        style="text-align: left",
+        ngNativeValidate,
+        *ngIf="view === 'LOGIN'"
+    )
+        .form-group
+            io-input([data]="usernameInput")
+        .form-group
+            io-input([data]="passwordInput")
+        .form-group
+            button.btn.btn-secondary.btn-block(
+                type="submit",
+                ngbAutofocus,
+                [disabled]="!allowSubmit"
+            ) 
+                io-button-loader([show]="!allowSubmit")
+                | {{ 'io-login-view.sign-in' | translate }}
+
+    form([formGroup]="resetPasswordForm", (ngSubmit)="resetPassword()", ngNativeValidate, *ngIf="view === 'RESET'")
+        .form-group
+            io-input([data]="mailInput")
+        .form-group
+            button.btn.btn-secondary.btn-block(type="submit", [disabled]="!allowSubmit") 
+                io-button-loader([show]="!allowSubmit")
+                | {{ 'io-login-view.send-reset' | translate }}
+
+    .row
+        .col
+            a([routerLink]="", (click)="showReset()", *ngIf="showForgotPassword()") {{ 'io-login-view.forgot-password' | translate }}
+            a([routerLink]="", (click)="showEmail()", *ngIf="view === 'RESET'") {{ 'io-login-view.forgot-login' | translate }}
+    p.mt-5.mb-3.text-muted
+        != 'Universidad Politécnica de Cartagena - CPCD - 2020'

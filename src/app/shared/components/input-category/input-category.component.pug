@@ -1,0 +1,22 @@
+label([for]="data.name", *ngIf="data.label") {{ translateKey('label') | translate }} &nbsp;
+    span(*ngIf="data.required") * &nbsp;
+    span.limit(*ngIf="data.limit") ({{ translateKey('limit') | translate }}) &nbsp;
+
+.row
+    .col.d-flex.align-items-center
+        input.form-control.badge.badge-info.align-middle(
+            [id]="data.name",
+            [name]="data.name",
+            type="text",
+            readonly, 
+            [placeholder]="translateKey('placeholder') | translate",
+            [attr.value]="categoryText"
+        ) 
+    .col
+        button.btn.btn-primary.btn-sm(
+            type="button",
+            (click)="showPickCategoryModal()",
+            [disabled]="data.control.disabled"
+        ) {{ 'shared.change-category' | translate }}
+small.form-text.invalid-feedback(*ngIf="showError()") {{ translateKey('error') | translate }}
+small.form-text.valid-feedback(*ngIf="showOkFeedback()") {{ 'messages.valid_field' | translate }}

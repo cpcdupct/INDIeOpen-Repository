@@ -1,0 +1,16 @@
+<article class="card h-100 unit-top-rated">
+    <div class="img-container"><img class="card-img" [src]="unit.cover" [alt]="'explore.accesibility.image-unit' | translate: { title: unit.name }" /></div>
+    <div class="description-container">
+        <h3>{{ unit.name }}</h3>
+        <div class="row no-gutters">
+            <div class="col">
+                <p>
+                    {{'common.published_at' | translate}} {{unit.publishedAt | date: "dd/MM/yyyy"}} | <strong><span class="sr-only">{{'rating.average' | translate}}</span>{{unit.rating.average}}</strong> (<span class="sr-only">{{'rating.count' | translate}}</span>{{unit.rating.count}}) <ngx-material-rating role="slider" aria-valuemin="0" aria-valuemax="5" [attr.aria-valuenow]="unit.rating.average" [attr.aria-valuetext]="'rating.current' | translate: {current: unit.rating.average, max: 5}" [dense]="true" [disabled]="true" [readonly]="true" [max]="5" [(ngModel)]="unit.rating.average"></ngx-material-rating>
+                </p>
+            </div>
+        </div>
+        <hr />
+        <p class="card-text description">{{ unit.description }}</p>
+        <button class="btn btn-block btn-primary" (click)="viewUnit()" aria-haspopup="dialog">{{ 'common.see' | translate }} <span class="sr-only">{{ unit.name }}</span></button>
+    </div>
+</article>

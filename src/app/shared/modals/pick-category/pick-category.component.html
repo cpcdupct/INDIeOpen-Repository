@@ -1,0 +1,8 @@
+<div class="modal-header"><h2 class="modal-title">{{ 'modals.pick-category.title' | translate }}</h2></div>
+<div class="modal-body">
+    <label for="pickCategory">{{ 'modals.pick-category.search-text' | translate }}</label><input class="form-control" id="pickCategory" [matAutocomplete]="auto" type="text" [(ngModel)]="term" (ngModelChange)="onChange($event)" placeholder="{{ 'modals.pick-category.placeholder' | translate }}" /><mat-autocomplete #auto="matAutocomplete" (optionSelected)="categorySelected($event)" [class]="'category-autocomplete'"
+        ><mat-optgroup *ngFor="let item of categories"
+            ><span class="p-1 bg-secondary rounded text-white">{{ item.resource.translation }}</span><mat-option *ngFor="let path of item.paths; let index=index" [id]="'category-'+item.resource.key+'-'+index" [value]="item.resource.translation"><io-category-path class="category-path" [path]="path" [category]="item.resource.key"></io-category-path></mat-option></mat-optgroup
+    ></mat-autocomplete>
+</div>
+<div class="modal-footer"><button class="btn btn-primary" type="button" (click)="activeModal.dismiss()">{{'common.close' | translate}}</button></div>

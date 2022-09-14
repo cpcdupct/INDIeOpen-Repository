@@ -1,0 +1,18 @@
+article.question-item
+    .row
+        .col-md-9.col-xs-12
+            header
+                h2.card-title {{ item.text }}
+            p {{ item.group?.name }}
+            span.badge.badge-primary.mb-2 <span class="sr-only">{{ 'questions.list-question.type' | translate }}</span> {{ ('questions.types.' + item.type) | translate }}
+        ul.question-buttons.col-md-3.col-xs-12.toolbar([attr.aria-label]="'questions.list-question.actions' | translate")
+            li.question-button
+                a.btn.btn-sm.btn-primary([routerLink]="['/questions', item.id, 'edit']")
+                    fa-icon([icon]="['fas', 'eye']")
+                    | &nbsp;
+                    span {{ 'questions.list-question.view' | translate }}
+            li.question-button
+                button.btn.btn-sm.btn-danger((click)="deleteQuestion()")
+                    fa-icon([icon]="['fas', 'times']")
+                    | &nbsp;
+                    span {{ 'questions.list-question.delete' | translate }}

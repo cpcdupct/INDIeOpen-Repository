@@ -1,0 +1,47 @@
+nav.sr-only.skip-link
+    a([href]="currentUrl", (click)="skipNav($event)") {{ "nav.skip-link" | translate }}
+header
+    nav.navbar.navbar-expand-md.fixed-top.btco-hover-menu.row.no-gutters([ngClass]='navStyles()')
+        .col-2.col-sm-auto
+            button.bg-primary.text-white.navbar-toggler.mr-auto(type="button", (click)='toggleMenu()', [attr.aria-label]="'nav.menu.toggle' | translate " aria-haspopup="dialog")  &#9776;
+        .collapse.navbar-collapse.nav-content.row
+            ul.navbar-nav.mr-auto(role="menubar")
+                li.nav-item(role="none")
+                    button.nav-link(mat-button, [matMenuTriggerFor]="explore", role="menuitem") 
+                        | {{ "nav.explore" | translate: { value: appName } }}
+                        mat-icon expand_more
+                    mat-menu(#explore="matMenu")
+                        a(mat-menu-item, routerLink='/explore', routerLinkActive, (click)="navigate($event)") {{ "nav.menu.show_case" | translate }}
+                        a(mat-menu-item, [routerLink]='"/search"', [queryParams]='{ type: "CONTENT" }', routerLinkActive, (click)="navigate($event)") {{ "nav.menu.all_content_units" | translate }}
+                        a(mat-menu-item, [routerLink]='"/search"', [queryParams]='{ type: "EVALUATION" }', routerLinkActive, (click)="navigate($event)") {{ "nav.menu.all_evaluation_units" | translate }}
+                        a(mat-menu-item, routerLink='/search', [queryParams]='{type: "ALL_TYPES" }', routerLinkActive, (click)="navigate($event)") {{ "nav.menu.browse" | translate: { value: appName } }}
+                li.nav-item(role="none")
+                    button.nav-link(mat-button, *ngIf='isLoggedIn()', [matMenuTriggerFor]="content", role="menuitem")
+                        | {{ "nav.my-content" | translate }}
+                        mat-icon expand_more
+                    mat-menu(#content="matMenu")
+                        a(mat-menu-item, routerLink='/units', routerLinkActive, (click)="navigate($event)") {{ "units.my_units.title" | translate }}
+                        a(mat-menu-item, routerLink='/questions', routerLinkActive, (click)="navigate($event)") {{ "questions.my_questions.title" | translate }}
+                        a(mat-menu-item, routerLink='/videos', routerLinkActive, (click)="navigate($event)") {{ "videos.my_videos.title" | translate }}
+                        a(mat-menu-item, routerLink='/courses', routerLinkActive, (click)="navigate($event)") {{ "courses.my_courses.title" | translate }}
+        form.form-inline.my-2.my-md-0.col-8.col-sm-9.col-md-auto(role="search")
+            label.form-label
+                span.sr-only {{"nav.accesibility.search-input" | translate }}
+                input.form-control.search-form(
+                    searchInput,
+                    [matAutocomplete]="autoSearch",
+                    (keypress)='keyPress($event)',
+                    type='search',
+                    [attr.aria-label]='"nav.accesibility.search-input" | translate',
+                    placeholder='{{ "nav.search" | translate: { value: appName } }}',
+                    [(ngModel)]='searchText',
+                    [ngModelOptions]='{ standalone: true }',
+                    (ngModelChange)="dataChanged($event)"
+                    )
+
+                mat-autocomplete(#autoSearch="matAutocomplete", optionSelected="naviga")
+                        mat-option(*ngFor="let item of units", [value]="item.information.name") {{item.information.name}}
+        io-user-panel.col-2.text-center.col-sm-auto(*ngIf='isLoggedIn()', (userStatusChanged)='onUserStatusChanged($event)')
+        .nav-item.col-2.text-center.col-sm-auto(*ngIf='!isLoggedIn()')
+            button.nav-link((click)='showLogin()', aria-haspopup='dialog', [attr.aria-label]="'nav.login' | translate")
+                fa-icon([icon]='["fas", "user-circle"]', size='2x')

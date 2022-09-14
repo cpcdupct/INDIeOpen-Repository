@@ -1,0 +1,36 @@
+<main id="main" tabindex="-1">
+    <div class="row">
+        <div class="col">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2"><h1 class="section-title" translate id="title" tabindex="-1">units.create_unit.title</h1></div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <div class="card">
+                <form [formGroup]="createUnit" (ngSubmit)="create()" style="text-align: left" ngNativeValidate>
+                    <div class="card-body">
+                        <h2 class="sub-title">{{ 'units.create_unit.basic_information' | translate }}</h2>
+                        <p>{{ "common.asterisk_required" | translate}}</p>
+                        <div class="form-group"><io-input [data]="unitNameInput"></io-input></div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12 col-lg-6"><io-select [data]="selectTypeInput" [optionWrapper]="typeOptionWrapper"></io-select></div>
+                            <div class="form-group col-md-12 col-lg-6"><io-select [data]="selectLanguageInput" [optionWrapper]="languageOptionWrapper"></io-select></div>
+                        </div>
+                        <div class="form-group"><io-select [data]="selectThemeInput" [optionWrapper]="themeOptionWrapper" [translateOption]="false"></io-select><button class="mt-2 btn btn-secondary btn-sm" type="button" (click)="showThemeInfo()">{{ 'units.themes.show-themes-modal-info' | translate }}</button></div>
+                        <div class="form-group"><io-input-category [data]="selectCategoryInput"></io-input-category></div>
+                        <div class="form-group"><io-input-range [data]="ageRangeInput"></io-input-range></div>
+                        <div class="form-group"><io-educational-context-input [data]="educationalContextInput"></io-educational-context-input></div>
+                        <div class="form-group"><io-textarea [data]="shortDescriptionInput" rows="3"></io-textarea></div>
+                        <div class="form-group"><io-input [data]="coverInput"></io-input><img class="img-unit img-thumbnail" [src]="formControls.cover.value" *ngIf="formControls.cover.valid" /></div>
+                        <h2 class="sub-title">{{ 'units.create_unit.optional_information' | translate }}</h2>
+                        <div class="form-group"><io-textarea [data]="longDescriptionInput" rows="5"></io-textarea></div>
+                        <div class="form-group"><io-input-tags [data]="tagsInput"></io-input-tags></div>
+                    </div>
+                    <div class="card-footer" style="text-align: right">
+                        <button class="btn btn-success" type="submit" [disabled]="!allowSubmit"><io-button-loader [show]="!allowSubmit"></io-button-loader>{{ 'units.create_unit.submit' | translate }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>

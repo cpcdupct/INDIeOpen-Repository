@@ -1,0 +1,49 @@
+.card
+    form([formGroup]="questionForm", (ngSubmit)="submit()", ngNativeValidate)
+        .card-body
+            h2.sub-title(*ngIf="formMode === 'CREATE'") {{ 'questions.create_question.types.single.title' | translate }}
+            h2.sub-title(*ngIf="formMode === 'UPDATE'") {{ 'questions.update_question.types.singleAnswer.title' | translate }}
+            p {{ "common.asterisk_required" | translate}}
+            .form-group
+                io-textarea([data]="questionTextInput", rows="3") 
+            fieldset.form-group
+                legend {{ 'questions.form.single_answers.label' | translate }} &nbsp; *
+                .input-group.mb-3(*ngFor="let answer of question.answers; let idx=index")
+                    input.form-control(
+                        type="text",
+                        required,
+                        maxlength="300",
+                        [(ngModel)]="answer.text",
+                        [ngModelOptions]="{ standalone: true }",
+                        [attr.aria-label]="'questions.answers' | translate: {number: idx+1}"
+                    )
+                    .input-group-append
+                        label.input-group-text
+                            | {{ 'questions.common.correct' | translate }} &nbsp;
+                            input(
+                                type="radio",
+                                name="correctAnswer",
+                                [checked]="answer.correct",
+                                (click)="setAsCorrect(answer)",
+                                [attr.aria-label]="'questions.accesibility.correct-anwser-check' | translate"
+                            )
+                        .input-group-text 
+                            button.btn.btn-danger.btn-sm(
+                                type="button",
+                                [attr.aria-label]="'questions.accesibility.remove-question-button' | translate: {number: (idx + 1)}",
+                                (click)="removeAnswer(answer)"
+                            )
+                                fa-icon([icon]="['fas', 'times']")
+                button.btn.btn-primary.btn-sm((click)="addAnswer()", type="button") 
+                    fa-icon([icon]="['fas', 'plus']") 
+                    | &nbsp; {{ 'questions.form.single_answers.add' | translate }}
+                .sr-only(id="single-answer-answers-live", aria-live="polite", aria-atomic="all")
+            .form-group(*ngIf="groups")
+                io-input-question-group([data]="groupInput", [groups]="groups")
+            .form-group
+                io-input-tags([data]="tagsInput")
+        .card-footer(style="text-align: right")
+            button.btn.btn-success(type="submit", [disabled]="!allowSubmit")
+                io-button-loader([show]="!allowSubmit") &nbsp;
+                span(*ngIf="formMode === 'CREATE'") {{ 'questions.create_question.submit' | translate }}
+                span(*ngIf="formMode === 'UPDATE'") {{ 'questions.update_question.submit' | translate }}

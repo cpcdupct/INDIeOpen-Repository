@@ -1,0 +1,48 @@
+<div class="modal-header">
+    <button class="close" type="button" aria-label="Close" (click)="activeModal.dismiss()"><span aria-hidden="true"> &times;</span></button>
+</div>
+<div class="modal-body view-unit">
+    <div class="row">
+        <div class="col-lg-5 col-md-12 img-container mt-2"><img class="unit-img" [src]="unit.information.cover" [alt]="'units.accesibility.image-unit' | translate: { title: unit.information.name }" /></div>
+        <div class="col-lg-7 col-md-12 unit-description-container mt-2">
+            <h4 class="name">{{unit.information.name}}</h4>
+            <p class="author-name"><strong>{{unit.author.name}} &nbsp; </strong><span class="badge badge-pill badge-light" *ngIf="isYourUnit()">{{'common.you_are' | translate}}</span></p>
+            <p *ngIf="!isOriginalUnit()">{{'units.unit_from' | translate}} &nbsp;<strong>{{unit.originalUnit?.authorName}} &nbsp;</strong></p>
+            <div class="unit-badges"><span class="badge" [ngClass]="itemTypeClass()" translate>{{type()}}</span><span class="badge badge-info">{{ unit.information.category | translateCategory }}</span><span class="badge bg-dark text-white">{{ unit.information.ageRange[0] }} - {{ unit.information.ageRange[1] }} {{ "common.years" | translate }}</span><span [class]="getBadgeLicenseClass()">{{ "enums.License." + unit.license | translate }} - {{ "creative-commons." + unit.creativeCommons | translate }}</span><span class="badge badge-success" *ngFor="let context of educationalContextTranslations()"> {{ context.name }}</span></div>
+            <div class="row">
+                <div class="col-lg-6 col-xs-12 d-flex align-items-center">
+                    <p>
+                        <strong><span class="sr-only">{{'rating.average' | translate}}</span>{{unit.rating.average}}</strong> (<span class="sr-only">{{'rating.count' | translate}}</span>{{unit.rating.count}}) <ngx-material-rating role="slider" aria-valuemin="0" aria-valuemax="5" [attr.aria-valuenow]="unit.rating.average" [attr.aria-valuetext]="'rating.current' | translate: {current: unit.rating.average, max: 5}" [dense]="true" [disabled]="true" [readonly]="true" [max]="5" [(ngModel)]="unit.rating.average"></ngx-material-rating>
+                    </p>
+                </div>
+                <div class="col-lg-6 col-xs-12 d-flex align-items-center">
+                    <p>{{ 'common.published_at' | translate}} <span class="date">{{unit.published.publishedDate | date: "dd/MM/yyyy" }}</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col"><a class="btn btn-primary btn-block" [href]="previewUnit()" role="button" target="_blank">{{ 'common.preview' | translate}}</a></div>
+        <div class="col" *ngIf="canAddUnit()">
+            <button class="btn btn-secondary btn-block" (click)="addUnit()" [disabled]="addUnitLoader"><io-button-loader [show]="addUnitLoader"> </io-button-loader><span *ngIf="!addUnitLoader">{{ 'common.add' | translate}}</span><span *ngIf="addUnitLoader">{{ 'units.messages.adding_unit' | translate}}</span></button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col"><h5>{{ 'common.description' | translate}}</h5></div>
+    </div>
+    <hr />
+    <div class="row my-2">
+        <div class="col">
+            <p style='white-space:pre-wrap"'>{{ unit.information.shortDescription }}</p>
+            <p style='white-space:pre-wrap"' [innerHTML]="unit.information.longDescription | prettyPrint"></p>
+        </div>
+    </div>
+    <div class="row" *ngIf="canRateUnit()">
+        <div class="col">
+            <h5 id="view-unit-rate">{{ 'units.view-unit-modal.rate-unit' | translate}}</h5>
+            <hr />
+            <p *ngIf="alreadyRated">{{'units.view-unit-modal.already-rated' | translate}}</p>
+            <!--ngb-rating(*ngIf='!alreadyRated', [(rate)]='userRate', [max]='5', (rateChange)='onRateChange($event)')--><ngx-material-rating class="rate-this-unit" *ngIf="!alreadyRated" #rate (keydown)="onRatingKeyDown($event)" (click)="onRateChange($event)" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="5" [attr.aria-valuenow]="userRate" [attr.aria-valuetext]="textUserRate" aria-labelledby="view-unit-rate" [dense]="true" [disabled]="false" [max]="5" [(ngModel)]="userRate"></ngx-material-rating>
+        </div>
+    </div>
+</div>

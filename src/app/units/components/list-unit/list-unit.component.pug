@@ -1,0 +1,41 @@
+article.unit-item
+    .image-container
+        img(
+            [src]="item.information.cover",
+            [alt]="'units.accesibility.image-unit' | translate: { title: item.information.name }"
+        )
+    .description-container
+        .row
+            .col-md-12.col-lg-9
+                h2.unit-title 
+                    io-flag([language]="item.information.language") 
+                    | &nbsp; {{ item.information.name }}
+            .col-md-12.col-lg-3.date-container
+                p {{ 'common.created_at' | translate }} {{  item.createdAt | date: "dd/MM/yyyy"  }}
+
+        p(*ngIf="!isOriginalUnit()") 
+            | {{ 'units.unit_from' | translate }} &nbsp;
+            strong {{ item.originalUnit?.authorName }} &nbsp;
+
+        .unit-badges
+            span.badge([ngClass]="itemTypeClass()", translate) {{ type() }}
+            span(*ngIf="!isOriginalUnit()", [class]="getBadgeLicenseClass()") {{ ('enums.UnitMode.' + item.mode) | translate }}
+
+        ul.unit-buttons([attr.aria-label]="'units.list-unit.actions' | translate")
+            li.unit-button(*ngIf="canEdit()")
+                button.btn.btn-sm.btn-primary((click)="goToEditor()")
+                    fa-icon([icon]="['fas', 'edit']")
+                    | &nbsp;
+                    span {{ 'units.list-unit.edit-unit' | translate }}
+            li.unit-button
+                a.btn.btn-sm.btn-primary([routerLink]="['/units', item.id, 'panel']") 
+                    fa-icon([icon]="['fas', 'sliders-h']") 
+                    | &nbsp;
+                    span {{ 'units.list-unit.unit-panel' | translate }}
+            li.unit-button
+                button.btn.btn-sm.btn-secondary((click)="preview()", [disabled]="previewLoader")
+                    io-button-loader([show]="previewLoader")
+                    fa-icon([icon]="['fas', 'eye']", *ngIf="!previewLoader") 
+                    | &nbsp;
+                    span(*ngIf="!previewLoader") {{ 'units.list-unit.preview-unit' | translate }}
+                    span(*ngIf="previewLoader") {{ 'units.list-unit.generating-preview' | translate }}

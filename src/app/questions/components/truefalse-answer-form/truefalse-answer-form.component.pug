@@ -1,0 +1,27 @@
+div.card
+    form([formGroup]="questionForm", (ngSubmit)="submit()", ngNativeValidate)
+        div.card-body
+            h2.h4(*ngIf="formMode==='CREATE'") {{'questions.create_question.types.true_false.title' | translate}}
+            h2.h4(*ngIf="formMode==='UPDATE'") {{'questions.update_question.types.trueFalse.title' | translate}}
+            p {{ "common.asterisk_required" | translate}}
+            div.form-group
+                io-textarea([data]='questionTextInput', rows="3")
+            fieldset.form-group
+                legend {{ 'questions.form.truefalseAnswer.label' | translate}} *
+                div.form-check
+                    input.form-check-input(type="radio", name="correct", formControlName="correct", id="trueOption", [value]="true")
+                    label.form-check-label(for="trueOption") {{'questions.common.true' | translate}}
+                div.form-check
+                    input.form-check-input(type="radio", name="correct", formControlName="correct", id="falseOption", [value]="false")
+                    label.form-check-label(for="falseOption") {{'questions.common.false' | translate}}
+                    small.form-text.valid-feedback(*ngIf='controls.correct.valid') {{'messages.valid_field' | translate}}
+            div.form-group(*ngIf='groups')
+                io-input-question-group([data]="groupInput", [groups]="groups")
+            div.form-group
+                io-input-tags([data]='tagsInput')
+        div.card-footer(style='text-align: right;')
+            button.btn.btn-success(type='submit', [disabled]='!allowSubmit')
+                io-button-loader([show]='!allowSubmit') &nbsp;
+                span(*ngIf="formMode==='CREATE'") {{'questions.create_question.submit' | translate}}
+                span(*ngIf="formMode==='UPDATE'") {{'questions.update_question.submit' | translate}}
+

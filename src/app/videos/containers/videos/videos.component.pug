@@ -1,0 +1,55 @@
+main#main(tabindex="-1")
+    .row
+        .col
+            .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2
+                h1.section-title(translate, id="title", tabindex="-1") videos.my_videos.title
+                .btn-toolbar.mb-2.mb-md-0
+                    .btn-group.mr-2
+                        a.btn.btn-sm.btn-primary(type="button", routerLink="/videos/create") 
+                            | {{ 'videos.my_videos.create_button' | translate }} &nbsp;
+                            fa-icon([icon]="['fas', 'plus-circle']")
+
+    .row
+        .col
+            io-alerts
+
+    .row
+        .col-md-12.col-lg-5.col-xl-5.d-flex.justify-content-center.justify-content-lg-start
+            span {{  "search.showing_count" | translate: { page: getElements(), size:total }  }}
+        .col-md-12.col-lg-7.col-xl-7.d-flex.justify-content-center.justify-content-lg-end
+            .form-inline.filters-bar
+                //- Orders
+                .form-group
+                    label(translate, [for]="orderFilter.key") &nbsp; search.order_by &nbsp;
+                    io-select-type([filter]="orderFilter", (typeSelected)="onTypeSelected($event)")
+    //- Results
+    io-loader
+    .row(*ngIf="videos$ | async as videos") 
+        .col 
+            io-list-video(
+                *ngFor="let video of videos",
+                [video]="video",
+                (deletedVideo)="onDeletedVideo($event)"
+            )
+            .card.my-2(*ngIf="videos.length == 0")
+                .card-body {{ 'videos.no_results' | translate }}
+    .row
+        nav.col([attr.aria-label]="'pagination.navigation' | translate")
+            .current-page(id="current-page")
+                label(for="current-pagination-value")  {{ 'pagination.current' | translate }}
+                input.form-control-inline(
+                    id="current-pagination-value",
+                    matInput,
+                    type="number",
+                    min="1",
+                    [max]="lastPage",
+                    [(ngModel)]="page",
+                    (ngModelChange)="$event && loadVideos($event)",
+                    name="page"
+                )
+            mat-paginator([length]="total",
+                [pageSize]="5",
+                [hidePageSize]="true",
+                [pageIndex]="page - 1",
+                [showFirstLastButtons]="true",
+                (page)="loadVideos($event.pageIndex+1)")

@@ -1,0 +1,45 @@
+article.course-item
+    .course-description
+        .row
+            .col-md-12.col-lg-9
+                h2.course-title {{ course.name }}
+            .col-md-12.col-lg-3.date-container
+                span {{ 'common.created_at' | translate }} 
+                    time {{  course.createdAt | date: "dd/MM/yyyy"  }}
+
+        .course-badges
+            span.badge.badge-primary(*ngIf="isCoursePublished()") {{ 'common.published_at' | translate }} 
+                time(pubdate) {{  course.publishedAt | date: "dd/MM/yyyy"  }}
+
+        ul.course-buttons([attr.aria-label]="'courses.list-course.actions' | translate")
+            li.course-button
+                button.btn.btn-sm.btn-primary((click)="publishCourse()") 
+                    fa-icon([icon]="['fas', 'eye']", *ngIf="!publishing") 
+                    io-button-loader(*ngIf="publishing")
+                    span(*ngIf="!publishing") {{ 'courses.publish' | translate }}
+                    span(*ngIf="publishing") {{ 'courses.publishing' | translate }}
+
+            li.course-button
+                button.btn.btn-sm.btn-info(
+                    *ngIf="isCoursePublished()",
+                    (click)="showAuthorizedModal()",
+                    aria-haspopup="dialog"
+                )
+                    fa-icon([icon]="['fas', 'users']")
+                    | &nbsp;
+                    | {{ 'courses.authorized.title' | translate }}
+            li.course-button
+                button.btn.btn-sm.btn-secondary(*ngIf="isCoursePublished()", (click)="copyShareURL()")
+                    fa-icon([icon]="['fas', 'share']")
+                    | &nbsp;
+                    | {{ 'courses.list-course.share' | translate }}
+            li.course-button
+                button.btn.btn-sm.btn-primary((click)="goToEditor()") 
+                    fa-icon([icon]="['fas', 'edit']")
+                    | &nbsp;
+                    | {{ 'courses.list-course.edit-course' | translate }}
+            li.course-button
+                button.btn.btn-sm.btn-danger((click)="deleteCourse()", aria-haspopup="dialog") 
+                    fa-icon([icon]="['fas', 'times']")
+                    | &nbsp;
+                    | {{ 'courses.list-course.delete-course' | translate }}

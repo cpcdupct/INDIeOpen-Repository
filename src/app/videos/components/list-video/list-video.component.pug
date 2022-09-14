@@ -1,0 +1,37 @@
+article.video-item
+    .video-description
+        .row
+            .col-md-12.col-lg-9
+                h2.video-title {{ video.name }}
+            .col-md-12.col-lg-3.date-container
+                span {{ 'common.created_at' | translate }} {{  video.createdAt | date: "dd/MM/yyyy"  }}
+
+        .video-badges
+            span.badge.badge-primary(*ngIf="isVideoPublished()") {{ 'common.published_at' | translate }} {{  video.publishedAt | date: "dd/MM/yyyy"  }}
+
+        ul.video-buttons([attr.aria-label]="'videos.list-video.actions'|translate")
+            li.video-button
+                button.btn.btn-sm.btn-primary((click)="publishVideo()") 
+                    io-button-loader(*ngIf="publishing")
+                    span(*ngIf="!publishing") {{ 'videos.publish' | translate }}
+                    span(*ngIf="publishing") {{ 'videos.publishing' | translate }}
+            li.video-button(*ngIf="isVideoPublished()")
+                button.btn.btn-sm.btn-secondary((click)="copyShareURL()") 
+                    fa-icon([icon]="['fas', 'share']")
+                    | &nbsp;
+                    span {{ 'videos.list-video.share' | translate }}
+            li.video-button
+                a.btn.btn-sm.btn-secondary([routerLink]="['/videos', video.id, 'edit']") 
+                    fa-icon([icon]="['fas', 'eye']") 
+                    | &nbsp;
+                    span {{ 'videos.list-video.edit_information' | translate }}
+            li.video-button
+                button.btn.btn-sm.btn-primary((click)="goToEditor()") 
+                    fa-icon([icon]="['fas', 'edit']")
+                    | &nbsp;
+                    span {{ 'videos.list-video.edit_video' | translate }}
+            li.video-button
+                button.btn.btn-sm.btn-danger((click)="deleteVideo()") 
+                    fa-icon([icon]="['fas', 'times']") 
+                    | &nbsp;
+                    span {{ 'videos.list-video.delete' | translate }}

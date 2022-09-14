@@ -1,0 +1,61 @@
+.carousel-container {
+    display: flex;
+    flex-direction: row;
+
+    .current-slides {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+
+    .carousel-content {
+        width: 100%;
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+}
+
+ngb-carousel {
+    outline: none;
+}
+
+
+.carousel-controls {
+    list-style: none;
+    padding-left: 0;
+
+    .control-button {
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        opacity: 1;
+        &[disabled] {
+            opacity: 0.5;
+        }
+    }
+
+    .carousel-control-prev-icon {
+        background-image: url('/assets/icon/arrow-prev.svg');
+    }
+
+    .carousel-control-next-icon {
+        background-image: url('/assets/icon/arrow-next.svg');
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 3rem;
+        height: 3rem;
+        top: 50%;
+        margin-top: -1.5rem;
+        border-radius: 3rem;
+        &:focus {
+            outline: 3px solid black;
+        }
+    }
+}

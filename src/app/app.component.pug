@@ -1,0 +1,14 @@
+io-sidebar-menu([direction]='"left"', [navWidth]='280', [duration]='0.5')
+#wrapper.d-flex.flex-column.min-vh-100
+    //- Navigation
+    io-top-nav
+
+    //- Main content with router outlet
+    .main-container
+        router-outlet
+
+    //- Common footer
+    io-footer.mt-auto
+
+    //- Toastr panel
+    div(toastContainer, aria-live="polite")
