@@ -237,7 +237,7 @@
             "title": "¡Atención!"
         },
         "internal_server_error": {
-            "message": "Ha ocurrido un error interno en el servidor. Por favor inténtalo de nuevo en unos segundos. Si el error persiste, contacta con indie@upct.es.",
+            "message": "Ha ocurrido un error interno en el servidor. Por favor inténtalo de nuevo en unos segundos. Si el error persiste, contacta con my_email.",
             "title": "Error interno"
         },
         "login": "Debes iniciar sesión para visualizar esta página",
