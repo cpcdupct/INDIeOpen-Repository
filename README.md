@@ -6,6 +6,10 @@ This is the repository for one of the components of the INDIeOpen architecture, 
 
 <img src="architecture-repository.jpg">
 
+## Deployment
+
+The Repository component is based on Angular (https://angular.io/). The deployment of this web application depends on the selected cloud computing provider. Each cloud computing provider provides its own deployment manual. In the case of Microsoft’s Azure one option is Azure Pipelines. You can find more information at the following URL Configure CI/CD with Azure Pipelines - Azure App Service | Microsoft Docs (https://docs.microsoft.com/es-es/azure/app-service/deploy-azure-pipelines?view=azure-devops&tabs=yaml).
+
 ## Creators and contributors
 
 Repository component files have been created at the **Digital Content Creation Center** (CPCD), in the Universidad Politécnica de Cartagena.
